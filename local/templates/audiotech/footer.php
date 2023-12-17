@@ -10,11 +10,16 @@
                             <?php $APPLICATION->IncludeFile("/include/footer-social.php", [], ["MODE" => "html"]); ?>
                         </div>
                     </div>
-                    <div class="footer__col"><a class="footer__link footer__title" href="">Слуховые аппараты </a><a
-                                class="footer__link footer__title" href="">Кохлеарные имплатны</a><a
-                                class="footer__link footer__title" href="">Аксессуары</a><a class="footer__link footer__title"
-                                                                                            href="">О нас</a><a
-                                class="footer__link footer__title" href="">Покупателям</a></div>
+                    <?
+                    $APPLICATION->IncludeComponent(
+                        "bitrix:menu",
+                        "bottom",
+                        [
+                            "ROOT_MENU_TYPE" => "bottom",
+                        ],
+                        false
+                    );
+                    ?>
                     <div class="footer__col"><a class="footer__title">Подпишитесь на рассылку</a>
                         <div class="footer-form__subtext">Узнайте первыми про наши продукты и получайте полезные советы о
                             слухе
