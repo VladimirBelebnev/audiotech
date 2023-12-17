@@ -15,7 +15,7 @@ $this->setFrameMode(true);
         <?php foreach ($arResult['ITEMS'] as $arItem) { ?>
             <div class="swiper-slide">
                 <picture class="main-slider__pic"><img
-                            src="<?php echo CFile::GetPath($arItem['IMG_IBLOCK_GENERIC_VALUE']); ?>"
+                            src="<?php echo CFile::GetPath($arItem['PREVIEW_PICTURE']); ?>"
                             alt="<?php echo $arItem['NAME']; ?>"></picture>
                 <div class="_container">
                     <div class="main-slider__box">

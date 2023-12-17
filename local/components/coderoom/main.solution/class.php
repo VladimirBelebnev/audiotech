@@ -5,9 +5,26 @@ use \Bitrix\Iblock\Elements\ElementSolutionTable;
 
 class MainSolution extends \CBitrixComponent
 {
+    private $iCacheTime = 3600000;
+    private $sCacheId = 'MainSolution';
+    private $sCachePath = 'MainSolution/';
+
     public function executeComponent()
     {
-        $this->arResult['ITEMS'] = $this->getItems();
+        $obCache = new CPHPCache;
+
+        if ($obCache->initCache($this->iCacheTime, $this->sCacheId, $this->sCachePath)) {
+            $vars = $obCache->GetVars();
+
+            $this->arResult = $vars['arResult'];
+        } else if ($obCache->StartDataCache()) {
+            $this->arResult['ITEMS'] = $this->getItems();
+
+            $obCache->EndDataCache([
+                'arResult' => $this->arResult,
+            ]);
+        }
+
         $this->includeComponentTemplate();
     }
 
@@ -18,7 +35,7 @@ class MainSolution extends \CBitrixComponent
                 'ID',
                 'NAME',
                 'LINK_' => 'LINK',
-                'IMG_' => 'IMG',
+                'PREVIEW_PICTURE',
                 'SUBTITLE_' => 'SUBTITLE',
             ],
         ])->fetchAll();

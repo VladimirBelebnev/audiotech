@@ -18,10 +18,8 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
         <div class="human-block__container">
             <div class="_container">
                 <div class="human-block__wrap">
-                    <h2 class="section-title human-block__title">Запишитесь на приём для бесплатной проверки слуха</h2>
-                    <div class="human-block__descr">Осуществляем подбор и настройку цифрового гаджета в полном
-                        соответствии с нуждами пациента
-                    </div>
+                    <h2 class="section-title human-block__title"><?php $APPLICATION->IncludeFile("/include/human-title.php", [], ["MODE" => "html"]); ?></h2>
+                    <div class="human-block__descr"><?php $APPLICATION->IncludeFile("/include/human-descr.php", [], ["MODE" => "html"]); ?></div>
                     <a class="btn btn--red btn--icn btn--l" href="" data-target="modal-reg">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -43,14 +41,13 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
             </div>
         </div>
     </section>
+
     <section class="headphone-block">
         <div class="_container">
             <div class="headphone-block__wrap">
                 <div class="headphone-block__box">
-                    <h2 class="section-title headphone-block__title">Пройдите бесплатную онлайн-проверку слуха!</h2>
-                    <div class="headphone-block__descr">Вам понадобятся только наушники и несколько минут вашего
-                        времени
-                    </div>
+                    <h2 class="section-title headphone-block__title"><?php $APPLICATION->IncludeFile("/include/headphone-title.php", [], ["MODE" => "html"]); ?></h2>
+                    <div class="headphone-block__descr"><?php $APPLICATION->IncludeFile("/include/headphone-descr.php", [], ["MODE" => "html"]); ?></div>
                     <button class="btn btn--red btn--icn btn--l">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -63,6 +60,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
             </div>
         </div>
     </section>
+
     <section class="slider-block">
         <div class="_container">
             <h2 class="section-title"><span>Популярные слуховые аппараты</span>
@@ -167,6 +165,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
             </div>
         </div>
     </section>
+
     <section class="brends">
         <div class="_container">
             <h2 class="section-title brends__title">Надёжные устройства <br>от ведущих мировых брендов </h2>
@@ -177,6 +176,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
             </div>
         </div>
     </section>
+
     <section class="slider-block">
         <div class="_container">
             <h2 class="section-title"><span>Аксессуары</span>
@@ -347,24 +347,19 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
             </div>
         </div>
     </section>
+
     <section class="find-centers">
         <div class="_container">
             <div class="find-centers__wrap">
                 <div class="find-centers__box">
-                    <div class="find-centers__item"><span class="find-centers__number">12</span><span
-                                class="find-centers__descr">тысяч покупателей<br> ежегодно</span></div>
-                    <div class="find-centers__item"><span class="find-centers__number">3</span><span
-                                class="find-centers__descr">центра слуха </span></div>
-                    <div class="find-centers__item"><span class="find-centers__number">200</span><span
-                                class="find-centers__descr">моделей<br> в ассортименте</span></div>
-                    <div class="find-centers__item"><span class="find-centers__number">15</span><span
-                                class="find-centers__descr">лет на рынке</span></div>
+                    <?php $APPLICATION->IncludeFile("/include/centers-1.php", [], ["MODE" => "html"]); ?>
+                    <?php $APPLICATION->IncludeFile("/include/centers-2.php", [], ["MODE" => "html"]); ?>
+                    <?php $APPLICATION->IncludeFile("/include/centers-3.php", [], ["MODE" => "html"]); ?>
+                    <?php $APPLICATION->IncludeFile("/include/centers-4.php", [], ["MODE" => "html"]); ?>
                 </div>
                 <div class="find-centers__box">
-                    <h2 class="section-title find-centers__title">Центры слуха Audiotech</h2>
-                    <p class="find-centers__text">Комплексный подход к решению проблем людей с нарушенной функцией
-                        слуха, уникальный опыт в области создания технических средств реабилитации позволяет предложить
-                        нашим клиентам лучшие услуги на рынке</p>
+                    <h2 class="section-title find-centers__title"><?php $APPLICATION->IncludeFile("/include/centers-title.php", [], ["MODE" => "html"]); ?></h2>
+                    <p class="find-centers__text"><?php $APPLICATION->IncludeFile("/include/centers-descr.php", [], ["MODE" => "html"]); ?></p>
                     <button class="btn btn--red btn--l btn--icn">
                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -377,6 +372,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
             </div>
         </div>
     </section>
+
     <section class="offers">
         <div class="_container">
             <div class="offers__wrap">

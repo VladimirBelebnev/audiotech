@@ -1270,7 +1270,7 @@ img {
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    background-image: url(../img/icns/md-cheveron-right.svg);
+    background-image: url(../images/icns/md-cheveron-right.svg);
     width: 24px;
     height: 24px;
     background-size: contain;
@@ -1401,7 +1401,7 @@ img {
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    background-image: url("../img/icns/md-cheveron-right.svg");
+    background-image: url("../images/icns/md-cheveron-right.svg");
     width: 24px;
     height: 24px;
     background-size: contain;
@@ -1540,7 +1540,7 @@ img {
 .main-nav-search::before {
   content: "";
   position: absolute;
-  background-image: url("../img/icns/md-search.svg");
+  background-image: url("../images/icns/md-search.svg");
   width: 24px;
   height: 24px;
   background-size: contain;
@@ -2517,7 +2517,7 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url("../img/icns/play.svg");
+  background-image: url("../images/icns/play.svg");
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -2767,7 +2767,7 @@ button {
   }
 }
 .human-block--doc1 {
-  background-image: url("../img/human-block/pic1.png"), url("../img/human-block/ellipses.svg"), url("../img/human-block/ellipse.svg");
+  background-image: url("../images/human-block/pic1.png"), url("../images/human-block/ellipses.svg"), url("../images/human-block/ellipse.svg");
   background-size: contain, 710px 450px, 205px 290px;
   background-position: left top, left bottom, bottom right;
   background-repeat: no-repeat, no-repeat, no-repeat;
@@ -2786,13 +2786,13 @@ button {
 }
 @media (max-width: 700px) {
   .human-block--doc1 {
-    background-image: url("../img/human-block/h-block-m.png");
+    background-image: url("../images/human-block/h-block-m.png");
     background-position: left top;
     background-size: auto 260px;
   }
 }
 .human-block--doc2 {
-  background-image: url("../img/human-block/pic2.png"), url("../img/human-block/ellipses.svg"), url("../img/human-block/ellipse.svg");
+  background-image: url("../images/human-block/pic2.png"), url("../images/human-block/ellipses.svg"), url("../images/human-block/ellipse.svg");
   background-size: contain, 710px 450px, 205px 290px;
   background-position: left top, left bottom, bottom right;
   background-repeat: no-repeat, no-repeat, no-repeat;
@@ -2812,7 +2812,7 @@ button {
 }
 @media (max-width: 700px) {
   .human-block--doc2 {
-    background-image: url("../img/human-block/h-block-m2.png");
+    background-image: url("../images/human-block/h-block-m2.png");
     background-position: left top;
     background-size: auto 260px;
   }
@@ -2953,7 +2953,7 @@ button {
   background-color: #F5F7FA;
   padding-top: 60px;
   min-height: 450px;
-  background-image: url("../img/white-headphones.png");
+  background-image: url("../images/white-headphones.png");
   background-position: top right 185px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -3201,7 +3201,7 @@ button {
 }
 
 .find-centers__box:first-child {
-  background-image: url("../img/advant-back.jpg");
+  background-image: url("../images/advant-back.jpg");
   background-size: cover;
   display: grid;
   grid-template-columns: repeat(2, 50%);
@@ -4221,7 +4221,7 @@ button {
 .modal__item--dp::before {
   content: "";
   position: absolute;
-  background-image: url("../img/icns/md-calendar.svg");
+  background-image: url("../images/icns/md-calendar.svg");
   width: 24px;
   height: 24px;
   top: 50%;
@@ -4367,7 +4367,7 @@ button {
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
-  background-image: url("../img/icns/md-cheveron-down.svg");
+  background-image: url("../images/icns/md-cheveron-down.svg");
   width: 24px;
   height: 24px;
   background-size: contain;
@@ -6733,7 +6733,7 @@ section.about {
   background-color: #fff;
   right: 20px;
   top: 20px;
-  background-image: url("../img/icns/md-x.svg");
+  background-image: url("../images/icns/md-x.svg");
   background-repeat: no-repeat;
   background-position: center;
   padding: 0;
@@ -6743,7 +6743,7 @@ section.about {
 .video-wrap__close:hover {
   background-color: #DB1F26;
   transition: all 0.3s ease;
-  background-image: url("../img/icns/md-x-hover.svg");
+  background-image: url("../images/icns/md-x-hover.svg");
 }
 .video-wrap video {
   width: 100%;
@@ -6784,7 +6784,7 @@ section.about {
   width: 120px;
   height: 120px;
   background-color: #DB1F26;
-  background-image: url(../img/icns/play-icn.svg);
+  background-image: url(../images/icns/play-icn.svg);
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
@@ -6836,7 +6836,7 @@ section.about {
   height: 120px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background-image: url("../img/icns/play-icn.svg");
+  background-image: url("../images/icns/play-icn.svg");
   background-color: #DB1F26;
   background-size: 24px auto;
   background-position: center;
@@ -6933,7 +6933,7 @@ section.about {
 .ymaps-2-1-79-balloon__close-button {
   width: 24px !important;
   height: 24px !important;
-  background: url("../img/icns/md-x.svg") !important;
+  background: url("../images/icns/md-x.svg") !important;
   background-repeat: no-repeat;
   opacity: 1 !important;
 }
@@ -7283,7 +7283,7 @@ address label {
 .input--dp::before {
   content: "";
   position: absolute;
-  background-image: url(../img/icns/md-calendar.svg);
+  background-image: url(../images/icns/md-calendar.svg);
   width: 24px;
   height: 24px;
   top: 50%;
@@ -7371,7 +7371,7 @@ address label {
   height: 40px;
   border-radius: 50%;
   background-color: #fff;
-  background-image: url("../img/icns/md-zoom.svg");
+  background-image: url("../images/icns/md-zoom.svg");
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0;
@@ -7898,7 +7898,7 @@ address label {
   width: 24px;
   height: 24px;
   margin-left: auto;
-  background-image: url("../img/icns/md-plus.svg");
+  background-image: url("../images/icns/md-plus.svg");
   position: absolute;
   right: 0;
   background-repeat: no-repeat;
@@ -7951,7 +7951,7 @@ address label {
 }
 
 .accordion__item.open .accordion__header::after {
-  background-image: url("../img/icns/md-minus.svg");
+  background-image: url("../images/icns/md-minus.svg");
 }
 
 .materials__list {
@@ -8076,7 +8076,7 @@ address label {
   max-width: 1027px;
   margin: 0 auto;
   margin-top: 50px;
-  background-image: url("../img/404.svg");
+  background-image: url("../images/404.svg");
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: left center;
@@ -8150,7 +8150,7 @@ address label {
 }
 
 .big-banner {
-  background-image: url("../img/banner.jpg");
+  background-image: url("../images/banner.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -8540,16 +8540,16 @@ address label {
   gap: 10px;
 }
 .steps__item:first-child .steps__number:after {
-  background-image: url("../img/icns/dots_item.svg");
+  background-image: url("../images/icns/dots_item.svg");
 }
 .steps__item:nth-child(2) .steps__number:after {
-  background-image: url("../img/icns/dots_item_2.svg");
+  background-image: url("../images/icns/dots_item_2.svg");
 }
 .steps__item:nth-child(3) .steps__number:after {
-  background-image: url("../img/icns/dots_item_3.svg");
+  background-image: url("../images/icns/dots_item_3.svg");
 }
 .steps__item:nth-child(4) .steps__number:after {
-  background-image: url("../img/icns/dots_item_4.svg");
+  background-image: url("../images/icns/dots_item_4.svg");
 }
 
 .steps__number {
@@ -9012,7 +9012,7 @@ input.input-action[type=checkbox] + label::before {
 }
 
 input.input-action[type=checkbox]:checked + label::before {
-  background-image: url("../img/icns/md-check.svg");
+  background-image: url("../images/icns/md-check.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-color: #DB1F26;
@@ -9020,7 +9020,7 @@ input.input-action[type=checkbox]:checked + label::before {
 }
 
 input.input-action[type=radio]:checked + label::before {
-  background-image: url("../img/icns/rad-active.svg");
+  background-image: url("../images/icns/rad-active.svg");
   border: none;
 }
 
@@ -9231,7 +9231,7 @@ input.input-action[type=radio]:checked + label::before {
 }
 .orders-status__states .orders-status__tracking--completed .orders-status__state {
   background-color: #0BBC61;
-  background-image: url("../img/icns/md-check.svg");
+  background-image: url("../images/icns/md-check.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 24px auto;
