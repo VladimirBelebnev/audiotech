@@ -166,16 +166,11 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
         </div>
     </section>
 
-    <section class="brends">
-        <div class="_container">
-            <h2 class="section-title brends__title">Надёжные устройства <br>от ведущих мировых брендов </h2>
-            <div class="brends__wrap">
-                <div class="brends__item"><img src="img/brends/medel.png" alt=""></div>
-                <div class="brends__item"><img src="img/brends/rexton.png" alt=""></div>
-                <div class="brends__item"><img src="img/brends/resound.png" alt=""></div>
-            </div>
-        </div>
-    </section>
+    <?php $APPLICATION->IncludeComponent(
+        'coderoom:main.brands',
+        '.default',
+        []
+    ); ?>
 
     <section class="slider-block">
         <div class="_container">
