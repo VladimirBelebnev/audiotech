@@ -1,9 +1,9 @@
 <?php
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
-use \Bitrix\Iblock\Elements\ElementBannerTable;
+use \Bitrix\Iblock\Elements\ElementSolutionTable;
 
-class MainSlider extends \CBitrixComponent
+class MainSolution extends \CBitrixComponent
 {
     public function executeComponent()
     {
@@ -13,14 +13,13 @@ class MainSlider extends \CBitrixComponent
 
     private function getItems ()
     {
-        return ElementBannerTable::getList([
+        return ElementSolutionTable::getList([
             'select' => [
                 'ID',
                 'NAME',
-                'IMG_' => 'IMG',
                 'LINK_' => 'LINK',
+                'IMG_' => 'IMG',
                 'SUBTITLE_' => 'SUBTITLE',
-                'BTN_TEXT_' => 'BTN_TEXT'
             ],
         ])->fetchAll();
     }

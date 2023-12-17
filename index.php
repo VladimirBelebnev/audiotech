@@ -14,33 +14,6 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
         []
     ); ?>
 
-    <section class="info-blocks">
-        <div class="_container">
-            <h2 class="section-title">Подходящее решение для каждого</h2>
-            <div class="info-blocks__wrap">
-                <div class="info-block__item" style="background-image: url(img/info-blocks/pic1.jpg)">
-                    <div class="info-block__name">Компактность и <br> невидимость</div>
-                    <div class="info-block__descr">Практически невидимые слуховые аппараты</div>
-                    <a class="btn btn--white btn--m info-block__link" href="">Подробнее</a>
-                </div>
-                <div class="info-block__item" style="background-image: url(img/info-blocks/pic2.jpg)">
-                    <div class="info-block__name">Подзаряжаемые <br> решения</div>
-                    <div class="info-block__descr">Серия заряжаемых слуховых аппаратов</div>
-                    <a class="btn btn--white btn--m info-block__link" href="">Подробнее</a>
-                </div>
-                <div class="info-block__item" style="background-image: url(img/info-blocks/pic3.jpg)">
-                    <div class="info-block__name">Простота<br> и эффективность</div>
-                    <div class="info-block__descr">Бюджетные слуховые аппараты с отличным звуком</div>
-                    <a class="btn btn--white btn--m info-block__link" href="">Подробнее</a>
-                </div>
-                <div class="info-block__item" style="background-image: url(img/info-blocks/pic4.jpg)">
-                    <div class="info-block__name">Возможности <br> подключения</div>
-                    <div class="info-block__descr">Связь между телефоном и слуховым аппаратом через Bluetooth</div>
-                    <a class="btn btn--white btn--m info-block__link" href="">Подробнее</a>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="human-block human-block--mode human-block--doc1">
         <div class="human-block__container">
             <div class="_container">
