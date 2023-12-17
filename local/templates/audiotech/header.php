@@ -7,6 +7,7 @@ use Bitrix\Main\Application;
 
 global $APPLICATION;
 
+$APPLICATION->AddChainItem('Главная', '/');
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -16,6 +17,7 @@ global $APPLICATION;
     Asset::getInstance()->addString("<meta content='ie=edge' http-equiv='x-ua-compatible'>");
     Asset::getInstance()->addString("<meta name='viewport' content='width=device-width,initial-scale=1,min-width=360'>");
     Asset::getInstance()->addString("<link rel='icon' href='/favicon.svg'>");
+    Asset::getInstance()->addString("<script src='https://api-maps.yandex.ru/2.1.79/?lang=ru_RU&amp;amp;apikey=&lt;abd2781c-74db-4a4d-b303-85221a575fd8&gt;'></script>");
 
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/style.min.css");
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/stylesheet.css");
@@ -27,15 +29,14 @@ global $APPLICATION;
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/mask.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/custom-select.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/air-datepicker.js");
-    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/tabs.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/validation.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/accordion.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/popper.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/viewport-extra.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/tippy-bundle.umd.js");
-    //    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-about.js");
-    //    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-map.js");
-    //    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-delivery.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-about.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-map.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-delivery.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery-3.7.1.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/main.js");
 
@@ -370,3 +371,10 @@ global $APPLICATION;
         </div>
     </header>
     <main>
+    <?php if ($APPLICATION->GetCurPage(false) != '/') { ?>
+        <?php $APPLICATION->IncludeComponent(
+            'bitrix:breadcrumb',
+            '.default',
+            []
+        ); ?>
+    <?php } ?>

@@ -196,12 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // modal
 
-    // tabs
-    if (document.querySelectorAll('.tabs').length > 0) {
-        new ItcTabs('.tabs');
-    }
-    // tabs
-
     // favorite
     if (document.querySelectorAll('.btn-favorite').length > 0) {
         const btnsFavorite = document.querySelectorAll('.btn-favorite');
