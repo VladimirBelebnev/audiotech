@@ -20,7 +20,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
                 <div class="human-block__wrap">
                     <h2 class="section-title human-block__title"><?php $APPLICATION->IncludeFile("/include/human-title.php", [], ["MODE" => "html"]); ?></h2>
                     <div class="human-block__descr"><?php $APPLICATION->IncludeFile("/include/human-descr.php", [], ["MODE" => "html"]); ?></div>
-                    <a class="btn btn--red btn--icn btn--l" href="" data-target="modal-reg">
+                    <a class="btn btn--red btn--icn btn--l" href="#" data-target="modal-reg">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                   d="M8 2C8.55228 2 9 2.44772 9 3V4H15V3C15 2.44772 15.4477 2 16 2C16.5523 2 17 2.44772 17 3V4H19C19.7957 4 20.5587 4.31607 21.1213 4.87868C21.6839 5.44129 22 6.20435 22 7V19C22 19.7957 21.6839 20.5587 21.1213 21.1213C20.5587 21.6839 19.7957 22 19 22H5C4.20435 22 3.44129 21.6839 2.87868 21.1213C2.31607 20.5587 2 19.7957 2 19V7C2 6.20435 2.31607 5.44129 2.87868 4.87868C3.44129 4.31607 4.20435 4 5 4H7V3C7 2.44772 7.44772 2 8 2ZM7 6H5C4.73478 6 4.48043 6.10536 4.29289 6.29289C4.10536 6.48043 4 6.73478 4 7V19C4 19.2652 4.10536 19.5196 4.29289 19.7071C4.48043 19.8946 4.73478 20 5 20H19C19.2652 20 19.5196 19.8946 19.7071 19.7071C19.8946 19.5196 20 19.2652 20 19V7C20 6.73478 19.8946 6.48043 19.7071 6.29289C19.5196 6.10536 19.2652 6 19 6H17V7C17 7.55228 16.5523 8 16 8C15.4477 8 15 7.55228 15 7V6H9V7C9 7.55228 8.55228 8 8 8C7.44772 8 7 7.55228 7 7V6Z"
@@ -48,7 +48,7 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
                 <div class="headphone-block__box">
                     <h2 class="section-title headphone-block__title"><?php $APPLICATION->IncludeFile("/include/headphone-title.php", [], ["MODE" => "html"]); ?></h2>
                     <div class="headphone-block__descr"><?php $APPLICATION->IncludeFile("/include/headphone-descr.php", [], ["MODE" => "html"]); ?></div>
-                    <button class="btn btn--red btn--icn btn--l">
+                    <button class="btn btn--red btn--icn btn--l" data-target="modal-call">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                   d="M11 4C10.7348 4 10.4804 4.10536 10.2929 4.29289C10.1054 4.48043 10 4.73478 10 5C10 5.26522 10.1054 5.51957 10.2929 5.70711C10.4804 5.89464 10.7348 6 11 6H13C13.2652 6 13.5196 5.89464 13.7071 5.70711C13.8946 5.51957 14 5.26522 14 5C14 4.73478 13.8946 4.48043 13.7071 4.29289C13.5196 4.10536 13.2652 4 13 4H11ZM8.87868 2.87868C9.44129 2.31607 10.2044 2 11 2H13C13.7956 2 14.5587 2.31607 15.1213 2.87868C15.4407 3.19808 15.6807 3.5821 15.8284 4H17C17.7956 4 18.5587 4.31607 19.1213 4.87868C19.6839 5.44129 20 6.20435 20 7V19C20 19.7957 19.6839 20.5587 19.1213 21.1213C18.5587 21.6839 17.7957 22 17 22H7C6.20435 22 5.44129 21.6839 4.87868 21.1213C4.31607 20.5587 4 19.7957 4 19V7C4 6.20435 4.31607 5.44129 4.87868 4.87868C5.44129 4.31607 6.20435 4 7 4H8.17157C8.31933 3.5821 8.55928 3.19808 8.87868 2.87868ZM8.17157 6H7C6.73478 6 6.48043 6.10536 6.29289 6.29289C6.10536 6.48043 6 6.73478 6 7V19C6 19.2652 6.10536 19.5196 6.29289 19.7071C6.48043 19.8946 6.73478 20 7 20H17C17.2652 20 17.5196 19.8946 17.7071 19.7071C17.8946 19.5196 18 19.2652 18 19V7C18 6.73478 17.8946 6.48043 17.7071 6.29289C17.5196 6.10536 17.2652 6 17 6H15.8284C15.6807 6.4179 15.4407 6.80192 15.1213 7.12132C14.5587 7.68393 13.7956 8 13 8H11C10.2044 8 9.44129 7.68393 8.87868 7.12132C8.55928 6.80192 8.31933 6.4179 8.17157 6ZM8 12C8 11.4477 8.44772 11 9 11H9.01C9.56228 11 10.01 11.4477 10.01 12C10.01 12.5523 9.56228 13 9.01 13H9C8.44772 13 8 12.5523 8 12ZM11 12C11 11.4477 11.4477 11 12 11H15C15.5523 11 16 11.4477 16 12C16 12.5523 15.5523 13 15 13H12C11.4477 13 11 12.5523 11 12ZM8 16C8 15.4477 8.44772 15 9 15H9.01C9.56228 15 10.01 15.4477 10.01 16C10.01 16.5523 9.56228 17 9.01 17H9C8.44772 17 8 16.5523 8 16ZM11 16C11 15.4477 11.4477 15 12 15H15C15.5523 15 16 15.4477 16 16C16 16.5523 15.5523 17 15 17H12C11.4477 17 11 16.5523 11 16Z"
@@ -368,32 +368,12 @@ $APPLICATION->SetTitle("1С-Битрикс: Управление сайтом");
         </div>
     </section>
 
-    <section class="offers">
-        <div class="_container">
-            <div class="offers__wrap">
-                <div class="offers__item"><img src="img/offers/icon-headphones.svg" alt="">
-                    <div class="offers__name">Проверка слуха <br> онлайн</div>
-                    <p class="offers__text">Узнайте как хорошо вы слышите с помощью быстрого и простого онлайн теста</p>
-                    <button class="btn btn--red btn--m">Пройти тест на слух</button>
-                </div>
-                <div class="offers__item"><img src="img/offers/icon-test.svg" alt="">
-                    <div class="offers__name">Бесплатная<br> диагностика слуха</div>
-                    <p class="offers__text">Посетите нашего специалиста в центре слуха и получите бесплатную
-                        консультацию</p><a class="btn btn--red btn--m" data-target="modal-reg">Записаться на приём</a>
-                </div>
-                <div class="offers__item"><img src="img/offers/icon-phone.svg" alt="">
-                    <div class="offers__name">Дистанционная<br> поддержка</div>
-                    <p class="offers__text">Посетите нашего специалиста в центре слуха и получите бесплатную
-                        консультацию</p><a class="btn btn--red btn--m" data-target="modal-call">Заказать звонок</a>
-                </div>
-                <div class="offers__item"><img src="img/offers/icon-accessories.svg" alt="">
-                    <div class="offers__name">Купить<br> аксессуары</div>
-                    <p class="offers__text">Закажите аксессуары к слуховым аппаратам онлайн в нашем
-                        интернет-магазине</p><a class="btn btn--red btn--m" href="catalog.html">Перейти в каталог</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php $APPLICATION->IncludeComponent(
+        'coderoom:main.offers',
+        '.default',
+        []
+    ); ?>
+
     <section class="slider-block">
         <div class="_container">
             <h2 class="section-title"><span>Блог</span>
