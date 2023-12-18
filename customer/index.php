@@ -8,7 +8,7 @@ $APPLICATION->AddChainItem('Покупателям', '/customer/');
     <div class="_container">
         <h1 class="title-page">Покупателям</h1>
         <div class="buyers__wrap">
-            <a class="item" href="/customer/pay/">
+            <a class="item" href="/customer/payments/">
                 <div class="item__pic">
                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.5 10.5H21.5H3.5ZM7.5 15.5H8.5H7.5ZM12.5 15.5H13.5H12.5ZM6.5 19.5H18.5C19.2956 19.5 20.0587 19.1839 20.6213 18.6213C21.1839 18.0587 21.5 17.2956 21.5 16.5V8.5C21.5 7.70435 21.1839 6.94129 20.6213 6.37868C20.0587 5.81607 19.2956 5.5 18.5 5.5H6.5C5.70435 5.5 4.94129 5.81607 4.37868 6.37868C3.81607 6.94129 3.5 7.70435 3.5 8.5V16.5C3.5 17.2956 3.81607 18.0587 4.37868 18.6213C4.94129 19.1839 5.70435 19.5 6.5 19.5Z"
