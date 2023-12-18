@@ -34,7 +34,6 @@ $APPLICATION->AddChainItem('Главная', '/');
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/popper.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/viewport-extra.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/tippy-bundle.umd.js");
-    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-about.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-map.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-delivery.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery-3.7.1.min.js");

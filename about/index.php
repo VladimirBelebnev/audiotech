@@ -44,18 +44,13 @@ $APPLICATION->AddChainItem('О нас', '/about/');
                                     </div>
                                 </div>
                             </div>
-                            <div class="map">
-                                <h2 class="section-title map__title"> <span>Представительства компании</span>
-                                    <div class="select-place">
-                                        <select class="mySelect">
-                                            <option value="Алма-Ата">Алма-Ата</option>
-                                            <option value="Алма-Ата">Алма-Ата</option>
-                                            <option value="Алма-Ата">Алма-Ата</option>
-                                        </select>
-                                    </div>
-                                </h2>
-                                <div class="map-content map-content--about" id="map-about"></div>
-                            </div>
+
+                            <?php $APPLICATION->IncludeComponent(
+                                'coderoom:about.map',
+                                '.default',
+                                []
+                            ); ?>
+
                         </div>
                     </div>
                 </div>
