@@ -21,87 +21,6 @@ $dateCreate = CIBlockFormatProperties::DateFormat(
     )
 );
 ?>
-<!--<div class="news-detail">-->
-<!--	--><?//if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
-<!--		<img-->
-<!--			class="detail_picture"-->
-<!--			border="0"-->
-<!--			src="--><?php //=$arResult["DETAIL_PICTURE"]["SRC"]?><!--"-->
-<!--			width="--><?php //=$arResult["DETAIL_PICTURE"]["WIDTH"]?><!--"-->
-<!--			height="--><?php //=$arResult["DETAIL_PICTURE"]["HEIGHT"]?><!--"-->
-<!--			alt="--><?php //=$arResult["DETAIL_PICTURE"]["ALT"]?><!--"-->
-<!--			title="--><?php //=$arResult["DETAIL_PICTURE"]["TITLE"]?><!--"-->
-<!--			/>-->
-<!--	--><?//endif?>
-<!--	--><?//if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?>
-<!--		<span class="news-date-time">--><?php //=$arResult["DISPLAY_ACTIVE_FROM"]?><!--</span>-->
-<!--	--><?//endif;?>
-<!--	--><?//if($arParams["DISPLAY_NAME"]!="N" && $arResult["NAME"]):?>
-<!--		<h3>--><?php //=$arResult["NAME"]?><!--</h3>-->
-<!--	--><?//endif;?>
-<!--	--><?//if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && ($arResult["FIELDS"]["PREVIEW_TEXT"] ?? '')):?>
-<!--		<p>--><?php //=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);?><!--</p>-->
-<!--	--><?//endif;?>
-<!--	--><?//if($arResult["NAV_RESULT"]):?>
-<!--		--><?//if($arParams["DISPLAY_TOP_PAGER"]):?><!----><?php //=$arResult["NAV_STRING"]?><!--<br />--><?//endif;?>
-<!--		--><?//echo $arResult["NAV_TEXT"];?>
-<!--		--><?//if($arParams["DISPLAY_BOTTOM_PAGER"]):?><!--<br />--><?php //=$arResult["NAV_STRING"]?><!----><?//endif;?>
-<!--	--><?//elseif($arResult["DETAIL_TEXT"] <> ''):?>
-<!--		--><?//echo $arResult["DETAIL_TEXT"];?>
-<!--	--><?//else:?>
-<!--		--><?//echo $arResult["PREVIEW_TEXT"];?>
-<!--	--><?//endif?>
-<!--	<div style="clear:both"></div>-->
-<!--	<br />-->
-<!--	--><?//foreach($arResult["FIELDS"] as $code=>$value):
-//		if ('PREVIEW_PICTURE' == $code || 'DETAIL_PICTURE' == $code)
-//		{
-//			?><!----><?php //=GetMessage("IBLOCK_FIELD_".$code)?><!--:&nbsp;--><?//
-//			if (!empty($value) && is_array($value))
-//			{
-//				?><!--<img border="0" src="--><?php //=$value["SRC"]?><!--" width="--><?php //=$value["WIDTH"]?><!--" height="--><?php //=$value["HEIGHT"]?><!--">--><?//
-//			}
-//		}
-//		else
-//		{
-//			?><!----><?php //=GetMessage("IBLOCK_FIELD_".$code)?><!--:&nbsp;--><?php //=$value;?><!----><?//
-//		}
-//		?><!--<br />-->
-<!--	--><?//endforeach;
-//	foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
-<!---->
-<!--		--><?php //=$arProperty["NAME"]?><!--:&nbsp;-->
-<!--		--><?//if(is_array($arProperty["DISPLAY_VALUE"])):?>
-<!--			--><?php //=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
-<!--		--><?//else:?>
-<!--			--><?php //=$arProperty["DISPLAY_VALUE"];?>
-<!--		--><?//endif?>
-<!--		<br />-->
-<!--	--><?//endforeach;
-//	if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
-//	{
-//		?>
-<!--		<div class="news-detail-share">-->
-<!--			<noindex>-->
-<!--			--><?//
-//			$APPLICATION->IncludeComponent("bitrix:main.share", "", array(
-//					"HANDLERS" => $arParams["SHARE_HANDLERS"],
-//					"PAGE_URL" => $arResult["~DETAIL_PAGE_URL"],
-//					"PAGE_TITLE" => $arResult["~NAME"],
-//					"SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
-//					"SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
-//					"HIDE" => $arParams["SHARE_HIDE"],
-//				),
-//				$component,
-//				array("HIDE_ICONS" => "Y")
-//			);
-//			?>
-<!--			</noindex>-->
-<!--		</div>-->
-<!--		--><?//
-//	}
-//	?>
-<!--</div>-->
 <section class="news-page">
     <div class="_container">
         <div class="news-page__head">
@@ -188,81 +107,27 @@ $dateCreate = CIBlockFormatProperties::DateFormat(
 <!--                    </div>-->
 <!--                </div>-->
             </div>
-<!--            <div class="news-page__col">-->
-<!--                <div class="aside-block">-->
-<!--                    <h2 class="aside-block__title">Подписаться на рассылку</h2>-->
-<!--                    <div class="input__overlay">-->
-<!--                        <input class="input-default" type="email" placeholder="Электронная почта">-->
-<!--                    </div>-->
-<!--                    <p class="aside-block__agree">Подписываясь, вы даете согласие на <a href="">обработку персональных данных</a></p>-->
-<!--                    <button class="btn btn--red btn--l btn--icn" type="submit">-->
-<!--                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Подписаться</span></button>-->
-<!--                </div>-->
-<!--            </div>-->
-        </div>
-        <section class="slider-block">
-            <h2 class="section-title">Похожие статьи</h2>
-            <div class="slider-block__wrap swiper articles-slider pb0">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="article-preview"> <a class="article-preview__pic" href=""><img src="img/pictures/pic1.jpg" alt=""></a>
-                            <div class="article-preview__date">25 фев 2023</div><a class="article-preview__name" href="">8 советов, чтобы лучше понять человека с потерей слуха</a>
-                            <p class="article-preview__text">Чек-лист, который поможет лучше понять человека с потерей слуха и выстроить с ним доверительное общение.</p>
-                        </div>
+            <div class="news-page__col">
+                <div class="aside-block">
+                    <h2 class="aside-block__title">Подписаться на рассылку</h2>
+                    <div class="input__overlay">
+                        <input class="input-default" type="email" placeholder="Электронная почта">
                     </div>
-                    <div class="swiper-slide">
-                        <div class="article-preview"> <a class="article-preview__pic" href=""><img src="img/pictures/pic2.jpg" alt=""></a>
-                            <div class="article-preview__date">14 янв 2023</div><a class="article-preview__name" href="">Особенности слуховой системы у взрослых пациентов</a>
-                            <p class="article-preview__text">Когда речь идет о детях с нарушениями слуха, главной задачей слухопротезирования является создание условий для стимуляции речевого развития.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="article-preview"> <a class="article-preview__pic" href=""><img src="img/pictures/pic3.jpg" alt=""></a>
-                            <div class="article-preview__date">27 дек 2023</div><a class="article-preview__name" href="">Внутриушные слуховые аппараты. Важные нюансы выбора</a>
-                            <p class="article-preview__text">Современный рынок сурдотехники предлагает достаточно большой ассортимент моделей заушных слуховых аппаратов с выносным ресивером или использующих технологии открытого протезирования.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="article-preview"> <a class="article-preview__pic" href=""><img src="img/pictures/pic4.jpg" alt=""></a>
-                            <div class="article-preview__date">18 дек 2022</div><a class="article-preview__name" href="">В нашей жизни возможно все</a>
-                            <p class="article-preview__text">Алена Капустьян – скромная, застенчивая и невероятно обаятельная девушка. Модель, участница спектакля «Прикасаемые», студентка колледжа при РГСУ.                        </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="article-preview"> <a class="article-preview__pic" href=""><img src="img/pictures/pic1.jpg" alt=""></a>
-                            <div class="article-preview__date">25 фев 2023</div><a class="article-preview__name" href="">8 советов, чтобы лучше понять человека с потерей слуха</a>
-                            <p class="article-preview__text">Чек-лист, который поможет лучше понять человека с потерей слуха и выстроить с ним доверительное общение.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="article-preview"> <a class="article-preview__pic" href=""><img src="img/pictures/pic2.jpg" alt=""></a>
-                            <div class="article-preview__date">14 янв 2023</div><a class="article-preview__name" href="">Особенности слуховой системы у взрослых пациентов</a>
-                            <p class="article-preview__text">Когда речь идет о детях с нарушениями слуха, главной задачей слухопротезирования является создание условий для стимуляции речевого развития.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="article-preview"> <a class="article-preview__pic" href=""><img src="img/pictures/pic3.jpg" alt=""></a>
-                            <div class="article-preview__date">27 дек 2023</div><a class="article-preview__name" href="">Внутриушные слуховые аппараты. Важные нюансы выбора</a>
-                            <p class="article-preview__text">Современный рынок сурдотехники предлагает достаточно большой ассортимент моделей заушных слуховых аппаратов с выносным ресивером или использующих технологии открытого протезирования.</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="article-preview"> <a class="article-preview__pic" href=""><img src="img/pictures/pic4.jpg" alt=""></a>
-                            <div class="article-preview__date">18 дек 2022</div><a class="article-preview__name" href="">В нашей жизни возможно все</a>
-                            <p class="article-preview__text">Алена Капустьян – скромная, застенчивая и невероятно обаятельная девушка. Модель, участница спектакля «Прикасаемые», студентка колледжа при РГСУ.                </p>
-                        </div>
-                    </div>
+                    <p class="aside-block__agree">Подписываясь, вы даете согласие на <a href="">обработку персональных данных</a></p>
+                    <button class="btn btn--red btn--l btn--icn" type="submit">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Подписаться</span></button>
                 </div>
             </div>
-        </section>
-        <div class="subscribe">
-            <h2 class="subscribe__title">Подписаться на рассылку</h2>
-            <div class="subscribe__input">
-                <input class="input-default subscribe__input" type="email" placeholder="Электронная почта">
-                <button class="btn btn--red btn--l btn--icn" type="submit"> <span>Подписаться</span></button>
-            </div>
-            <p class="aside-block__agree">Подписываясь, вы даете согласие на <a href="">обработку персональных данных</a></p>
         </div>
+        <?php $APPLICATION->IncludeComponent(
+            'coderoom:news.slider',
+            '.default',
+            [
+                'TITLE' => 'Похожие статьи',
+                'SHOW_LINK' => 'N',
+                'ELEMENT_ID' => $arResult['ID'],
+            ]
+        ); ?>
     </div>
 </section>
 <div class="aside-block aside-block--mobile">
