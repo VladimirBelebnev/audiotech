@@ -7439,7 +7439,7 @@ address label {
 }
 @media (max-width: 700px) {
   .news-page ._container > *:not(.__container-2cols, .slider-block) {
-    margin-left: 30px;
+    margin-left: 0px;
     margin-right: 30px;
   }
 }

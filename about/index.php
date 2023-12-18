@@ -11,9 +11,9 @@ $APPLICATION->AddChainItem('О нас', '/about/');
             <div class="tabs">
                 <div class="tabs__nav">
                     <a href="/about/" class="tabs__btn active">Компания</a>
-                    <a class="tabs__btn">Специалисты</a>
+                    <a href="/about/specialists/" class="tabs__btn">Специалисты</a>
                     <a href="/about/news/" class="tabs__btn">Новости</a>
-                    <a class="tabs__btn">Лицензии</a>
+                    <a href="/about/license/" class="tabs__btn">Лицензии</a>
                 </div>
                 <div class="tabs__content">
                     <div class="tabs__pane show">

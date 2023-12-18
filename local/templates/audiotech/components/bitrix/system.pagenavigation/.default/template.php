@@ -48,7 +48,7 @@ $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["Nav
 </div>
 
 <?php if ($arResult["NavRecordCount"] > $arResult["NavLastRecordShow"]) { ?>
-    <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>" class="btn btn--grey btn--m">Показать ещё &nbsp;<span id="cur-page"><?=$arResult["NavLastRecordShow"]?></span>&nbsp;из&nbsp; <span id="total-pages"><?=$arResult["NavRecordCount"]?></span></a>
+    <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>" class="btn btn--grey btn--m">Показать ещё &nbsp;<span id="cur-page"><?=$arResult["NavPageSize"]?></span>&nbsp;из&nbsp; <span id="total-pages"><?=$arResult["NavRecordCount"]?></span></a>
 <?php } ?>
 
 </div>

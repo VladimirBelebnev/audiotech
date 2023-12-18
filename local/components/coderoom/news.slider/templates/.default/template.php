@@ -28,13 +28,13 @@ $this->setFrameMode(true);
                                 <img src="<?php echo CFile::GetPath($arItem["PREVIEW_PICTURE"]); ?>"
                                      alt="<?php echo $arItem["NAME"]; ?>"></a>
                             <?php
-                            $dateCreate = CIBlockFormatProperties::DateFormat(
-                                'j M Y',
-                                MakeTimeStamp(
-                                    $arItem["TIMESTAMP_X"],
-                                    CSite::GetDateFormat()
-                                )
-                            );
+                                $dateCreate = CIBlockFormatProperties::DateFormat(
+                                    'j M Y',
+                                    MakeTimeStamp(
+                                        $arItem["TIMESTAMP_X"],
+                                        CSite::GetDateFormat()
+                                    )
+                                );
                             ?>
                             <div class="article-preview__date"><?php echo $dateCreate; ?></div>
                             <a class="article-preview__name"
