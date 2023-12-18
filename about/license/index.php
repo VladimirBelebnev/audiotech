@@ -91,7 +91,7 @@ $APPLICATION->AddChainItem('О нас', '/about/');
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Новости",
+		"PAGER_TITLE" => "Лицензии",
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"SEF_FOLDER" => "/about/news/",
 		"SEF_MODE" => "Y",
