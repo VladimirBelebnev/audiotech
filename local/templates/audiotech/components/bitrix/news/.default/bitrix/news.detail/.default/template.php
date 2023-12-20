@@ -37,25 +37,26 @@ $dateCreate = CIBlockFormatProperties::DateFormat(
                         <?php echo $arResult["DETAIL_TEXT"]; ?>
                     </div>
                 </div>
-                <section class="news-page__block news-page__block--slider">
-                    <h2 class="section-title"> <span>Аналоговые слуховые аппараты</span><a href="/catalog/" class="btn btn--grey btn--m">Смотреть все</a></h2>
-                    <div class="swiper swiper-three-news pr30_m">
-                        <div class="swiper-wrapper">
-                            <?php foreach ($arResult['CATALOG_ITEMS'] as $arItem) { ?>
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <a class="card__pic" href="/catalog/<?php echo $arItem['CODE']; ?>/"><img src="/catalog/<?php echo CFile::GetPath($arItem['CODE']); ?>/" alt="<?php echo $arItem['NAME']; ?>"></a>
-                                        <a class="card__name" href="/catalog/<?php echo $arItem['CODE']; ?>/"><?php echo $arItem['NAME']; ?></a>
-                                        <div class="card__footer">
-                                            <div class="card__price card__price--actual"><?php echo $arItem['PRICE']; ?> ₽</div>
-<!--                                            <div class="card__price card__price--old">81 250 ₽</div>-->
+                <?php if ($arResult['CATALOG_ITEMS']) { ?>
+                    <section class="news-page__block news-page__block--slider">
+                        <h2 class="section-title"> <span>Аналоговые слуховые аппараты</span><a href="/catalog/" class="btn btn--grey btn--m">Смотреть все</a></h2>
+                        <div class="swiper swiper-three-news pr30_m">
+                            <div class="swiper-wrapper">
+                                <?php foreach ($arResult['CATALOG_ITEMS'] as $arItem) { ?>
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <a class="card__pic" href="/catalog/<?php echo $arItem['CODE']; ?>/"><img src="/catalog/<?php echo CFile::GetPath($arItem['CODE']); ?>/" alt="<?php echo $arItem['NAME']; ?>"></a>
+                                            <a class="card__name" href="/catalog/<?php echo $arItem['CODE']; ?>/"><?php echo $arItem['NAME']; ?></a>
+                                            <div class="card__footer">
+                                                <div class="card__price card__price--actual"><?php echo $arItem['PRICE']; ?> ₽</div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            <?php } ?>
+                                <?php } ?>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                <?php } ?>
 <!--                <div class="__container-s">-->
 <!--                    <div class="news-page__block">-->
 <!--                        <p>Vestibulum augue enim, scelerisque ac gravida ut, sodales non lectus. Nunc non pretium eros. Duis ligula nisi, venenatis in dignissim et, pellentesque in enim. Mauris facilisis, eros a condimentum vehicula, ex eros tincidunt massa, at mattis turpis nibh in erat. Donec vehicula eros quis imperdiet pharetra. Suspendisse vehicula eros ac lacus molestie, id molestie lacus tincidunt. Fusce non arcu tempus odio convallis posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc non enim sed lacus tincidunt euismod. Quisque consequat massa urna, sed tincidunt urna faucibus sit amet.</p>-->
