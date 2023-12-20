@@ -6,7 +6,7 @@ $APPLICATION->AddChainItem('Покупателям', '/customer/');
 
 <section class="buyers">
     <div class="_container">
-        <h1 class="title-page">Покупателям</h1>
+        <h1 class="title-page"><?php $APPLICATION->ShowTitle(false); ?></h1>
         <div class="buyers__wrap">
             <a class="item" href="/customer/payments/">
                 <div class="item__pic">

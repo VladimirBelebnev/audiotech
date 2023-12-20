@@ -5,7 +5,7 @@ $APPLICATION->AddChainItem('О нас', '/about/');
 ?>
     <section class="about">
         <div class="_container">
-            <h1 class="title-page">О нас</h1>
+            <h1 class="title-page"><?php $APPLICATION->ShowTitle(false); ?></h1>
         </div>
         <div class="_container _container--mode">
             <div class="tabs">

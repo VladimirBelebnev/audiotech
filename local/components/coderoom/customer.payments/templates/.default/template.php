@@ -10,7 +10,7 @@ $this->setFrameMode(true);
 ?>
 <section class="payments">
     <div class="_container">
-        <h1 class="title-page">Покупка и оплата</h1>
+        <h1 class="title-page"><?php $APPLICATION->ShowTitle(false); ?></h1>
     </div>
     <div class="steps">
         <div class="_container">

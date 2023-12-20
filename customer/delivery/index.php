@@ -7,7 +7,7 @@ $APPLICATION->AddChainItem('Доставка', '/customer/delivery/');
 
 <section class="map">
     <div class="_container">
-        <h2 class="title-page map__title">Доставка</h2>
+        <h2 class="title-page map__title"><?php $APPLICATION->ShowTitle(false); ?></h2>
     </div>
     <div class="chips">
         <div class="_container">
