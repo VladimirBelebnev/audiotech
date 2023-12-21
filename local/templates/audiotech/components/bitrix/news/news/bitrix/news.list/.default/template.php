@@ -12,26 +12,9 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<section class="about">
-    <div class="_container">
-        <h1 class="title-page"><?php $APPLICATION->ShowTitle(false); ?></h1>
-    </div>
-    <div class="_container _container--mode">
-        <div class="tabs">
-            <div class="tabs__nav">
-                <a href="/about/" class="tabs__btn">Компания</a>
-                <a href="/about/specialists/" class="tabs__btn">Специалисты</a>
-                <a href="/about/news/" class="tabs__btn active">Новости</a>
-                <a href="/about/license/" class="tabs__btn">Лицензии</a>
-            </div>
-            <div class="tabs__content">
-                <div class="tabs__pane show">
-                    <div class="tabs__pane-wrap">
-                        <?php $APPLICATION->IncludeComponent(
-                            'coderoom:about.news.section',
-                            '.default',
-                            []
-                        ); ?>
+
+
+
                         <div class="news">
                             <div class="subscribe">
                                 <h2 class="aside-block__title">Подписаться на рассылку</h2>
@@ -80,9 +63,4 @@ $this->setFrameMode(true);
                                 <?= $arResult["NAV_STRING"]; ?>
                             <? endif; ?>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+

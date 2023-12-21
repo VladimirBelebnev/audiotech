@@ -6,12 +6,11 @@ use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Application;
 
 global $APPLICATION;
-
-$APPLICATION->AddChainItem('Главная', '/');
 ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <title><?php $APPLICATION->ShowTitle(); ?></title>
     <?php
     Asset::getInstance()->addString("<meta charset='utf-8'>");
     Asset::getInstance()->addString("<meta content='ie=edge' http-equiv='x-ua-compatible'>");
@@ -39,10 +38,8 @@ $APPLICATION->AddChainItem('Главная', '/');
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery-3.7.1.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/main.js");
 
-    $APPLICATION->ShowHeadStrings();
     $APPLICATION->ShowHead();
     ?>
-    <title><?php $APPLICATION->ShowTitle(); ?></title>
 </head>
 <body>
 <?php $APPLICATION->ShowPanel(); ?>

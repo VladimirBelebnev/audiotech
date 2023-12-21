@@ -11,17 +11,15 @@ class AboutNewsSection extends \CBitrixComponent
 
     public function executeComponent()
     {
-        $arItems = $this->getItems();
-
-        $arItems = $this->getActiveLink($arItems);
-        $this->arResult['ITEMS'] = $arItems;
+        $this->getItems();
+        $this->arResult['ITEMS'] = $this->getActiveLink($this->arResult['ITEMS']);
 
         $this->includeComponentTemplate();
     }
 
     private function getItems ()
     {
-        return SectionTable::getList([
+        $this->arResult['ITEMS'] = SectionTable::getList([
             'select' => [
                 'ID',
                 'NAME',

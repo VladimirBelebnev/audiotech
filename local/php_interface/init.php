@@ -1,4 +1,5 @@
 <?php
+use \Bitrix\Main\Loader;
 
-CModule::IncludeModule("iblock");
-\Bitrix\Main\Loader::includeModule("catalog");
+Loader::includeModule('iblock');
+Loader::includeModule('catalog');

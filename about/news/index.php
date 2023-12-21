@@ -1,12 +1,11 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Новости");
-$APPLICATION->AddChainItem('О нас', '/about/');
 ?>
 
 <? $APPLICATION->IncludeComponent(
 	"bitrix:news", 
-	".default", 
+	"news",
 	array(
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
