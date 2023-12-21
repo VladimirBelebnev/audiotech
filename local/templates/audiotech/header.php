@@ -4,8 +4,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Application;
-
-global $APPLICATION;
 ?>
 <!DOCTYPE html>
 <html lang="ru">

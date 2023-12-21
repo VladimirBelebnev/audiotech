@@ -21,23 +21,42 @@ $this->setFrameMode(true);
     </div>
     <div class="_container _container--mode">
         <div class="tabs">
-            <? // TODO Компонент меню ?>
-
-            <div class="tabs__nav">
-                <a href="/about/" class="tabs__btn">Компания</a>
-                <a href="/about/specialists/" class="tabs__btn">Специалисты</a>
-                <a href="/about/news/" class="tabs__btn active">Новости</a>
-                <a href="/about/license/" class="tabs__btn">Лицензии</a>
-            </div>
-
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:menu",
+                "top-second",
+                Array(
+                    "ALLOW_MULTI_SELECT" => "N",
+                    "CHILD_MENU_TYPE" => "",
+                    "DELAY" => "N",
+                    "MAX_LEVEL" => "1",
+                    "MENU_CACHE_GET_VARS" => array(""),
+                    "MENU_CACHE_TIME" => "360000",
+                    "MENU_CACHE_TYPE" => "A",
+                    "MENU_CACHE_USE_GROUPS" => "N",
+                    "ROOT_MENU_TYPE" => "top-second",
+                    "USE_EXT" => "N"
+                )
+            );?>
             <div class="tabs__content">
                 <div class="tabs__pane show">
                     <div class="tabs__pane-wrap">
-                        <?php $APPLICATION->IncludeComponent(
-                            'coderoom:about.news.section',
-                            '.default',
-                            []
-                        ); ?>
+                        <?$APPLICATION->IncludeComponent(
+                            "bitrix:menu",
+                            "top-third",
+                            Array(
+                                "ALLOW_MULTI_SELECT" => "N",
+                                "CHILD_MENU_TYPE" => "",
+                                "DELAY" => "N",
+                                "MAX_LEVEL" => "1",
+                                "MENU_CACHE_GET_VARS" => array(""),
+                                "MENU_CACHE_TIME" => "360000",
+                                "MENU_CACHE_TYPE" => "A",
+                                "MENU_CACHE_USE_GROUPS" => "N",
+                                "ROOT_MENU_TYPE" => "top-third",
+                                "USE_EXT" => "Y"
+                            )
+                        );?>
+
                         <?php
                         $APPLICATION->IncludeComponent(
                             "bitrix:news.list",
