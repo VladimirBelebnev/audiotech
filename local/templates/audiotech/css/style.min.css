@@ -4004,6 +4004,7 @@ button {
   justify-content: space-between;
   padding-top: 30px;
   border-top: 1px solid #E8EBED;
+  padding-bottom: 30px;
 }
 @media (max-width: 700px) {
   .pagination {
