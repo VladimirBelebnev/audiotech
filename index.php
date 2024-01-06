@@ -2,17 +2,17 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Главная");
 ?>
-    <?php $APPLICATION->IncludeComponent(
-        'coderoom:main.slider',
-        '.default',
-        []
-    ); ?>
+<?php $APPLICATION->IncludeComponent(
+    'coderoom:main.slider',
+    '.default',
+    []
+); ?>
 
-    <?php $APPLICATION->IncludeComponent(
-        'coderoom:main.solution',
-        '.default',
-        []
-    ); ?>
+<?php $APPLICATION->IncludeComponent(
+    'coderoom:main.solution',
+    '.default',
+    []
+); ?>
 
     <section class="human-block human-block--mode human-block--doc1">
         <div class="human-block__container">
@@ -61,287 +61,277 @@ $APPLICATION->SetTitle("Главная");
         </div>
     </section>
 
-    <section class="slider-block">
-        <div class="_container">
-            <h2 class="section-title"><span>Популярные слуховые аппараты</span>
-                <button class="btn btn--grey btn--m">Смотреть все</button>
-            </h2>
-            <div class="slider-block__wrap swiper popular-slider pr30">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/cards/pic1.jpg" alt=""></a><a
-                                    class="card__category" href="">Слуховой аппарат</a><a class="card__name" href="">Audeo
-                                M30-R</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">65 300 ₽</div>
-                                <div class="card__price card__price--old">81 250 ₽</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/cards/pic2.jpg" alt=""></a><a
-                                    class="card__category" href="">Слуховой аппарат</a><a class="card__name" href="">Motion
-                                13 3Nx</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">1112 000 ₽</div>
-                                <div class="card__price card__price--old">123 200 ₽</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/cards/pic3.jpg" alt=""></a><a
-                                    class="card__category" href="">Слуховой аппарат</a><a class="card__name" href="">Naida
-                                V30 UP</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">49 900 ₽</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/cards/pic4.jpg" alt=""></a><a
-                                    class="card__category" href="">Слуховой аппарат</a><a class="card__name" href="">LiNX
-                                Quattro RE762-DRWT</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">115 400 ₽</div>
-                                <div class="card__price card__price--old">138 000 ₽</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/cards/pic1.jpg" alt=""></a><a
-                                    class="card__category" href="">Слуховой аппарат</a><a class="card__name" href="">LiNX
-                                Quattro RE762-DRWT</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">115 400 ₽</div>
-                                <div class="card__price card__price--old">138 000 ₽</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/cards/pic1.jpg" alt=""></a><a
-                                    class="card__category" href="">Слуховой аппарат</a><a class="card__name" href="">Audeo
-                                M30-R</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">65 300 ₽</div>
-                                <div class="card__price card__price--old">81 250 ₽</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/cards/pic2.jpg" alt=""></a><a
-                                    class="card__category" href="">Слуховой аппарат</a><a class="card__name" href="">Motion
-                                13 3Nx</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">1112 000 ₽</div>
-                                <div class="card__price card__price--old">123 200 ₽</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/cards/pic3.jpg" alt=""></a><a
-                                    class="card__category" href="">Слуховой аппарат</a><a class="card__name" href="">Naida
-                                V30 UP</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">49 900 ₽</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-navigation">
-                    <div class="swiper-button-prev">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11 5L4 12M4 12L11 19M4 12H20" stroke="#131313" stroke-width="2"
-                                  stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="swiper-button-next">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13 5L20 12M20 12L13 19M20 12H4" stroke="#131313" stroke-width="2"
-                                  stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<?php
+$APPLICATION->IncludeComponent("bitrix:catalog.section", "popular", array(
+    "COMPONENT_TEMPLATE" => ".default",
+    "IBLOCK_TYPE" => "1c_catalog",    // Тип инфоблока
+    "IBLOCK_ID" => "1",    // Инфоблок
+    "SECTION_USER_FIELDS" => array(    // Свойства раздела
+        0 => "",
+        1 => "",
+    ),
+    "FILTER_NAME" => "arrFilter",    // Имя массива со значениями фильтра для фильтрации элементов
+    "INCLUDE_SUBSECTIONS" => "Y",    // Показывать элементы подразделов раздела
+    "SHOW_ALL_WO_SECTION" => "N",    // Показывать все элементы, если не указан раздел
+    "CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[]}",    // Фильтр товаров
+    "HIDE_NOT_AVAILABLE" => "N",    // Недоступные товары
+    "HIDE_NOT_AVAILABLE_OFFERS" => "N",    // Недоступные торговые предложения
+    "ELEMENT_SORT_FIELD" => "shows",    // По какому полю сортируем элементы
+    "ELEMENT_SORT_ORDER" => "asc",    // Порядок сортировки элементов
+    "ELEMENT_SORT_FIELD2" => "id",    // Поле для второй сортировки элементов
+    "ELEMENT_SORT_ORDER2" => "desc",    // Порядок второй сортировки элементов
+    "PAGE_ELEMENT_COUNT" => "8",    // Количество элементов на странице
+    "LINE_ELEMENT_COUNT" => "3",    // Количество элементов выводимых в одной строке таблицы
+    "BACKGROUND_IMAGE" => "-",    // Установить фоновую картинку для шаблона из свойства
+    "TEMPLATE_THEME" => "blue",    // Цветовая тема
+    "PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'3','BIG_DATA':false},{'VARIANT':'3','BIG_DATA':false}]",    // Вариант отображения товаров
+    "ENLARGE_PRODUCT" => "STRICT",    // Выделять товары в списке
+    "PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",    // Порядок отображения блоков товара
+    "SHOW_SLIDER" => "N",    // Показывать слайдер для товаров
+    "ADD_PICT_PROP" => "-",    // Дополнительная картинка основного товара
+    "LABEL_PROP" => array(    // Свойства меток товара
+        0 => "BREND",
+        1 => "TIP_KORPUSA",
+        2 => "STEPEN_POTERI_SLUKHA",
+        3 => "MOSHCHNOST",
+        4 => "CML2_MANUFACTURER",
+        5 => "TIP_BATAREYKI",
+        6 => "OSOBENNOSTI",
+        7 => "BLUETOOTH",
+        8 => "AKUSTICHESKIE_SITUATSII",
+    ),
+    "LABEL_PROP_MOBILE" => array(    // Свойства меток товара, отображаемые на мобильных устройствах
+        0 => "BREND",
+        1 => "TIP_KORPUSA",
+        2 => "STEPEN_POTERI_SLUKHA",
+        3 => "MOSHCHNOST",
+        4 => "CML2_MANUFACTURER",
+        5 => "TIP_BATAREYKI",
+        6 => "OSOBENNOSTI",
+        7 => "BLUETOOTH",
+        8 => "AKUSTICHESKIE_SITUATSII",
+    ),
+    "LABEL_PROP_POSITION" => "top-left",    // Расположение меток товара
+    "PRODUCT_SUBSCRIPTION" => "N",    // Разрешить оповещения для отсутствующих товаров
+    "SHOW_DISCOUNT_PERCENT" => "N",    // Показывать процент скидки
+    "SHOW_OLD_PRICE" => "N",    // Показывать старую цену
+    "SHOW_MAX_QUANTITY" => "N",    // Показывать остаток товара
+    "SHOW_CLOSE_POPUP" => "N",    // Показывать кнопку продолжения покупок во всплывающих окнах
+    "MESS_BTN_BUY" => "",    // Текст кнопки "Купить"
+    "MESS_BTN_ADD_TO_BASKET" => "",    // Текст кнопки "Добавить в корзину"
+    "MESS_BTN_SUBSCRIBE" => "",    // Текст кнопки "Уведомить о поступлении"
+    "MESS_BTN_DETAIL" => "",    // Текст кнопки "Подробнее"
+    "MESS_NOT_AVAILABLE" => "",    // Сообщение об отсутствии товара
+    "MESS_NOT_AVAILABLE_SERVICE" => "",    // Сообщение о недоступности услуги
+    "RCM_TYPE" => "personal",    // Тип рекомендации
+    "RCM_PROD_ID" => $_REQUEST["PRODUCT_ID"],    // Параметр ID продукта (для товарных рекомендаций)
+    "SHOW_FROM_SECTION" => "N",    // Показывать товары из раздела
+    "SECTION_URL" => "",    // URL, ведущий на страницу с содержимым раздела
+    "DETAIL_URL" => "/catalog/#SECTION_CODE_PATH#/#ELEMENT_CODE#/",    // URL, ведущий на страницу с содержимым элемента раздела
+    "SECTION_ID_VARIABLE" => "SECTION_ID",    // Название переменной, в которой передается код группы
+    "SEF_MODE" => "Y",    // Включить поддержку ЧПУ
+    "SEF_RULE" => "",    // Правило для обработки
+    "SECTION_ID" => $_REQUEST["SECTION_ID"],    // ID раздела
+    "SECTION_CODE" => "",    // Код раздела
+    "SECTION_CODE_PATH" => $_REQUEST["SECTION_CODE_PATH"],    // Путь из символьных кодов раздела
+    "AJAX_MODE" => "N",    // Включить режим AJAX
+    "AJAX_OPTION_JUMP" => "N",    // Включить прокрутку к началу компонента
+    "AJAX_OPTION_STYLE" => "Y",    // Включить подгрузку стилей
+    "AJAX_OPTION_HISTORY" => "N",    // Включить эмуляцию навигации браузера
+    "AJAX_OPTION_ADDITIONAL" => "",    // Дополнительный идентификатор
+    "CACHE_TYPE" => "A",    // Тип кеширования
+    "CACHE_TIME" => "36000000",    // Время кеширования (сек.)
+    "CACHE_GROUPS" => "Y",    // Учитывать права доступа
+    "SET_TITLE" => "Y",    // Устанавливать заголовок страницы
+    "SET_BROWSER_TITLE" => "Y",    // Устанавливать заголовок окна браузера
+    "BROWSER_TITLE" => "-",    // Установить заголовок окна браузера из свойства
+    "SET_META_KEYWORDS" => "Y",    // Устанавливать ключевые слова страницы
+    "META_KEYWORDS" => "-",    // Установить ключевые слова страницы из свойства
+    "SET_META_DESCRIPTION" => "Y",    // Устанавливать описание страницы
+    "META_DESCRIPTION" => "-",    // Установить описание страницы из свойства
+    "SET_LAST_MODIFIED" => "N",    // Устанавливать в заголовках ответа время модификации страницы
+    "USE_MAIN_ELEMENT_SECTION" => "N",    // Использовать основной раздел для показа элемента
+    "ADD_SECTIONS_CHAIN" => "Y",    // Включать раздел в цепочку навигации
+    "CACHE_FILTER" => "N",    // Кешировать при установленном фильтре
+    "ACTION_VARIABLE" => "action",    // Название переменной, в которой передается действие
+    "PRODUCT_ID_VARIABLE" => "id",    // Название переменной, в которой передается код товара для покупки
+    "PRICE_CODE" => array(    // Тип цены
+        0 => "Розничная цена",
+    ),
+    "USE_PRICE_COUNT" => "N",    // Использовать вывод цен с диапазонами
+    "SHOW_PRICE_COUNT" => "1",    // Выводить цены для количества
+    "PRICE_VAT_INCLUDE" => "Y",    // Включать НДС в цену
+    "CONVERT_CURRENCY" => "N",    // Показывать цены в одной валюте
+    "BASKET_URL" => "/personal/cart/",    // URL, ведущий на страницу с корзиной покупателя
+    "USE_PRODUCT_QUANTITY" => "N",    // Разрешить указание количества товара
+    "PRODUCT_QUANTITY_VARIABLE" => "quantity",    // Название переменной, в которой передается количество товара
+    "ADD_PROPERTIES_TO_BASKET" => "Y",    // Добавлять в корзину свойства товаров и предложений
+    "PRODUCT_PROPS_VARIABLE" => "prop",    // Название переменной, в которой передаются характеристики товара
+    "PARTIAL_PRODUCT_PROPERTIES" => "N",    // Разрешить добавлять в корзину товары, у которых заполнены не все характеристики
+    "ADD_TO_BASKET_ACTION" => "ADD",    // Показывать кнопку добавления в корзину или покупки
+    "DISPLAY_COMPARE" => "N",    // Разрешить сравнение товаров
+    "USE_ENHANCED_ECOMMERCE" => "N",    // Отправлять данные электронной торговли в Google и Яндекс
+    "PAGER_TEMPLATE" => ".default",    // Шаблон постраничной навигации
+    "DISPLAY_TOP_PAGER" => "N",    // Выводить над списком
+    "DISPLAY_BOTTOM_PAGER" => "N",    // Выводить под списком
+    "PAGER_TITLE" => "Товары",    // Название категорий
+    "PAGER_SHOW_ALWAYS" => "N",    // Выводить всегда
+    "PAGER_DESC_NUMBERING" => "N",    // Использовать обратную навигацию
+    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",    // Время кеширования страниц для обратной навигации
+    "PAGER_SHOW_ALL" => "N",    // Показывать ссылку "Все"
+    "PAGER_BASE_LINK_ENABLE" => "N",    // Включить обработку ссылок
+    "LAZY_LOAD" => "N",    // Показать кнопку ленивой загрузки Lazy Load
+    "MESS_BTN_LAZY_LOAD" => "Показать ещё",    // Текст кнопки "Показать ещё"
+    "LOAD_ON_SCROLL" => "N",    // Подгружать товары при прокрутке до конца
+    "SET_STATUS_404" => "Y",    // Устанавливать статус 404
+    "SHOW_404" => "N",    // Показ специальной страницы
+    "MESSAGE_404" => "",    // Сообщение для показа (по умолчанию из компонента)
+    "COMPATIBLE_MODE" => "N",    // Включить режим совместимости
+    "DISABLE_INIT_JS_IN_COMPONENT" => "N",    // Не подключать js-библиотеки в компоненте
+),
+    false
+); ?>
 
-    <?php $APPLICATION->IncludeComponent(
-        'coderoom:main.brands',
-        '.default',
-        []
-    ); ?>
+<?php $APPLICATION->IncludeComponent(
+    'coderoom:main.brands',
+    '.default',
+    []
+); ?>
 
-    <section class="slider-block">
-        <div class="_container">
-            <h2 class="section-title"><span>Аксессуары</span>
-                <button class="btn btn--grey btn--m">Смотреть все</button>
-            </h2>
-            <div class="slider-block__wrap swiper actual-slider pr30">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/accessories/pic1.jpg" alt=""></a><a
-                                    class="card__category" href="">Беспроводные устройства</a><a class="card__name"
-                                                                                                 href="">Гарнитура
-                                StreamLine Mic</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">36 000 ₽</div>
-                                <div class="card__price card__price--old">43 500 ₽</div>
-                            </div>
-                            <button class="btn btn--red btn--icn btn--m">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
-                                          fill="white"/>
-                                </svg>
-                                В корзину
-                            </button>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/accessories/pic2.jpg" alt=""></a><a
-                                    class="card__category" href="">Батарейки для слуховых аппаратов</a><a
-                                    class="card__name" href="">Батарейки для слухового аппарата. Тип 10</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">60 ₽</div>
-                            </div>
-                            <button class="btn btn--red btn--icn btn--m">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
-                                          fill="white"/>
-                                </svg>
-                                В корзину
-                            </button>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/accessories/pic3.jpg" alt=""></a><a
-                                    class="card__category" href="">Зарядное устройство</a><a class="card__name" href="">ReSound
-                                LiNX Quattro</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">15 000 ₽</div>
-                                <div class="card__price card__price--old">18 200 ₽</div>
-                            </div>
-                            <button class="btn btn--red btn--icn btn--m">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
-                                          fill="white"/>
-                                </svg>
-                                В корзину
-                            </button>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/accessories/pic4.jpg" alt=""></a><a
-                                    class="card__category" href="">Беспроводные устройства</a><a class="card__name"
-                                                                                                 href="">Пульт Phonak
-                                PilotOne</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">13 800 ₽</div>
-                            </div>
-                            <button class="btn btn--red btn--icn btn--m">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
-                                          fill="white"/>
-                                </svg>
-                                В корзину
-                            </button>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/accessories/pic1.jpg" alt=""></a><a
-                                    class="card__category" href="">Беспроводные устройства</a><a class="card__name"
-                                                                                                 href="">Пульт Phonak
-                                PilotOne</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">115 400 ₽</div>
-                                <div class="card__price card__price--old">138 000 ₽</div>
-                            </div>
-                            <button class="btn btn--red btn--icn btn--m">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
-                                          fill="white"/>
-                                </svg>
-                                В корзину
-                            </button>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/accessories/pic3.jpg" alt=""></a><a
-                                    class="card__category" href="">Зарядное устройство</a><a class="card__name" href="">ReSound
-                                LiNX Quattro</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">15 000 ₽</div>
-                                <div class="card__price card__price--old">18 200 ₽</div>
-                            </div>
-                            <button class="btn btn--red btn--icn btn--m">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
-                                          fill="white"/>
-                                </svg>
-                                В корзину
-                            </button>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/accessories/pic4.jpg" alt=""></a><a
-                                    class="card__category" href="">Беспроводные устройства</a><a class="card__name"
-                                                                                                 href="">Пульт Phonak
-                                PilotOne</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">13 800 ₽</div>
-                            </div>
-                            <button class="btn btn--red btn--icn btn--m">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
-                                          fill="white"/>
-                                </svg>
-                                В корзину
-                            </button>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card"><a class="card__pic" href=""><img src="img/accessories/pic1.jpg" alt=""></a><a
-                                    class="card__category" href="">Беспроводные устройства</a><a class="card__name"
-                                                                                                 href="">Пульт Phonak
-                                PilotOne</a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual">115 400 ₽</div>
-                                <div class="card__price card__price--old">138 000 ₽</div>
-                            </div>
-                            <button class="btn btn--red btn--icn btn--m">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
-                                          fill="white"/>
-                                </svg>
-                                В корзину
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11 5L4 12M4 12L11 19M4 12H20" stroke="#131313" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="swiper-button-next">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13 5L20 12M20 12L13 19M20 12H4" stroke="#131313" stroke-width="2"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </section>
+<?php
+$APPLICATION->IncludeComponent(
+    "bitrix:catalog.section",
+    "accessories",
+    array(
+        "COMPONENT_TEMPLATE" => "accessories",
+        "IBLOCK_TYPE" => "1c_catalog",
+        "IBLOCK_ID" => "1",
+        "SECTION_USER_FIELDS" => array(
+            0 => "",
+            1 => "1",
+        ),
+        "FILTER_NAME" => "arrFilter",
+        "INCLUDE_SUBSECTIONS" => "Y",
+        "SHOW_ALL_WO_SECTION" => "N",
+        "CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[{\"CLASS_ID\":\"CondIBSection\",\"DATA\":{\"logic\":\"Equal\",\"value\":2}}]}",
+        "HIDE_NOT_AVAILABLE" => "Y",
+        "HIDE_NOT_AVAILABLE_OFFERS" => "Y",
+        "ELEMENT_SORT_FIELD" => "shows",
+        "ELEMENT_SORT_ORDER" => "asc",
+        "ELEMENT_SORT_FIELD2" => "id",
+        "ELEMENT_SORT_ORDER2" => "desc",
+        "PAGE_ELEMENT_COUNT" => "8",
+        "LINE_ELEMENT_COUNT" => "3",
+        "BACKGROUND_IMAGE" => "-",
+        "TEMPLATE_THEME" => "blue",
+        "PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'3','BIG_DATA':false},{'VARIANT':'3','BIG_DATA':false}]",
+        "ENLARGE_PRODUCT" => "STRICT",
+        "PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
+        "SHOW_SLIDER" => "N",
+        "ADD_PICT_PROP" => "-",
+        "LABEL_PROP" => array(
+            0 => "BREND",
+            1 => "TIP_KORPUSA",
+            2 => "STEPEN_POTERI_SLUKHA",
+            3 => "MOSHCHNOST",
+            4 => "CML2_MANUFACTURER",
+            5 => "TIP_BATAREYKI",
+            6 => "OSOBENNOSTI",
+            7 => "BLUETOOTH",
+            8 => "AKUSTICHESKIE_SITUATSII",
+        ),
+        "LABEL_PROP_MOBILE" => array(
+            0 => "BREND",
+            1 => "TIP_KORPUSA",
+            2 => "STEPEN_POTERI_SLUKHA",
+            3 => "MOSHCHNOST",
+            4 => "CML2_MANUFACTURER",
+            5 => "TIP_BATAREYKI",
+            6 => "OSOBENNOSTI",
+            7 => "BLUETOOTH",
+            8 => "AKUSTICHESKIE_SITUATSII",
+        ),
+        "LABEL_PROP_POSITION" => "top-left",
+        "PRODUCT_SUBSCRIPTION" => "N",
+        "SHOW_DISCOUNT_PERCENT" => "N",
+        "SHOW_OLD_PRICE" => "N",
+        "SHOW_MAX_QUANTITY" => "N",
+        "SHOW_CLOSE_POPUP" => "N",
+        "MESS_BTN_BUY" => "",
+        "MESS_BTN_ADD_TO_BASKET" => "",
+        "MESS_BTN_SUBSCRIBE" => "",
+        "MESS_BTN_DETAIL" => "",
+        "MESS_NOT_AVAILABLE" => "",
+        "MESS_NOT_AVAILABLE_SERVICE" => "",
+        "RCM_TYPE" => "personal",
+        "RCM_PROD_ID" => $_REQUEST["PRODUCT_ID"],
+        "SHOW_FROM_SECTION" => "N",
+        "SECTION_URL" => "",
+        "DETAIL_URL" => "/catalog/#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
+        "SECTION_ID_VARIABLE" => "SECTION_ID",
+        "SEF_MODE" => "Y",
+        "SEF_RULE" => "",
+        "SECTION_ID" => $_REQUEST["SECTION_ID"],
+        "SECTION_CODE" => "",
+        "SECTION_CODE_PATH" => $_REQUEST["SECTION_CODE_PATH"],
+        "AJAX_MODE" => "N",
+        "AJAX_OPTION_JUMP" => "N",
+        "AJAX_OPTION_STYLE" => "Y",
+        "AJAX_OPTION_HISTORY" => "N",
+        "AJAX_OPTION_ADDITIONAL" => "",
+        "CACHE_TYPE" => "A",
+        "CACHE_TIME" => "36000000",
+        "CACHE_GROUPS" => "Y",
+        "SET_TITLE" => "Y",
+        "SET_BROWSER_TITLE" => "Y",
+        "BROWSER_TITLE" => "-",
+        "SET_META_KEYWORDS" => "Y",
+        "META_KEYWORDS" => "-",
+        "SET_META_DESCRIPTION" => "Y",
+        "META_DESCRIPTION" => "-",
+        "SET_LAST_MODIFIED" => "N",
+        "USE_MAIN_ELEMENT_SECTION" => "N",
+        "ADD_SECTIONS_CHAIN" => "Y",
+        "CACHE_FILTER" => "N",
+        "ACTION_VARIABLE" => "action",
+        "PRODUCT_ID_VARIABLE" => "id",
+        "PRICE_CODE" => array(
+            0 => "Розничная цена",
+        ),
+        "USE_PRICE_COUNT" => "N",
+        "SHOW_PRICE_COUNT" => "1",
+        "PRICE_VAT_INCLUDE" => "Y",
+        "CONVERT_CURRENCY" => "N",
+        "BASKET_URL" => "/personal/cart/",
+        "USE_PRODUCT_QUANTITY" => "N",
+        "PRODUCT_QUANTITY_VARIABLE" => "quantity",
+        "ADD_PROPERTIES_TO_BASKET" => "Y",
+        "PRODUCT_PROPS_VARIABLE" => "prop",
+        "PARTIAL_PRODUCT_PROPERTIES" => "N",
+        "ADD_TO_BASKET_ACTION" => "ADD",
+        "DISPLAY_COMPARE" => "N",
+        "USE_ENHANCED_ECOMMERCE" => "N",
+        "PAGER_TEMPLATE" => ".default",
+        "DISPLAY_TOP_PAGER" => "N",
+        "DISPLAY_BOTTOM_PAGER" => "N",
+        "PAGER_TITLE" => "Товары",
+        "PAGER_SHOW_ALWAYS" => "N",
+        "PAGER_DESC_NUMBERING" => "N",
+        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+        "PAGER_SHOW_ALL" => "N",
+        "PAGER_BASE_LINK_ENABLE" => "N",
+        "LAZY_LOAD" => "N",
+        "MESS_BTN_LAZY_LOAD" => "Показать ещё",
+        "LOAD_ON_SCROLL" => "N",
+        "SET_STATUS_404" => "Y",
+        "SHOW_404" => "N",
+        "MESSAGE_404" => "",
+        "COMPATIBLE_MODE" => "N",
+        "DISABLE_INIT_JS_IN_COMPONENT" => "N"
+    ),
+    false
+); ?>
+
 
     <section class="find-centers">
         <div class="_container">
@@ -368,21 +358,20 @@ $APPLICATION->SetTitle("Главная");
         </div>
     </section>
 
-    <?php $APPLICATION->IncludeComponent(
-        'coderoom:main.offers',
-        '.default',
-        []
-    ); ?>
+<?php $APPLICATION->IncludeComponent(
+    'coderoom:main.offers',
+    '.default',
+    []
+); ?>
 
-    <?php $APPLICATION->IncludeComponent(
-        'coderoom:news.slider',
-        '.default',
-        [
-            'TITLE' => 'Блог',
-            'SHOW_LINK' => 'Y',
-            'ELEMENT_ID' => null
-        ]
-    ); ?>
-
+<?php $APPLICATION->IncludeComponent(
+    'coderoom:news.slider',
+    '.default',
+    [
+        'TITLE' => 'Блог',
+        'SHOW_LINK' => 'Y',
+        'ELEMENT_ID' => null
+    ]
+); ?>
 
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

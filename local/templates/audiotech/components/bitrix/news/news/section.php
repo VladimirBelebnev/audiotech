@@ -57,10 +57,6 @@ $this->setFrameMode(true);
                             )
                         );?>
 
-                        <?
-                        // TODO компонент, который по $arResult["VARIABLES"]["SECTION_CODE"] получит раздел и его название и поменяет Title
-                        ?>
-
                         <?php
                         $APPLICATION->IncludeComponent(
                             "bitrix:news.list",
@@ -119,6 +115,14 @@ $this->setFrameMode(true);
                             ['HIDE_ICONS' => 'Y']
                         );
                         ?>
+
+                        <?php $APPLICATION->IncludeComponent(
+                            'coderoom:news.title',
+                            '.default',
+                            [
+                                'SECTION_CODE' => $arResult["VARIABLES"]["SECTION_CODE"],
+                            ]
+                        ); ?>
                     </div>
                 </div>
             </div>

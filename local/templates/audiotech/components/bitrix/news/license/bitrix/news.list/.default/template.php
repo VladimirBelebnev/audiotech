@@ -12,49 +12,28 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<section class="about">
-    <div class="_container">
-        <h1 class="title-page"><?php $APPLICATION->ShowTitle(false); ?></h1>
-    </div>
-    <div class="_container _container--mode">
-        <div class="tabs">
-            <?$APPLICATION->IncludeComponent(
-                "bitrix:menu",
-                "top-second",
-                Array(
-                    "ALLOW_MULTI_SELECT" => "N",
-                    "CHILD_MENU_TYPE" => "",
-                    "DELAY" => "N",
-                    "MAX_LEVEL" => "1",
-                    "MENU_CACHE_GET_VARS" => array(""),
-                    "MENU_CACHE_TIME" => "360000",
-                    "MENU_CACHE_TYPE" => "A",
-                    "MENU_CACHE_USE_GROUPS" => "N",
-                    "ROOT_MENU_TYPE" => "top-second",
-                    "USE_EXT" => "N"
-                )
-            );?>
-            <div class="tabs__content">
-                <div class="tabs__pane show">
-                    <div class="tabs__pane-wrap">
-                        <div class="licenses">
-                            <?php foreach ($arResult['ITEMS'] as $arItem) { ?>
-                                <div class="licenses__item"><a class="licenses__link" href="<?php echo $arItem['PREVIEW_PICTURE']['SRC']; ?>"><img src="<?php echo $arItem['PREVIEW_PICTURE']['SRC']; ?>" alt="<?php echo $arItem['NAME']; ?>"></a></div>
-                            <?php } ?>
-                        </div>
-                        <div class="license-overlay">
-                            <div class="license-overlay__wrap">
-                                <button class="close-white close-white--l" id="close-license"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#131313"/></svg></button><img id="license-full" src="/" alt="Большая фотография">
-                            </div>
-                        </div>
-                        <div class="pagination">
-                            <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>
-                                <?= $arResult["NAV_STRING"]; ?>
-                            <? endif; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="licenses">
+    <?php foreach ($arResult['ITEMS'] as $arItem) { ?>
+        <div class="licenses__item"><a class="licenses__link"
+                                       href="<?php echo $arItem['PREVIEW_PICTURE']['SRC']; ?>"><img
+                        src="<?php echo $arItem['PREVIEW_PICTURE']['SRC']; ?>" alt="<?php echo $arItem['NAME']; ?>"></a>
         </div>
+    <?php } ?>
+</div>
+<div class="license-overlay">
+    <div class="license-overlay__wrap">
+        <button class="close-white close-white--l" id="close-license">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
+                      fill="#131313"/>
+            </svg>
+        </button>
+        <img id="license-full" src="/" alt="Большая фотография">
     </div>
-</section>
+</div>
+<div class="pagination">
+    <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>
+        <?= $arResult["NAV_STRING"]; ?>
+    <? endif; ?>
+</div>
