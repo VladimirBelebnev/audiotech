@@ -3508,6 +3508,7 @@ button {
   padding: 0;
   margin-top: 20px;
   margin-bottom: 10px;
+  background: none !important;
 }
 .breadcrumb li {
   display: inline;

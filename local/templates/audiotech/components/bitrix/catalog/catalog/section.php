@@ -71,7 +71,7 @@ if ($isFilter) {
 ?>
 <section class="catalog">
     <div class="_container">
-        <h1 class="title-page catalog__title" data-count="120 товаров">Слуховые <br> аппараты</h1>
+        <h1 class="title-page catalog__title" data-count="<?php $APPLICATION->ShowProperty('element_count'); ?>"><?php $APPLICATION->ShowTitle(false); ?></h1>
         <div class="chips">
             <div class="chips__inner chips__inner--sort">
                 <button class="chips__item">Для легкой потери слуха</button>
@@ -535,17 +535,15 @@ if ($isFilter) {
                     $component
                 ); ?>
                 <div class="catalog__text text-block">
-                    <h3 class="text-block__title">Текстовый блок</h3>
-                    <p class="text-block__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet
-                        volutpat sapien. Sed eu ipsum a diam placerat vulputate. Maecenas laoreet ultrices nisi id
-                        sagittis. Sed metus leo, tempor non semper eu, posuere vitae quam. Sed vitae sem lorem. Aliquam
-                        vestibulum elementum purus et iaculis. Nunc at maximus magna. Praesent iaculis sem eu mauris
-                        ultricies dictum. Pellentesque finibus, ante sed tincidunt feugiat, dui sem malesuada sem, nec
-                        elementum libero lectus sagittis nunc. Morbi et fermentum lorem. Pellentesque habitant morbi
-                        tristique senectus et netus et malesuada fames ac turpis egestas. Quisque tempor feugiat velit
-                        nec elementum.</p>
+                    <h3 class="text-block__title"><?php $APPLICATION->ShowTitle(false); ?></h3>
+                    <div class="text-block__text"><?php $APPLICATION->ShowProperty('description');?></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<?php $APPLICATION->IncludeComponent(
+    'coderoom:main.offers',
+    '.default',
+    []
+); ?>

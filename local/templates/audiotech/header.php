@@ -34,6 +34,7 @@ use Bitrix\Main\Application;
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-map.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-delivery.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery-3.7.1.min.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/tabs.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/main.js");
 
     $APPLICATION->ShowHead();
@@ -372,3 +373,5 @@ use Bitrix\Main\Application;
             []
         ); ?>
     <?php } ?>
+    <?php
+    $APPLICATION->IncludeComponent("bitrix:menu", "main", [], false);

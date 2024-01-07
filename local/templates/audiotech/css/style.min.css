@@ -3508,6 +3508,7 @@ button {
   padding: 0;
   margin-top: 20px;
   margin-bottom: 10px;
+  background: none !important;
 }
 .breadcrumb li {
   display: inline;
@@ -5281,10 +5282,15 @@ button {
   height: 100%;
   transition: opacity var(--adp-overlay-transition-duration) var(--adp-overlay-transition-ease), height 0s, width 0s;
 }
-
+.product-title-wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
 .product__title {
   flex-wrap: wrap;
   align-items: flex-start;
+  margin: 0;
 }
 .product__title .btn {
   margin-top: 5px;
@@ -5304,6 +5310,7 @@ button {
 .product__slider {
   gap: 10px;
   display: flex;
+  overflow: hidden;
 }
 .product__slider .product__preview {
   cursor: pointer;
@@ -5361,6 +5368,7 @@ button {
 }
 
 .product__wrap {
+  margin-top: 40px;
   display: grid;
   grid-template-columns: auto 400px;
   grid-gap: 125px;
