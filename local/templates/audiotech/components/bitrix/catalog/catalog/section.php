@@ -547,3 +547,11 @@ if ($isFilter) {
     '.default',
     []
 ); ?>
+
+<?php $APPLICATION->IncludeComponent(
+    'coderoom:catalog.breadcrumbs',
+    '.default',
+    [
+        'SECTIONS_CODE' => $arResult['VARIABLES']['SECTION_CODE_PATH'],
+    ]
+); ?>
