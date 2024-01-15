@@ -21,7 +21,7 @@ $this->setFrameMode(true);
                     <div class="swiper-slide">
                         <div class="card">
                             <a class="card__pic" href="<?php echo $arItem['DETAIL_PAGE_URL']; ?>">
-                                <img src="<?php echo $arItem['PREVIEW_PICTURE']; ?>" alt="<?php echo $arItem['NAME']; ?>">
+                                <img src="<?php echo $arItem['PREVIEW_PICTURE'] ? $arItem['PREVIEW_PICTURE']['SRC'] : SITE_TEMPLATE_PATH . '/images/no-photo.png'; ?>" alt="<?php echo $arItem['NAME']; ?>">
                             </a>
                             <a class="card__category" href="<?php echo $arItem['DETAIL_PAGE_URL']; ?>"><?php echo $arItem['SECTION']; ?></a>
                             <a class="card__name" href="<?php echo $arItem['DETAIL_PAGE_URL']; ?>"><?php echo $arItem['NAME']; ?></a>

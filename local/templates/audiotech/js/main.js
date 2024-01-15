@@ -602,3 +602,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     addToBasket();
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+    const sort = () => {
+        const links = document.querySelectorAll('.catalog__sort a');
+
+        links.forEach(link => {
+           link.addEventListener('click', () => {
+               $.ajax({
+                   url: '/ajax/sort.php',
+                   method: 'POST',
+                   data: {
+                       sortten: link.dataset.query,
+                   },
+                   dataType: 'HTML',
+                   success: function () {
+                       location.reload();
+                   },
+               });
+           });
+        });
+    };
+
+    try {
+        sort();
+    } catch (error) {
+        console.log(error);
+    }
+});

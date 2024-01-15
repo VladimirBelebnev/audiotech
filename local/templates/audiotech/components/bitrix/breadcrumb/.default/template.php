@@ -19,6 +19,8 @@ for($index = 0; $index < $itemSize; $index++)
 {
 	$title = htmlspecialcharsex($arResult[$index]["TITLE"]);
 
+    if ($title == 'Каталог') continue;
+
 	if($arResult[$index]["LINK"] <> "" && $index != $itemSize-1)
 	{
 		$strReturn .= '
@@ -40,4 +42,4 @@ for($index = 0; $index < $itemSize; $index++)
 
 $strReturn .= '</div></div>';
 
-return $strReturn;
+return ERROR_404 != 'Y' ? $strReturn : '';

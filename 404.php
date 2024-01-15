@@ -1,4 +1,12 @@
-<?
+<?php
+
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php";
+include_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/urlrewrite.php');
+CHTTP::SetStatus("404 Not Found");
+@define("ERROR_404","Y");
+
+global $APPLICATION;
+
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Ошибка");
 ?>
@@ -12,4 +20,4 @@ $APPLICATION->SetTitle("Ошибка");
             </div>
         </div>
     </div>
-<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
+<?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

@@ -3667,6 +3667,9 @@ button {
     justify-content: center;
     height: 54px;
   }
+  .filter .btn:last-child {
+    margin-top: 10px;
+  }
 }
 
 .filter__title {
@@ -3876,6 +3879,7 @@ button {
   font-weight: 400;
   line-height: 160%;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 .catalog__sort a.active {
   color: #DB1F26;
