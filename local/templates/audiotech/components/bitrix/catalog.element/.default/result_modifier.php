@@ -13,12 +13,15 @@ $arParams = $component->applyTemplateModifications();
 // Слайдер
 $arPhotos = [];
 
-$arPhotos[] = [
-    'THUMB' => CFile::ResizeImageGet($arResult['DETAIL_PICTURE']['ID'], ['width' => 95, 'height' => 95]),
-    'BIG' => $arResult['DETAIL_PICTURE']['SRC'],
-    'MAIN' => CFile::ResizeImageGet($arResult['DETAIL_PICTURE']['ID'], ['width' => 600, 'height' => 600]),
-];
+if ($arResult['DETAIL_PICTURE']['ID'])
+{
+    $arPhotos[] = [
+        'THUMB' => CFile::ResizeImageGet($arResult['DETAIL_PICTURE']['ID'], ['width' => 95, 'height' => 95]),
+        'BIG' => $arResult['DETAIL_PICTURE']['SRC'],
+        'MAIN' => CFile::ResizeImageGet($arResult['DETAIL_PICTURE']['ID'], ['width' => 600, 'height' => 600]),
+    ];
 
+}
 foreach ($arResult['PROPERTIES']['MORE_PHOTO']['VALUE'] as $iPhotoID)
 {
     $arPhotos[] = [

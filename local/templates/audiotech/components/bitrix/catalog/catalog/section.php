@@ -74,20 +74,20 @@ if ($isFilter) {
         <h1 class="title-page catalog__title"
             data-count="<?php $APPLICATION->ShowProperty('element_count'); ?>"><?php $APPLICATION->ShowTitle(false); ?></h1>
         <div class="chips">
-            <div class="chips__inner chips__inner--sort">
-                <button class="chips__item">Для легкой потери слуха</button>
-                <button class="chips__item">Для средней потери слуха</button>
-                <button class="chips__item">Для тяжелой потери слуха</button>
-                <button class="chips__item">Ampliphon</button>
-                <button class="chips__item">Oticon</button>
-                <button class="chips__item">Signia</button>
-                <button class="chips__item">Аналоговые</button>
-                <button class="chips__item">Цифровые</button>
-                <button class="chips__item">Заушные</button>
-                <button class="chips__item">Заушные с выносным ресивером</button>
-                <button class="chips__item">Внутриушные</button>
-                <button class="chips__item">Внутриканальные</button>
-            </div>
+<!--            <div class="chips__inner chips__inner--sort">-->
+<!--                <button class="chips__item">Для легкой потери слуха</button>-->
+<!--                <button class="chips__item">Для средней потери слуха</button>-->
+<!--                <button class="chips__item">Для тяжелой потери слуха</button>-->
+<!--                <button class="chips__item">Ampliphon</button>-->
+<!--                <button class="chips__item">Oticon</button>-->
+<!--                <button class="chips__item">Signia</button>-->
+<!--                <button class="chips__item">Аналоговые</button>-->
+<!--                <button class="chips__item">Цифровые</button>-->
+<!--                <button class="chips__item">Заушные</button>-->
+<!--                <button class="chips__item">Заушные с выносным ресивером</button>-->
+<!--                <button class="chips__item">Внутриушные</button>-->
+<!--                <button class="chips__item">Внутриканальные</button>-->
+<!--            </div>-->
         </div>
         <div class="catalog__wrap">
             <div class="catalog__filter-mobile">

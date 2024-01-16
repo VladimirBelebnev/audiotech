@@ -1,8 +1,6 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle('Вопрос-ответ');
-$APPLICATION->AddChainItem('Покупателям', '/customer/');
-$APPLICATION->AddChainItem('Вопрос-ответ', '/customer/questions/');
 ?>
 
 <section class="questions">

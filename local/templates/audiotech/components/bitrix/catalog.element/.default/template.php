@@ -40,8 +40,13 @@ $this->setFrameMode(true);
                 <div class="product__slider">
                     <div class="swiper-thumbs">
                         <div class="swiper-wrapper">
-                            <?php foreach ($arResult['SLIDER'] as $arSlide) { ?>
-                                <div class="swiper-slide"><img src="<?php echo $arSlide['THUMB']['src']; ?>"
+                            <?php if (!empty($arResult['SLIDER'])) { ?>
+                                <?php foreach ($arResult['SLIDER'] as $arSlide) { ?>
+                                    <div class="swiper-slide"><img src="<?php echo $arSlide['THUMB']['src']; ?>"
+                                                                   alt="<?php echo $arResult['NAME']; ?>"></div>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <div class="swiper-slide"><img src="<?php echo SITE_TEMPLATE_PATH; ?>/images/no-photo.png"
                                                                alt="<?php echo $arResult['NAME']; ?>"></div>
                             <?php } ?>
 
@@ -55,9 +60,19 @@ $this->setFrameMode(true);
                     <div class="swiper-product__wrap">
                         <div class="swiper-product" thumbsSlider>
                             <div class="swiper-wrapper">
-                                <?php foreach ($arResult['SLIDER'] as $arSlide) { ?>
+                                <?php if (!empty($arResult['SLIDER'])) { ?>
+                                    <?php foreach ($arResult['SLIDER'] as $arSlide) { ?>
+                                        <div class="swiper-slide">
+                                            <div class="product__preview"><img src="<?php echo $arSlide['MAIN']['src']; ?>"
+                                                                               alt="<?php echo $arResult['NAME']; ?>"></div>
+                                            <div class="product__zom"><img
+                                                        src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-zoom.svg"
+                                                        alt="<?php echo $arResult['NAME']; ?>"></div>
+                                        </div>
+                                    <?php } ?>
+                                <?php } else { ?>
                                     <div class="swiper-slide">
-                                        <div class="product__preview"><img src="<?php echo $arSlide['MAIN']['src']; ?>"
+                                        <div class="product__preview"><img src="<?php echo SITE_TEMPLATE_PATH; ?>/images/no-photo.png"
                                                                            alt="<?php echo $arResult['NAME']; ?>"></div>
                                         <div class="product__zom"><img
                                                     src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-zoom.svg"
@@ -114,8 +129,14 @@ $this->setFrameMode(true);
                     </button>
                     <div class="swiper-thumbs">
                         <div class="swiper-wrapper">
-                            <?php foreach ($arResult['SLIDER'] as $arSlide) { ?>
-                                <div class="swiper-slide"><img src="<?php echo $arSlide['THUMB']['src']; ?>"
+
+                            <?php if (!empty($arResult['SLIDER'])) { ?>
+                                <?php foreach ($arResult['SLIDER'] as $arSlide) { ?>
+                                    <div class="swiper-slide"><img src="<?php echo $arSlide['THUMB']['src']; ?>"
+                                                                   alt="<?php echo $arResult['NAME']; ?>"></div>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <div class="swiper-slide"><img src="<?php echo SITE_TEMPLATE_PATH; ?>/images/no-photo.png"
                                                                alt="<?php echo $arResult['NAME']; ?>"></div>
                             <?php } ?>
 
@@ -128,9 +149,16 @@ $this->setFrameMode(true);
                     </div>
                     <div class="swiper-product" thumbsSlider>
                         <div class="swiper-wrapper">
-                            <?php foreach ($arResult['SLIDER'] as $arSlide) { ?>
+                            <?php if (!empty($arResult['SLIDER'])) { ?>
+                                <?php foreach ($arResult['SLIDER'] as $arSlide) { ?>
+                                    <div class="swiper-slide">
+                                        <div class="product__preview"><img src="<?php echo $arSlide['BIG']; ?>"
+                                                                           alt="<?php echo $arResult['NAME']; ?>"></div>
+                                    </div>
+                                <?php } ?>
+                            <?php } else { ?>
                                 <div class="swiper-slide">
-                                    <div class="product__preview"><img src="<?php echo $arSlide['BIG']; ?>"
+                                    <div class="product__preview"><img src="<?php echo SITE_TEMPLATE_PATH; ?>/images/no-photo.png"
                                                                        alt="<?php echo $arResult['NAME']; ?>"></div>
                                 </div>
                             <?php } ?>
@@ -301,7 +329,7 @@ $this->setFrameMode(true);
                             <h2 class="section-title">Описание </h2>
                             <div class="tabs__par">
                                 <p class="hidden-text"><?php echo $arResult['DETAIL_TEXT'] ? $arResult['DETAIL_TEXT'] : 'Описание не добавлено.'; ?></p>
-                                <?php if (!$arResult['DETAIL_TEXT']) { ?>
+                                <?php if ($arResult['DETAIL_TEXT']) { ?>
                                     <a class="tabs__par-show show-text">Показать все</a>
                                 <?php } ?>
                             </div>

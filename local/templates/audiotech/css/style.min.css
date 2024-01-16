@@ -5617,6 +5617,10 @@ button {
   list-style: none;
 }
 
+.product-descr .btn {
+  justify-content: center;
+}
+
 .product-descr__item {
   padding-left: 20px;
   position: relative;

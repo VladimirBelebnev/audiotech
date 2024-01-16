@@ -1,7 +1,6 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle('Материалы по продукции');
-$APPLICATION->AddChainItem('Покупателям', '/customer/');
 ?>
 
 <? $APPLICATION->IncludeComponent(

@@ -1,8 +1,6 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle('Доставка');
-$APPLICATION->AddChainItem('Покупателям', '/customer/');
-$APPLICATION->AddChainItem('Доставка', '/customer/delivery/');
 ?>
 
 <section class="map">

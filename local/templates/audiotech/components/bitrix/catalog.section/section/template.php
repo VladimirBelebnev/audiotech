@@ -16,7 +16,7 @@ use Bitrix\Catalog\ProductTable;
 
 $this->setFrameMode(true);
 ?>
-<div class="catalog__inner" 4>
+<div class="catalog__inner" id="catalogAjax">
     <div class="catalog__items">
         <?php if ($arResult['ITEMS']) { ?>
             <?php foreach ($arResult['ITEMS'] as $arItem) { ?>

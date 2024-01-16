@@ -20,7 +20,7 @@ $this->setFrameMode(true);
                 <?php foreach ($arResult['ITEMS'] as $arItem) { ?>
                     <div class="swiper-slide">
                         <div class="card">
-                            <a class="card__pic" href="<?php echo $arItem['DETAIL_PAGE_URL']; ?>">
+                            <a class="card__pic" href="/catalog/<?php echo $arItem['DETAIL_PAGE_URL']; ?>">
                                 <img src="<?php echo $arItem['PREVIEW_PICTURE'] ? $arItem['PREVIEW_PICTURE']['SRC'] : SITE_TEMPLATE_PATH . '/images/no-photo.png'; ?>" alt="<?php echo $arItem['NAME']; ?>">
                             </a>
                             <a class="card__category" href="<?php echo $arItem['DETAIL_PAGE_URL']; ?>"><?php echo $arItem['SECTION']; ?></a>

@@ -1,7 +1,6 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle('Услуги');
-$APPLICATION->AddChainItem('Покупателям', '/customer/');
 ?>
 
 <? $APPLICATION->IncludeComponent(
@@ -17,9 +16,9 @@ $APPLICATION->AddChainItem('Покупателям', '/customer/');
 		"AJAX_OPTION_STYLE" => "N",
 		"BROWSER_TITLE" => "-",
 		"CACHE_FILTER" => "N",
-		"CACHE_GROUPS" => "Y",
+		"CACHE_GROUPS" => "N",
 		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
+		"CACHE_TYPE" => "N",
 		"CHECK_DATES" => "Y",
 		"DETAIL_ACTIVE_DATE_FORMAT" => "j M Y",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",

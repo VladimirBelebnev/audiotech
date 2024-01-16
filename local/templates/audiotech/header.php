@@ -298,7 +298,7 @@ $countBasketItems = CSaleBasket::GetList(
         </div>
     </header>
     <main>
-    <?php if ($APPLICATION->GetCurPage(false) != '/') { ?>
+    <?php if ($APPLICATION->GetCurPage(false) != '/' && strpos($APPLICATION->GetCurPage(false), '/customer/services/') === false) { ?>
         <?php $APPLICATION->IncludeComponent(
             'bitrix:breadcrumb',
             '.default',

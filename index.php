@@ -76,8 +76,8 @@ $APPLICATION->IncludeComponent("bitrix:catalog.section", "popular", array(
     "CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[]}",    // Фильтр товаров
     "HIDE_NOT_AVAILABLE" => "N",    // Недоступные товары
     "HIDE_NOT_AVAILABLE_OFFERS" => "N",    // Недоступные торговые предложения
-    "ELEMENT_SORT_FIELD" => "shows",    // По какому полю сортируем элементы
-    "ELEMENT_SORT_ORDER" => "asc",    // Порядок сортировки элементов
+    "ELEMENT_SORT_FIELD" => "show_counter",    // По какому полю сортируем элементы
+    "ELEMENT_SORT_ORDER" => "desc",    // Порядок сортировки элементов
     "ELEMENT_SORT_FIELD2" => "id",    // Поле для второй сортировки элементов
     "ELEMENT_SORT_ORDER2" => "desc",    // Порядок второй сортировки элементов
     "PAGE_ELEMENT_COUNT" => "8",    // Количество элементов на странице

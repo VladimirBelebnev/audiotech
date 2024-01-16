@@ -198,7 +198,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // tabs
     if (document.querySelectorAll('.tabs').length > 0) {
-        new ItcTabs('.tabs');
+        try {
+            new ItcTabs('.tabs');
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     // favorite
