@@ -26,7 +26,7 @@ $APPLICATION->IncludeComponent(
 
 <?php $APPLICATION->IncludeComponent(
     "bitrix:news.list",
-    "",
+    ".default",
     [
         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
         "IBLOCK_ID" => $arParams["IBLOCK_ID"],

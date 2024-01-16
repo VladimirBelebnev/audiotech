@@ -38,13 +38,15 @@ $this->setFrameMode(true);
                 <?php } ?>
             </div>
         <?php } ?>
+
         <div class="aside-block aside-block--questions">
             <h2 class="aside-block__title">Задать вопрос</h2>
-            <div class="aside-block__forms aside-block__forms--mode">
-                <input class="input-default" type="text" placeholder="Ваше имя">
-                <input class="input-default" type="text" placeholder="Телефон">
-                <input class="input-default" type="email" placeholder="Электронная почта">
-                <textarea class="input-default" placeholder="Вопрос"></textarea>
+            <form class="aside-block__forms aside-block__forms--mode questions-form">
+                <input type="hidden" name="formName" value="Задать вопрос">
+                <input name="name" class="input-default" type="text" placeholder="Ваше имя">
+                <input name="phone" class="input-default" type="tel" placeholder="Телефон">
+                <input name="email" class="input-default" type="email" placeholder="Электронная почта">
+                <textarea class="input-default" name="message" placeholder="Вопрос"></textarea>
                 <p class="aside-block__agree">Подписываясь, вы даете согласие на <a href="">обработку персональных
                         данных</a></p>
                 <button class="btn btn--red btn--l btn--icn" type="submit">
@@ -53,7 +55,7 @@ $this->setFrameMode(true);
                               stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <span>Отправить</span></button>
-            </div>
+            </form>
         </div>
     </div>
 </div>

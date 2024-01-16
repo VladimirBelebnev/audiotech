@@ -2382,7 +2382,10 @@ button {
   max-width: 95px;
   width: 100%;
   flex: 1 0 auto;
-  height: 330px;
+  height: 400px;
+}
+.product__slider .swiper-thumbs {
+  overflow: hidden;
 }
 .swiper-thumbs .swiper-slide img {
   display: block;
@@ -3378,6 +3381,7 @@ button {
 }
 .offers__item img {
   width: 80px;
+  height: 80px;
   margin-bottom: 30px;
 }
 @media (max-width: 700px) {
@@ -9635,3 +9639,15 @@ ymaps[class$=gotoymaps__container] {
   display: none !important;
 }
 /*# sourceMappingURL=style.min.css.map */
+
+.guarantee-text {
+  margin: 0;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.catalog__filter .btn {
+  justify-content: center;
+}

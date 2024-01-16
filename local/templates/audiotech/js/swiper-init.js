@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const swiperThumbs = new Swiper(".product__slider .swiper-thumbs", {
         spaceBetween: 10,
-        slidesPerView: 4,
+        slidesPerView: 5,
         freeMode: true,
         watchSlidesProgress: true,
         direction: "vertical",

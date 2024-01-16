@@ -38,10 +38,11 @@ $this->setFrameMode(true);
             <p class="article-preview__text"><? echo $arItem["PREVIEW_TEXT"]; ?></p>
         </div>
     <? endforeach; ?>
-    <div class="subscribe">
+    <form class="subscribe email_form">
+        <input type="hidden" name="formName" value="Подписаться на рассылку">
         <h2 class="aside-block__title">Подписаться на рассылку</h2>
         <div class="input__overlay">
-            <input class="input-default" type="email" placeholder="Электронная почта">
+            <input class="input-default" name="email" type="email" placeholder="Электронная почта">
         </div>
         <p class="aside-block__agree">Подписываясь, вы даете согласие на <a href="">обработку
                 персональных данных</a>
@@ -54,7 +55,7 @@ $this->setFrameMode(true);
                       stroke-linejoin="round"/>
             </svg>
             <span>Подписаться</span></button>
-    </div>
+    </form>
 </div>
 <div class="pagination">
     <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>

@@ -117,9 +117,9 @@ $APPLICATION->SetTitle('Услуги');
 		"USE_SHARE" => "N",
 		"COMPONENT_TEMPLATE" => "services",
 		"SEF_URL_TEMPLATES" => array(
-			"news" => "",
-			"section" => "#SECTION_CODE#/",
-			"detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
+			"news" => "/",
+			"section" => "",
+			"detail" => "#ELEMENT_CODE#/",
 		)
 	),
 	false

@@ -57,6 +57,7 @@ if ($arResult['PROPERTIES']['ADD_ELEMENTS']['VALUE'])
             'IBLOCK_ID',
             'IBLOCK_SECTION_ID',
             'PREVIEW_PICTURE',
+            'OLD_PRICE_' => 'OLD_PRICE',
             'DETAIL_PAGE_URL' => 'IBLOCK.DETAIL_PAGE_URL'
         ],
         'filter' => [

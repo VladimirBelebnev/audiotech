@@ -67,9 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (window.scrollY > sticky && window.innerWidth > 940) {
             headerBottom.classList.add("sticky");
             document.querySelector('main').style.paddingTop = headerHeight + 'px';
-        } if (window.innerWidth > 1024) {
+        }
+        if (window.innerWidth > 1024) {
             menuFullScreen.style.top = headerHeight - 1 + 'px';
-        } if (window.scrollY < sticky && window.innerWidth > 940) {
+        }
+        if (window.scrollY < sticky && window.innerWidth > 940) {
             headerBottom.classList.remove("sticky");
             menuFullScreen.style.top = header.clientHeight - 2 + 'px';
             document.querySelector('main').style.paddingTop = '0px';
@@ -109,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.currentTarget.classList.toggle('active');
         mainNav.classList.toggle("active");
         mainNav.classList.contains('active')
-        ? document.querySelector('body').classList.add('hidden') : document.querySelector('body').classList.remove('hidden');
+            ? document.querySelector('body').classList.add('hidden') : document.querySelector('body').classList.remove('hidden');
     });
 
 
@@ -129,22 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // modal
     const overlay = document.querySelector("#overlay");
     const btnSubmitReg = document.querySelector('.modal__reg .btn');
-
-    const hiddenModalAccept = function () {
-        setTimeout(() => modalAccept.classList.remove('active'), 3000)
-        setTimeout(() => overlay.classList.remove('active'), 3000)
-    }
-
-    const submitReg = function (func) {
-        btnSubmitReg.addEventListener('click', function (e) {
-            e.preventDefault();
-            modalReg.classList.remove('active');
-            modalAccept.classList.add('active');
-            func();
-        })
-    }
-
-    submitReg(hiddenModalAccept);
 
 
     const modalsopen = function () {
@@ -239,7 +225,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         target.closest('.counter').querySelector('.counter__btn--minus').classList.add('disabled');
                     } else {
                         target.closest('.counter').querySelector('.counter__btn--minus').classList.remove('disabled');
-                    } target.closest('.counter').querySelector('input').value = value;
+                    }
+                    target.closest('.counter').querySelector('input').value = value;
                 }
             })
         })
@@ -449,9 +436,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const parentElement = document.querySelector('.about .news');
         let referenceElement;
         if (window.innerWidth > 940) {
-            referenceElement = document.querySelector('.article-preview:nth-child(5)');
-        } else if (window.innerWidth <= 940 && window.innerWidth > 700) {
             referenceElement = document.querySelector('.article-preview:nth-child(4)');
+        } else if (window.innerWidth <= 940 && window.innerWidth > 700) {
+            referenceElement = document.querySelector('.article-preview:nth-child()');
         }
         parentElement.insertBefore(newElement, referenceElement);
     }
@@ -504,30 +491,30 @@ document.addEventListener("DOMContentLoaded", function () {
             const btns = document.querySelectorAll('.card .btn');
 
             btns.forEach(btn => {
-               btn.addEventListener('click', () => {
-                   let id = btn.dataset.id;
-                   let quantity = btn.dataset.quantity;
+                btn.addEventListener('click', () => {
+                    let id = btn.dataset.id;
+                    let quantity = btn.dataset.quantity;
 
-                   $.ajax({
-                       url: '/ajax/addToBasket.php',
-                       data: {
-                           id: id,
-                           quantity: quantity
-                       },
-                       method: 'POST',
-                       dataType: 'HTML',
-                       success: function(result){
-                           if (result === 'ok') {
-                               alert('Товар добавлен в корзину');
+                    $.ajax({
+                        url: '/ajax/addToBasket.php',
+                        data: {
+                            id: id,
+                            quantity: quantity
+                        },
+                        method: 'POST',
+                        dataType: 'HTML',
+                        success: function (result) {
+                            if (result === 'ok') {
+                                alert('Товар добавлен в корзину');
 
-                               basketItemsCountSelectors.forEach(basketItemsCount => {
-                                   basketItemsCount.style.display = 'flex';
-                                   basketItemsCount.innerHTML = +basketItemsCount.innerHTML + 1;
-                               });
-                           }
-                       },
-                   });
-               });
+                                basketItemsCountSelectors.forEach(basketItemsCount => {
+                                    basketItemsCount.style.display = 'flex';
+                                    basketItemsCount.innerHTML = +basketItemsCount.innerHTML + 1;
+                                });
+                            }
+                        },
+                    });
+                });
             });
         } catch (error) {
             console.log(error);
@@ -548,7 +535,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     },
                     method: 'POST',
                     dataType: 'HTML',
-                    success: function(result){
+                    success: function (result) {
                         if (result === 'ok') {
                             alert('Товар добавлен в корзину');
 
@@ -579,25 +566,26 @@ document.addEventListener("DOMContentLoaded", function () {
             const counter = document.querySelector('.counter__input--product input');
 
             btns.forEach(btn => {
-               btn.addEventListener('click', () => {
-                   let id = counter.dataset.id;
-                   let quantity = counter.value;
-                   let event = btn.classList.contains('counter__btn--plus') ? 1 : -1;
+                btn.addEventListener('click', () => {
+                    let id = counter.dataset.id;
+                    let quantity = counter.value;
+                    let event = btn.classList.contains('counter__btn--plus') ? 1 : -1;
 
-                   $.ajax({
-                       url: '/ajax/addToBasket.php',
-                       data: {
-                           id: id,
-                           quantity: quantity,
-                           event: event
-                       },
-                       method: 'POST',
-                       dataType: 'HTML',
-                       success: function(result){
-                           if (result === 'ok') {}
-                       },
-                   });
-               });
+                    $.ajax({
+                        url: '/ajax/addToBasket.php',
+                        data: {
+                            id: id,
+                            quantity: quantity,
+                            event: event
+                        },
+                        method: 'POST',
+                        dataType: 'HTML',
+                        success: function (result) {
+                            if (result === 'ok') {
+                            }
+                        },
+                    });
+                });
             });
         } catch (error) {
             console.log(error);
@@ -612,24 +600,77 @@ window.addEventListener('DOMContentLoaded', () => {
         const links = document.querySelectorAll('.catalog__sort a');
 
         links.forEach(link => {
-           link.addEventListener('click', () => {
-               $.ajax({
-                   url: '/ajax/sort.php',
-                   method: 'POST',
-                   data: {
-                       sortten: link.dataset.query,
-                   },
-                   dataType: 'HTML',
-                   success: function () {
-                       location.reload();
-                   },
-               });
-           });
+            link.addEventListener('click', () => {
+                $.ajax({
+                    url: '/ajax/sort.php',
+                    method: 'POST',
+                    data: {
+                        sortten: link.dataset.query,
+                    },
+                    dataType: 'HTML',
+                    success: function () {
+                        location.reload();
+                    },
+                });
+            });
         });
     };
 
     try {
         sort();
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    const form = () => {
+        const modalForm = document.querySelectorAll('form.modal');
+        const emailForm = document.querySelectorAll('.email_form');
+        const questionsForm = document.querySelectorAll('.questions-form');
+        const modalAccept = document.querySelector('#modalAccept');
+        const overlay = document.querySelector("#overlay");
+
+        const forms = [...modalForm, ...emailForm, ...questionsForm];
+
+        forms.forEach(form => {
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                let formData = new FormData(this);
+                let formValue = {};
+
+                for (let [name, value] of formData) {
+                    formValue[name] = value;
+                }
+
+                if (formValue['formName'] === 'Запись на приём' && document.querySelector('#nameDoctor').value) {
+                    formValue['doctor'] = document.querySelector('#nameDoctor').value;
+                }
+
+                $.ajax({
+                    url: '/ajax/form.php',
+                    method: 'POST',
+                    data: formValue,
+                    dataType: 'HTML',
+                    success: function (result) {
+                        if (result === 'ok') {
+                            form.reset();
+                            form.parentNode?.classList.remove('active');
+                            modalAccept.classList.add('active');
+                            overlay.classList.add('active')
+                            setTimeout(() => modalAccept.classList.remove('active'), 3000)
+                            setTimeout(() => overlay.classList.remove('active'), 3000)
+                        }
+                    },
+                });
+            });
+        });
+    };
+
+    try {
+        form();
     } catch (error) {
         console.log(error);
     }

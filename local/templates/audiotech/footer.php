@@ -25,8 +25,9 @@
                             слухе
                         </div>
                         <div class="footer__col-form footer-form">
-                            <form class="footer-form__box">
-                                <input type="email" placeholder="Электронная почта">
+                            <form class="footer-form__box email_form">
+                                <input type="hidden" name="formName" value="Подписаться на рассылку">
+                                <input name="email" type="email" placeholder="Электронная почта">
                                 <div class="footer-form__btn">
                                     <button class="btn btn--m btn--red" type="submit">Подписаться</button>
                                 </div>
@@ -48,6 +49,7 @@
         <div id="overlay"></div>
         <div class="modal-wrap" id="modalReg">
             <form class="modal modal__reg formValidate">
+                <input type="hidden" name="formName" value="Запись на приём">
                 <button class="close-window close-window--modal" data-close="modal">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -58,85 +60,91 @@
                 <h2 class="section-title">Запись на приём</h2>
                 <ul class="modal__wrap">
                     <li class="modal__item">
-                        <label class="label" for="">Ваше имя</label>
-                        <input class="input" type="text" id="inputName" placeholder="Николаев Дмитрий Александрович" required>
+                        <label class="label" for="inputName">Ваше имя</label>
+                        <input name="name" class="input" type="text" id="inputName" placeholder="Николаев Дмитрий Александрович" required>
                     </li>
                     <li class="modal__item modal__item--half">
-                        <label class="label" for="">Телефон</label>
-                        <input class="tel input" type="tel" value="" placeholder="+7 (___) ___-__-__" required>
+                        <label class="label" for="inputPhone">Телефон</label>
+                        <input name="phone" class="tel input" type="tel" id="inputPhone" value="" placeholder="+7 (___) ___-__-__" required>
                     </li>
                     <li class="modal__item modal__item--half">
                         <label class="label" for="">Электронная почта</label>
-                        <input class="input" type="email" id="inputEmail" placeholder="mail@domain.ru" required>
+                        <input name="email" class="input" type="email" id="inputEmail" placeholder="mail@domain.ru" required>
                     </li>
                     <li class="modal__item" id="inputDoc">
-                        <label class="label" for="">Имя специалиста</label>
-                        <input class="input" id="nameDoctor" disabled>
+                        <label class="label" for="nameDoctor">Имя специалиста</label>
+                        <input name="doctor" type="text" class="input" id="nameDoctor" disabled>
                     </li>
                     <li class="modal__item">
-                        <label class="label" for="">Центр слуха</label>
-                        <select class="mySelect" required>
+                        <label class="label" for="center">Центр слуха</label>
+                        <select name="center" id="center" class="mySelect" required>
                             <option value="default" selected>Выберите центр слуха</option>
-                            <option value="centr1">Центр слуха Астана1</option>
-                            <option value="centr2">Центр слуха Астана2</option>
-                            <option value="centr3">Центр слуха Астана3</option>
+                            <?php
+                            $arCenters = \Bitrix\Iblock\Elements\ElementCentersTable::getList([
+                                'select' => ['ID', 'NAME']
+                            ])->fetchAll();
+
+                            foreach ($arCenters as $arCenter ) { ?>
+                                <option value="<?php echo $arCenter['NAME']; ?><"><?php echo $arCenter['NAME']; ?></option>
+                            <?php } ?>
                         </select>
                     </li>
                     <li class="modal__item modal__item--half">
-                        <label class="label" for="">Приём</label>
-                        <select class="mySelect mySelectPriem" required>
+                        <label class="label" for="reception">Приём</label>
+                        <select name="reception" id="reception" class="mySelect mySelectPriem" required>
                             <option value="default" selected>Выберите прием</option>
-                            <option value="priem2">Первичный прием2</option>
-                            <option value="priem3">Первичный прием1</option>
-                            <option value="priem4">Первичный прием2</option>
-                            <option value="priem5">Первичный прием1</option>
-                            <option value="priem6">Первичный прием2</option>
-                            <option value="priem7">Первичный прием1</option>
-                            <option value="priem8">Первичный прием2</option>
+                            <?php
+                            $arReceptions = \Bitrix\Iblock\Elements\ElementPriemTable::getList([
+                                'select' => ['ID', 'NAME']
+                            ])->fetchAll();
+
+                            foreach ($arReceptions as $arReception ) { ?>
+                                <option value="<?php echo $arReception['NAME']; ?><"><?php echo $arReception['NAME']; ?></option>
+                            <?php } ?>
                         </select>
                     </li>
                     <li class="modal__item modal__item--half">
                         <label class="label">Дата записи</label>
                         <div class="modal__item--dp">
-                            <input class="airPicker input" id="airpicker" placeholder="дд.мм.гг" autocomplete="off" disabled>
+                            <input name="date" class="airPicker input" id="airpicker" placeholder="дд.мм.гг" autocomplete="off" disabled>
                         </div>
                     </li>
                     <li class="modal__item modal__times-wrap hidden">
                         <label class="label">Доступное время</label>
                         <div class="modal__times hidden">
                             <div class="modal__time">
-                                <input class="input-action" type="radio" id="time1" name="time" required>
+                                <input class="input-action" type="radio" id="time1" name="time" value="11:00" required>
                                 <label for="time1">11:00 </label>
                             </div>
                             <div class="modal__time">
-                                <input class="input-action" type="radio" id="time2" name="time" required>
+                                <input class="input-action" type="radio" id="time2" name="time" value="12:00" required>
                                 <label for="time2">12:00 </label>
                             </div>
                             <div class="modal__time">
-                                <input class="input-action" type="radio" id="time3" name="time" required>
+                                <input class="input-action" type="radio" id="time3" name="time" value="14:00" required>
                                 <label for="time3">14:00 </label>
                             </div>
                             <div class="modal__time">
-                                <input class="input-action" type="radio" id="time4" name="time" required>
+                                <input class="input-action" type="radio" id="time4" name="time" value="15:00" required>
                                 <label for="time4">15:00 </label>
                             </div>
                             <div class="modal__time">
-                                <input class="input-action" type="radio" id="time5" name="time" required>
+                                <input class="input-action" type="radio" id="time5" name="time" value="16:00" required>
                                 <label for="time5">16:00 </label>
                             </div>
                             <div class="modal__time">
-                                <input class="input-action" type="radio" id="time6" name="time" required>
+                                <input class="input-action" type="radio" id="time6" name="time" value="17:00" required>
                                 <label for="time6">17:00 </label>
                             </div>
                         </div>
                     </li>
                     <li class="modal__item">
-                        <label class="label" for="">Комментарий к записи</label>
-                        <textarea class="textarea" placeholder="Сообщение"></textarea>
+                        <label class="label" for="message">Комментарий к записи</label>
+                        <textarea class="textarea" name="message" id="message"  placeholder="Сообщение"></textarea>
                     </li>
                 </ul>
                 <div class="modal__check">
-                    <input class="input-action" type="checkbox" name="" id="agr1" required checked>
+                    <input class="input-action" type="checkbox" name="agree" id="agr1" required checked>
                     <label for="agr1">Даю согласие на обработку </label><a href="">персональных данных</a>
                 </div>
                 <button class="btn btn--red btn--l btn--icn" type="submit">
@@ -159,8 +167,10 @@
                 </button>
             </form>
         </div>
+
         <div class="modal-wrap" id="modalCall">
-            <div class="modal modal__call">
+            <form class="modal modal__call">
+                <input type="hidden" name="formName" value="Заказать звонок">
                 <button class="close-window close-window--modal" data-close="modal">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -172,15 +182,15 @@
                 <ul class="modal__wrap">
                     <li class="modal__item">
                         <label class="label" for="">Ваше имя</label>
-                        <input class="input" type="text" placeholder="Николаев Дмитрий Александрович">
+                        <input name="name" class="input" type="text" placeholder="Николаев Дмитрий Александрович">
                     </li>
                     <li class="modal__item">
                         <label class="label" for="">Телефон</label>
-                        <input class="tel input" value="" placeholder="+7 (___) ___-__-__">
+                        <input name="phone" class="tel input" value="" placeholder="+7 (___) ___-__-__">
                     </li>
                 </ul>
                 <div class="modal__check">
-                    <input class="input-action" type="checkbox" id="agr2">
+                    <input name="agree" class="input-action" type="checkbox" id="agr2" required checked>
                     <label for="agr2">Даю согласие на обработку </label><a href="">персональных данных</a>
                 </div>
                 <button class="btn btn--red btn--l btn--icn">
@@ -191,10 +201,11 @@
                     </svg>
                     Отправить заявку
                 </button>
-            </div>
+            </form>
         </div>
+
         <div class="modal-wrap" id="modalAccept">
-            <div class="modal modal__accept"><img class="modal__accept-pic" src="img/check.svg" alt="">
+            <div class="modal modal__accept"><img class="modal__accept-pic" src="<?php echo SITE_TEMPLATE_PATH ?>/images/check.svg" alt="">
                 <h2 class="section-title">Ваша заявка принята!</h2>
                 <p class="modal__text">В ближайшее время наши менеджеры свяжутся с вами для уточнения деталей.</p>
             </div>

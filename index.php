@@ -307,7 +307,7 @@ $APPLICATION->IncludeComponent(
         "PRODUCT_QUANTITY_VARIABLE" => "quantity",
         "ADD_PROPERTIES_TO_BASKET" => "Y",
         "PRODUCT_PROPS_VARIABLE" => "prop",
-        "PARTIAL_PRODUCT_PROPERTIES" => "N",
+        "PARTIAL_PRODUCT_PROPERTIES" => "Y",
         "ADD_TO_BASKET_ACTION" => "ADD",
         "DISPLAY_COMPARE" => "N",
         "USE_ENHANCED_ECOMMERCE" => "N",
