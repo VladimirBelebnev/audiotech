@@ -32,8 +32,11 @@ $this->setFrameMode(true);
         <img id="license-full" src="/" alt="Большая фотография">
     </div>
 </div>
-<div class="pagination">
-    <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>
+
+<?php if ($arParams["DISPLAY_BOTTOM_PAGER"] && count($arResult["ITEMS"]) > 8) { ?>
+    <div class="pagination">
         <?= $arResult["NAV_STRING"]; ?>
-    <? endif; ?>
-</div>
+    </div>
+<?php } else { ?>
+    <div class="news-bottom"></div>
+<?php } ?>

@@ -29,3 +29,9 @@ $this->setFrameMode(true);
         </div>
     </div>
 </section>
+
+<?php $APPLICATION->IncludeComponent(
+    'coderoom:main.offers',
+    '.default',
+    []
+); ?>

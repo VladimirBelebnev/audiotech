@@ -24,7 +24,7 @@ $this->setFrameMode(true);
                     <div class="swiper-slide">
                         <div class="article-preview">
                             <a class="article-preview__pic"
-                               href="/about/news/<?php echo $arItem["SECTION_CODE"]; ?>/<?php echo $arItem["CODE"]; ?>/">
+                               href="<?php echo $arParams['IS_BLOG'] == 'Y' ? '/customer/blog/' : '/about/news/'; ?><?php echo $arItem["SECTION_CODE"]; ?>/<?php echo $arItem["CODE"]; ?>/">
                                 <img src="<?php echo CFile::GetPath($arItem["PREVIEW_PICTURE"]); ?>"
                                      alt="<?php echo $arItem["NAME"]; ?>"></a>
                             <?php

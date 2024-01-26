@@ -1,6 +1,6 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-$clearFilterPath = preg_replace('/(filter.+)/', '', $APPLICATION->GetCurPage());
+$clearFilterPath = preg_replace('/(filter.+)/', '', $APPLICATION->GetCurPageParam());
 
 /** @var $arResult array */
 
@@ -50,6 +50,6 @@ foreach ($arResult['ITEMS'] as $arItem) {
 
 <script>
     window.addEventListener('DOMContentLoaded', () => {
-        window.filter = new window.SmartFilter("<?php echo $APPLICATION->GetCurPage(); ?>");
+        window.filter = new window.SmartFilter("<?php echo $APPLICATION->GetCurPageParam(); ?>");
     });
 </script>

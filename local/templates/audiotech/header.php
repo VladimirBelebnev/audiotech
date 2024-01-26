@@ -76,29 +76,42 @@ $countBasketItems = CSaleBasket::GetList(
                                       fill="white"/>
                             </svg>
                             <span>RU</span></div>
-                        <div class="header-top__item header-top__item-search">
-                            <input type="text" placeholder="Поиск">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M5.66668 1.66667C4.60581 1.66667 3.5884 2.08809 2.83825 2.83824C2.0881 3.58838 1.66668 4.6058 1.66668 5.66667C1.66668 6.19195 1.77014 6.7121 1.97116 7.1974C2.17218 7.6827 2.46682 8.12366 2.83825 8.49509C3.20968 8.86653 3.65064 9.16117 4.13594 9.36219C4.62125 9.5632 5.14139 9.66667 5.66668 9.66667C6.19197 9.66667 6.71211 9.5632 7.19741 9.36219C7.68271 9.16117 8.12367 8.86653 8.4951 8.49509C8.86654 8.12366 9.16118 7.6827 9.3622 7.1974C9.56321 6.7121 9.66668 6.19195 9.66668 5.66667C9.66668 4.6058 9.24525 3.58838 8.4951 2.83824C7.74496 2.08809 6.72754 1.66667 5.66668 1.66667ZM1.89544 1.89543C2.89563 0.895236 4.25219 0.333333 5.66668 0.333333C7.08116 0.333333 8.43772 0.895236 9.43791 1.89543C10.4381 2.89562 11 4.25218 11 5.66667C11 6.36705 10.8621 7.06057 10.594 7.70765C10.4115 8.14837 10.171 8.56166 9.87974 8.93692L13.4714 12.5286C13.7318 12.7889 13.7318 13.2111 13.4714 13.4714C13.2111 13.7318 12.789 13.7318 12.5286 13.4714L8.93693 9.87973C8.56167 10.171 8.14838 10.4115 7.70766 10.594C7.06059 10.8621 6.36706 11 5.66668 11C4.96629 11 4.27277 10.8621 3.6257 10.594C2.97863 10.326 2.39069 9.93315 1.89544 9.4379C1.4002 8.94266 1.00734 8.35472 0.739319 7.70765C0.471294 7.06058 0.333344 6.36705 0.333344 5.66667C0.333344 4.25218 0.895247 2.89562 1.89544 1.89543Z"
-                                      fill="white"/>
-                            </svg>
-                        </div>
+                        <?php
+                        $APPLICATION->IncludeComponent(
+                            "bitrix:search.title",
+                            "search",
+                            array(
+                                "NUM_CATEGORIES" => "",
+                                "TOP_COUNT" => "",
+                                "ORDER" => "date",
+                                "USE_LANGUAGE_GUESS" => "Y",
+                                "CHECK_DATES" => "N",
+                                "SHOW_OTHERS" => "N",
+                                "PAGE" => "#SITE_DIR#search/",
+                                "CATEGORY_0_TITLE" => "",
+                                "CATEGORY_0" => array(
+                                    0 => "iblock_1c_catalog",
+                                ),
+                                "COMPONENT_TEMPLATE" => "search",
+                                "SHOW_INPUT" => "Y",
+                                "INPUT_ID" => "title-search-input",
+                                "CONTAINER_ID" => "title-search",
+                                "CATEGORY_0_iblock_1c_catalog" => array(
+                                    0 => "1",
+                                )
+                            ),
+                            false
+                        ); ?>
                     </div>
                     <div class="header-top__items">
-                        <div class="header-top__item"><img
-                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/sm-volume-up.svg" width="16"
-                                    height="16" alt="">Проверить слух онлайн
-                        </div>
-                        <div class="header-top__item">
+                        <a href="/centers/" class="header-top__item">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12.3 12.8V13.3H12.8C12.8796 13.3 12.9559 13.3316 13.0122 13.3879C13.0684 13.4441 13.1 13.5204 13.1 13.6C13.1 13.6796 13.0684 13.7559 13.0122 13.8121C12.9559 13.8684 12.8796 13.9 12.8 13.9H10.4C10.3205 13.9 10.2442 13.8684 10.1879 13.8121C10.1316 13.7559 10.1 13.6796 10.1 13.6V12C10.1 11.6552 9.96306 11.3246 9.71926 11.0808C9.47547 10.837 9.14481 10.7 8.80002 10.7H7.20002C6.85524 10.7 6.52458 10.837 6.28079 11.0808L6.63434 11.4343L6.28079 11.0808C6.03699 11.3246 5.90002 11.6552 5.90002 12V13.6C5.90002 13.6796 5.86842 13.7559 5.81216 13.8121L6.16571 14.1657L5.81216 13.8121C5.7559 13.8684 5.67959 13.9 5.60002 13.9H3.20002C3.12046 13.9 3.04415 13.8684 2.98789 13.8121C2.93163 13.7559 2.90002 13.6796 2.90002 13.6C2.90002 13.5204 2.93163 13.4441 2.98789 13.3879C3.04415 13.3316 3.12046 13.3 3.20002 13.3H3.70002V12.8V3.2C3.70002 2.90826 3.81592 2.62847 4.02221 2.42218C4.2285 2.21589 4.50829 2.1 4.80002 2.1H11.2C11.4918 2.1 11.7716 2.21589 11.9778 2.42218C12.1841 2.62847 12.3 2.90826 12.3 3.2V12.8ZM5.60002 3.5H5.10002V4V5.6V6.1H5.60002H7.20002H7.70002V5.6V4V3.5H7.20002H5.60002ZM7.70002 7.2V6.7H7.20002H5.60002H5.10002V7.2V8.8V9.3H5.60002H7.20002H7.70002V8.8V7.2ZM8.80002 3.5H8.30002V4V5.6V6.1H8.80002H10.4H10.9V5.6V4V3.5H10.4H8.80002ZM10.9 7.2V6.7H10.4H8.80002H8.30002V7.2V8.8V9.3H8.80002H10.4H10.9V8.8V7.2Z"
                                       fill="white" stroke="white"/>
                             </svg>
                             Найти центр слуха
-                        </div>
+                        </a>
                         <a class="header-top__item" href="tel:8 (800) 123 44 00"><img
                                     src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/sm-phone.svg" width="16"
                                     height="16" alt="">8 (800) 123 44 00</a>
@@ -185,7 +198,7 @@ $countBasketItems = CSaleBasket::GetList(
                                         src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/sm-volume-up.svg" alt="">Проверить
                                 слух онлайн
                             </button>
-                            <button class="btn btn--icn btn--red btn--l">
+                            <a href="/centers/" class="btn btn--icn btn--red btn--l">
                                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -193,7 +206,7 @@ $countBasketItems = CSaleBasket::GetList(
                                           fill="white"/>
                                 </svg>
                                 Найти центр слуха
-                            </button>
+                            </a>
                         </div>
                     </nav>
                     <a class="btn btn--icn btn--red btn--m" href="#" data-target="modal-reg">

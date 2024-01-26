@@ -34,11 +34,14 @@ class MainOffers extends \CBitrixComponent
             'select' => [
                 'ID',
                 'NAME',
-                'PREVIEW_PICTURE',
+                'IMAGE_' => 'IMAGE',
                 'PREVIEW_TEXT',
                 'BTN_ACTION_' => 'BTN_ACTION',
                 'BTN_TEXT_' => 'BTN_TEXT'
             ],
+            'filter' => [
+                'ACTIVE' => 'Y'
+            ]
         ])->fetchAll();
     }
 }

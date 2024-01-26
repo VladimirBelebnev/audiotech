@@ -73,22 +73,13 @@ if ($isFilter) {
     <div class="_container">
         <h1 class="title-page catalog__title"
             data-count="<?php $APPLICATION->ShowProperty('element_count'); ?>"><?php $APPLICATION->ShowTitle(false); ?></h1>
-        <div class="chips">
-<!--            <div class="chips__inner chips__inner--sort">-->
-<!--                <button class="chips__item">Для легкой потери слуха</button>-->
-<!--                <button class="chips__item">Для средней потери слуха</button>-->
-<!--                <button class="chips__item">Для тяжелой потери слуха</button>-->
-<!--                <button class="chips__item">Ampliphon</button>-->
-<!--                <button class="chips__item">Oticon</button>-->
-<!--                <button class="chips__item">Signia</button>-->
-<!--                <button class="chips__item">Аналоговые</button>-->
-<!--                <button class="chips__item">Цифровые</button>-->
-<!--                <button class="chips__item">Заушные</button>-->
-<!--                <button class="chips__item">Заушные с выносным ресивером</button>-->
-<!--                <button class="chips__item">Внутриушные</button>-->
-<!--                <button class="chips__item">Внутриканальные</button>-->
-<!--            </div>-->
-        </div>
+        <?php $APPLICATION->IncludeComponent(
+            'coderoom:section.links',
+            '.default',
+            [
+                'SECTION_ID' => $arResult['VARIABLES']['SECTION_ID'],
+            ]
+        ); ?>
         <div class="catalog__wrap">
             <div class="catalog__filter-mobile">
                 <h3 class="filter__title">Фильтры</h3>
@@ -134,25 +125,26 @@ if ($isFilter) {
             ?>
             <div class="catalog__box">
                 <div class="catalog__sort">
-                    <a <?php echo $_COOKIE['sortten'] === 'show_counter' ? ' class="active"' : ' '; ?> data-query="show_counter">Популярные</a>
-                    <a <?php echo $_COOKIE['sortten'] === 'catalog_PRICE_1_max' ? ' class="active"' : ' '; ?> data-query="catalog_PRICE_1_max">Дешевле</a>
-                    <a <?php echo $_COOKIE['sortten'] === 'catalog_PRICE_1_min' ? ' class="active"' : ' '; ?> data-query="catalog_PRICE_1_min">Дороже</a>
+                    <a <?php echo $_COOKIE['sortten'] === 'show_counter' ? ' class="active"' : ' '; ?>
+                            data-query="show_counter">Популярные</a>
+                    <a <?php echo $_COOKIE['sortten'] === 'catalog_PRICE_1_max' ? ' class="active"' : ' '; ?>
+                            data-query="catalog_PRICE_1_max">Дешевле</a>
+                    <a <?php echo $_COOKIE['sortten'] === 'catalog_PRICE_1_min' ? ' class="active"' : ' '; ?>
+                            data-query="catalog_PRICE_1_min">Дороже</a>
                     <!-- TODO сделать после создания свойства -->
-                    <a <?php echo $_COOKIE['sortten'] === 'discount' ? ' class="active"' : ' '; ?> data-query="discount">Со скидкой</a>
+                    <a <?php echo $_COOKIE['sortten'] === 'discount' ? ' class="active"' : ' '; ?>
+                            data-query="discount">Со скидкой</a>
                 </div>
                 <div class="update_ajax_filter">
                     <?php
 
-                    if ($_COOKIE['sortten'])
-                    {
+                    if ($_COOKIE['sortten']) {
                         $sort = $_COOKIE['sortten'];
                         $order = $_COOKIE['order'];
 
                         if ($_COOKIE['sortten'] === 'show_counter') $order = 'DESC';
                         if ($_COOKIE['sortten'] == 'catalog_PRICE_1_max' || $_COOKIE['sortten'] == 'catalog_PRICE_1_min') $sort = 'catalog_PRICE_1';
-                    }
-                    else
-                    {
+                    } else {
                         $sort = $arParams["ELEMENT_SORT_FIELD"];
                         $order = $arParams["ELEMENT_SORT_ORDER"];
                     }

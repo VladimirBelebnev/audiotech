@@ -13,7 +13,7 @@ $this->setFrameMode(true);
     <div class="_container">
         <div class="offers__wrap">
             <?php foreach ($arResult['ITEMS'] as $arItem) { ?>
-            <div class="offers__item"><img src="<?php echo CFile::GetPath($arItem['PREVIEW_PICTURE']); ?>" alt="<?php echo $arItem['NAME']; ?>">
+            <div class="offers__item"><img src="<?php echo CFile::GetPath($arItem['IMAGE_VALUE']); ?>" alt="<?php echo $arItem['NAME']; ?>">
                 <div class="offers__name"><?php echo $arItem['NAME']; ?></div>
                 <p class="offers__text"><?php echo $arItem['PREVIEW_TEXT']; ?></p>
                 <!-- Если ссылка на каталог -->

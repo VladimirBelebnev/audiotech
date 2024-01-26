@@ -675,3 +675,12 @@ window.addEventListener('DOMContentLoaded', () => {
         console.log(error);
     }
 });
+
+function updateSearchParameterURL(id) {
+    const url = new URL(window.location.href);
+    const searchParams = url.searchParams;
+    searchParams.delete('section_id');
+    url.searchParams.append('section_id', id);
+    window.history.pushState(null, null, url);
+    window.location.reload();
+}

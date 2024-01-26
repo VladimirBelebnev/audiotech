@@ -46,9 +46,9 @@ $this->setFrameMode(true);
         <?php } ?>
     </div>
 
-    <div class="pagination">
-        <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>
+    <?php if ($arParams["DISPLAY_BOTTOM_PAGER"] && count($arResult["ITEMS"]) > 15) { ?>
+        <div class="pagination">
             <?= $arResult["NAV_STRING"]; ?>
-        <? endif; ?>
-    </div>
+        </div>
+    <?php } ?>
 </div>

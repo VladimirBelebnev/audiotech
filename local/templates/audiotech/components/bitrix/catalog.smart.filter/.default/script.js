@@ -34,6 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	};
 
 	SmartFilter.prototype.ajaxRequest = function (data) {
+		console.log(this.urlPage)
 		BX.ajax.loadJSON(
 			this.urlPage,
 			data,
@@ -42,9 +43,9 @@ window.addEventListener('DOMContentLoaded', () => {
 	};
 
 	SmartFilter.prototype.filterApply = function (resultData) {
-		var url = resultData.FILTER_AJAX_URL;
+		let url = resultData.FILTER_AJAX_URL;
 
-		url = this.clearUrlEmptyFilter(url);
+		url = this.clearUrlEmptyFilter(url).replace(new RegExp(`\\bamp;[a-z]*\\b`, 'ig'), '');
 
 		// Реализация отображения фильтра в адресной строке
 		window.history.pushState(null, null, url);

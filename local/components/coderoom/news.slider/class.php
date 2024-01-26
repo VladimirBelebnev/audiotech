@@ -2,11 +2,13 @@
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
 use \Bitrix\Iblock\Elements\ElementNewsTable;
+use \Bitrix\Iblock\Elements\ElementBlogTable;
 use \Bitrix\Iblock\SectionTable;
 
 class NewsSlider extends \CBitrixComponent
 {
-    private $iBlockID = 8;
+    private $iBlockNewsID = 8;
+    private $iBlockBlogID = 24;
     private $iCacheTime = 3600000;
     private $sCacheId = 'NewsSlider';
     private $sCachePath = 'NewsSlider/';
@@ -20,7 +22,11 @@ class NewsSlider extends \CBitrixComponent
 
             $this->arResult = $vars['arResult'];
         } else if ($obCache->StartDataCache()) {
-            $this->arResult['ITEMS'] = $this->getItems();
+            if ($this->arParams['IS_BLOG'] == 'Y') {
+                $this->arResult['ITEMS'] = $this->getBlog();
+            } else {
+                $this->arResult['ITEMS'] = $this->getNews();
+            }
 
             $obCache->EndDataCache([
                 'arResult' => $this->arResult,
@@ -30,7 +36,7 @@ class NewsSlider extends \CBitrixComponent
         $this->includeComponentTemplate();
     }
 
-    private function getItems ()
+    private function getNews ()
     {
         $arItems = ElementNewsTable::getList([
             'select' => [
@@ -61,7 +67,62 @@ class NewsSlider extends \CBitrixComponent
                 'CODE',
             ],
             'filter' => [
-                'IBLOCK_ID' => $this->iBlockID,
+                'IBLOCK_ID' => $this->iBlockNewsID,
+                'DEPTH_LEVEL' => 1,
+                '=ID' => $arSectionsIDs,
+            ],
+        ])->fetchAll();
+
+        $arNewItems = [];
+
+        foreach ($arItems as $arItem)
+        {
+            $arNewItems[$arItem['ID']] = $arItem;
+
+            foreach ($arSections as $arSection)
+            {
+                if ($arItem['IBLOCK_SECTION_ID'] == $arSection['ID'])
+                {
+                    $arNewItems[$arItem['ID']]['SECTION_CODE'] = $arSection['CODE'];
+                }
+            }
+        }
+
+        return $arNewItems;
+    }
+
+    private function getBlog ()
+    {
+        $arItems = ElementBlogTable::getList([
+            'select' => [
+                'ID',
+                'NAME',
+                'TIMESTAMP_X',
+                'CODE',
+                'PREVIEW_PICTURE',
+                'IBLOCK_SECTION_ID',
+                'PREVIEW_TEXT'
+            ],
+            'limit' => 4,
+            'filter' => [
+                '!ID' => $this->arParams['ELEMENT_ID'],
+            ]
+        ])->fetchAll();
+
+        $arSectionsIDs = [];
+
+        foreach ($arItems as $arItem)
+        {
+            $arSectionsIDs[] = $arItem['IBLOCK_SECTION_ID'];
+        }
+
+        $arSections = SectionTable::getList([
+            'select' => [
+                'ID',
+                'CODE',
+            ],
+            'filter' => [
+                'IBLOCK_ID' => $this->iBlockBlogID,
                 'DEPTH_LEVEL' => 1,
                 '=ID' => $arSectionsIDs,
             ],

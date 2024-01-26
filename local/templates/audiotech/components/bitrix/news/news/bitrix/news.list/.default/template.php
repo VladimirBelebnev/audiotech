@@ -38,6 +38,12 @@ $this->setFrameMode(true);
             <p class="article-preview__text"><? echo $arItem["PREVIEW_TEXT"]; ?></p>
         </div>
     <? endforeach; ?>
+    <?php if (count($arResult["ITEMS"]) < 2) { ?>
+        <div></div>
+        <div></div>
+    <?php } else if (count($arResult["ITEMS"]) < 3) { ?>
+        <div></div>
+    <?php } ?>
     <form class="subscribe email_form">
         <input type="hidden" name="formName" value="Подписаться на рассылку">
         <h2 class="aside-block__title">Подписаться на рассылку</h2>
@@ -57,9 +63,10 @@ $this->setFrameMode(true);
             <span>Подписаться</span></button>
     </form>
 </div>
-<div class="pagination">
-    <? if ($arParams["DISPLAY_BOTTOM_PAGER"]): ?>
+<?php if ($arParams["DISPLAY_BOTTOM_PAGER"] && count($arResult["ITEMS"]) > 11) { ?>
+    <div class="pagination">
         <?= $arResult["NAV_STRING"]; ?>
-    <? endif; ?>
-</div>
-
+    </div>
+<?php } else { ?>
+    <div class="news-bottom"></div>
+<?php } ?>

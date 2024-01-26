@@ -1014,6 +1014,7 @@ img {
 .header-top__item-search input {
   background-color: transparent;
   padding-left: 20px;
+  font-size: 13px;
   color: #fff;
 }
 .header-top__item-search input::placeholder {
@@ -1199,10 +1200,15 @@ img {
   color: #737373;
 }
 
+.news-bottom {
+  margin-bottom: 50px;
+}
+
 .main-nav__list {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
+  gap: 25px;
   padding: 0;
   margin: 0;
 }
@@ -2543,7 +2549,6 @@ button {
 
 .blog-slider .swiper-wrapper {
   display: flex;
-  justify-content: space-between;
 }
 .blog-slider .swiper-wrapper .swiper-slide {
   width: calc(25% - 10px);
@@ -3377,7 +3382,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 25%;
+  width: 100%;
 }
 .offers__item img {
   width: 80px;
@@ -5591,10 +5596,21 @@ button {
   letter-spacing: -0.18px;
   text-decoration: line-through;
 }
+
 @media (max-width: 700px) {
   .product-descr__old-price {
     font-size: 15px;
   }
+}
+
+.swiper-slide .product-descr__old-price, .catalog .product-descr__old-price {
+  color: #737373;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.18px;
+  text-decoration-line: line-through;
 }
 
 .producr-descr__btns {
@@ -7097,6 +7113,7 @@ address label {
 }
 
 .doctors__item-btn {
+  margin-top: auto;
   align-self: flex-start;
 }
 
@@ -8036,6 +8053,10 @@ address label {
   .materials__row {
     padding: 15px 0;
   }
+}
+
+.materials__row:last-child {
+  border-bottom: 1px solid #E8EBED;
 }
 
 .materials__content {
@@ -9642,6 +9663,8 @@ ymaps[class$=gotoymaps__container] {
 
 .guarantee-text {
   margin: 0;
+  max-width: 925px;
+  width: 100%;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -9649,5 +9672,31 @@ ymaps[class$=gotoymaps__container] {
 }
 
 .catalog__filter .btn {
-  justify-content: center;
+  width: max-content;
+}
+
+.product__title {
+  margin-bottom: 10px;
+}
+
+.chips__item:hover {
+  background-color: #fff;
+  color: #DB1F26;
+}
+
+.chips__item.active {
+  background-color: #DB1F26;
+  color: #fff;
+}
+
+.swiper-thumbs .swiper-slide {
+  height: 72px;
+}
+
+.feedbacks {
+  overflow:hidden;
+  position:relative;
+  height: 800px;
+  max-width: 760px;
+  width: 100%;
 }
