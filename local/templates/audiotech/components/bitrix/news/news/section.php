@@ -110,6 +110,7 @@ $this->setFrameMode(true);
 
                                 "PARENT_SECTION" => $arResult["VARIABLES"]["SECTION_ID"],
                                 "PARENT_SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
+                                'IS_BLOG' => $arParams['IS_BLOG']
                             ],
                             $component,
                             ['HIDE_ICONS' => 'Y']

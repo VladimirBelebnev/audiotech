@@ -24,7 +24,7 @@ $APPLICATION->IncludeComponent(
 		"CACHE_GROUPS" => "Y",
 		"SET_STATUS_404" => "Y",
 		"SET_TITLE" => "Y",
-		"ADD_SECTIONS_CHAIN" => "Y",
+		"ADD_SECTIONS_CHAIN" => "N",
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"USE_ELEMENT_COUNTER" => "Y",
 		"USE_FILTER" => "Y",
@@ -92,8 +92,7 @@ $APPLICATION->IncludeComponent(
 		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
 		"TEMPLATE_THEME" => "blue",
 		"ADD_PICT_PROP" => "-",
-		"LABEL_PROP" => array(
-		),
+		"LABEL_PROP" => "",
 		"COMMON_SHOW_CLOSE_POPUP" => "N",
 		"PRODUCT_SUBSCRIPTION" => "N",
 		"SHOW_DISCOUNT_PERCENT" => "N",
@@ -117,10 +116,10 @@ $APPLICATION->IncludeComponent(
 		"DETAIL_STRICT_SECTION_CHECK" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"USE_SALE_BESTSELLERS" => "N",
-		"FILTER_NAME" => "",
+		"FILTER_NAME" => "arFilter",
 		"FILTER_VIEW_MODE" => "VERTICAL",
 		"FILTER_HIDE_ON_MOBILE" => "N",
-		"INSTANT_RELOAD" => "N",
+		"INSTANT_RELOAD" => "Y",
 		"USE_COMMON_SETTINGS_BASKET_POPUP" => "N",
 		"COMMON_ADD_TO_BASKET_ACTION" => "ADD",
 		"TOP_ADD_TO_BASKET_ACTION" => "ADD",
@@ -186,13 +185,8 @@ $APPLICATION->IncludeComponent(
 			"sections" => "",
 			"section" => "#SECTION_CODE_PATH#/",
 			"element" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
-			"compare" => "compare.php?action=#ACTION_CODE#",
-			"smart_filter" => "#SECTION_ID#/filter/#SMART_FILTER_PATH#/apply/",
-		),
-		"VARIABLE_ALIASES" => array(
-			"compare" => array(
-				"ACTION_CODE" => "action",
-			),
+			"compare" => "",
+			"smart_filter" => "#SECTION_CODE_PATH#/#SMART_FILTER_PATH#/",
 		)
 	),
 	false

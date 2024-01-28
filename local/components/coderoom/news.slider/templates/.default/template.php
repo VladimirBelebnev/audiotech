@@ -15,7 +15,7 @@ $this->setFrameMode(true);
         <h2 class="section-title">
             <span><?php echo $arParams['TITLE']; ?></span>
             <?php if ($arParams['SHOW_LINK'] == 'Y') { ?>
-                <button class="btn btn--grey btn--m">Всё о слухе</button>
+                <a href="<?php echo $arParams['IS_BLOG'] == 'Y' ? '/customer/blog/' : '/about/news/'; ?>" class="btn btn--grey btn--m">Всё о слухе</a>
             <?php } ?>
         </h2>
         <div class="slider-block__wrap swiper blog-slider pb0">

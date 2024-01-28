@@ -1,5 +1,5 @@
 <?
-$sSectionName = "Страница пользователя";
+$sSectionName = "Личный кабинет";
 $arDirProperties = Array(
 
 );

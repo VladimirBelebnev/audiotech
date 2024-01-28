@@ -7,8 +7,8 @@ $APPLICATION->SetTitle('Материалы по продукции');
 	"bitrix:news", 
 	"materials", 
 	array(
-		"ADD_ELEMENT_CHAIN" => "Y",
-		"ADD_SECTIONS_CHAIN" => "Y",
+		"ADD_ELEMENT_CHAIN" => "N",
+		"ADD_SECTIONS_CHAIN" => "N",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"AJAX_OPTION_HISTORY" => "N",
@@ -79,6 +79,7 @@ $APPLICATION->SetTitle('Материалы по продукции');
 		"LIST_PROPERTY_CODE" => array(
 			0 => "",
 			1 => "FILES",
+			2 => "",
 		),
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
@@ -90,13 +91,13 @@ $APPLICATION->SetTitle('Материалы по продукции');
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Лицензии",
+		"PAGER_TITLE" => "Материалы",
 		"PREVIEW_TRUNCATE_LEN" => "",
-		"SEF_FOLDER" => "/about/news/",
+		"SEF_FOLDER" => "/customer/materials/",
 		"SEF_MODE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "Y",
-		"SET_TITLE" => "Y",
+		"SET_TITLE" => "N",
 		"SHOW_404" => "N",
 		"SORT_BY1" => "ACTIVE_FROM",
 		"SORT_BY2" => "SORT",
@@ -113,9 +114,9 @@ $APPLICATION->SetTitle('Материалы по продукции');
 		"USE_SHARE" => "N",
 		"COMPONENT_TEMPLATE" => "materials",
 		"SEF_URL_TEMPLATES" => array(
-			"news" => "",
-			"section" => "",
-			"detail" => "",
+			"news" => "/customer/materials/",
+			"section" => "#SECTION_CODE_PATH#/",
+			"detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
 		)
 	),
 	false

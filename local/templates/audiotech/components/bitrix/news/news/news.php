@@ -107,6 +107,7 @@ $this->setFrameMode(true);
                                 "FILTER_NAME" => $arParams["FILTER_NAME"],
                                 "HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
                                 "CHECK_DATES" => $arParams["CHECK_DATES"],
+                                'IS_BLOG' => $arParams['IS_BLOG']
                             ],
                             $component,
                             ['HIDE_ICONS' => 'Y']

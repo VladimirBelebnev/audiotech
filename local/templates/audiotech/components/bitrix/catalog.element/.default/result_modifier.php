@@ -5,6 +5,7 @@
  * @var CatalogElementComponent $component
  */
 
+use Coderoom\Main\Favorite\listfavorite;
 use \Bitrix\Iblock\Elements\ElementCatalogTable;
 
 $component = $this->getComponent();
@@ -128,4 +129,15 @@ if ($arResult['PROPERTIES']['ADD_ELEMENTS']['VALUE'])
     }
 
     $arResult['ADD_ELEMENTS'] = $arItems;
+}
+
+$obFavoriteList = new ListFavorite;
+$arFavoriteItemsIDs = $obFavoriteList->getListIDS();
+
+foreach ($arFavoriteItemsIDs as $id)
+{
+    if ($id == $arResult['ID'])
+    {
+        $arResult['IS_FAVORITE_ITEM'] = 'Y';
+    }
 }

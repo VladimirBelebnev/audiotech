@@ -70,3 +70,11 @@ $this->setFrameMode(true);
 <?php } else { ?>
     <div class="news-bottom"></div>
 <?php } ?>
+
+<?php if ($arParams['IS_BLOG'] == 'Y') { ?>
+    <style>
+        .tabs__nav::after {
+            display: none;
+        }
+    </style>
+<?php } ?>

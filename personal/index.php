@@ -1,25 +1,37 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle('Страница пользователя');
+$APPLICATION->SetTitle('Личный кабинет');
+
+global $USER;
+
+if (!$USER->IsAuthorized()) LocalRedirect('/');
 ?>
-<?php // Параметры пользователя - http://dev.1c-bitrix.ru/user_help/settings/users/components_2/main_profile.php
-$APPLICATION->IncludeComponent(
-	"bitrix:main.profile",
-	".default",                   // [eshop_adapt, .default]
-	array(        
-		// region Управление режимом AJAX         
-		"AJAX_MODE"               =>  "N",          // Включить режим AJAX          
-		"AJAX_OPTION_JUMP"        =>  "N",          // Включить прокрутку к началу компонента          
-		"AJAX_OPTION_STYLE"       =>  "Y",          // Включить подгрузку стилей          
-		"AJAX_OPTION_HISTORY"     =>  "N",          // Включить эмуляцию навигации браузера          
-		"AJAX_OPTION_ADDITIONAL"  =>  "",           // Дополнительный идентификатор          
-		// endregion         
-		// region Дополнительные настройки         
-		"SET_TITLE"               =>  "Y",          // Устанавливать заголовок страницы          
-		"USER_PROPERTY"           =>  array( ),  // Показывать доп. свойства          
-		"SEND_INFO"               =>  "N",          // Генерировать почтовое событие          
-		"CHECK_RIGHTS"            =>  "N",          // Проверять права доступа          
-		// endregion 
-	)
-); ?>
+
+<section class="personal">
+    <div class="_container">
+        <h1 class="title-page">Личный кабинет</h1>
+    </div>
+    <div class="_container _container--mode">
+        <div class="tabs">
+            <div class="tabs-wrap">
+                <div class="tabs__nav tabs__nav--personal">
+                    <div class="tabs__btn">Мои заказы</div>
+                    <div class="tabs__btn">Избранное</div>
+                    <div class="tabs__btn active">Профиль</div>
+                    <a class="personal__exit" href="/?logout=yes&<?php echo bitrix_sessid_get(); ?>">Выйти </a>
+                </div>
+            </div>
+            <div class="tabs__content">
+                <div class="tabs__pane show">
+                    <?php $APPLICATION->IncludeComponent(
+                        'coderoom:personal.area',
+                        '.default',
+                        []
+                    ); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

@@ -11,52 +11,83 @@ class MaterialsSection extends \CBitrixComponent
 
     public function executeComponent()
     {
-        $arItems = $this->getFirstLevelItems();
-        $arItems = $this->getActiveLink($arItems);
-        $this->arResult['ITEMS']['FIRST_LEVEL'] = $arItems;
+        $arFirstLevelItems = $this->getFirstLevelItems();
+        $arSecondLevelItems = $this->getSecondLevelItems($arFirstLevelItems);
+
+        $this->arResult['ITEMS']['FIRST_LEVEL'] = $arFirstLevelItems;
+        $this->arResult['ITEMS']['SECOND_LEVEL'] = $arSecondLevelItems;
 
         $this->includeComponentTemplate();
     }
 
-    private function getFirstLevelItems ()
+    private function getFirstLevelItems () : array
     {
-        return SectionTable::getList([
+        global $APPLICATION;
+
+        $arFirstLevelItems = SectionTable::getList([
             'select' => [
                 'ID',
                 'NAME',
                 'CODE',
+                'DEPTH_LEVEL'
             ],
             'filter' => [
                 'IBLOCK_ID' => $this->iBlockID,
                 'DEPTH_LEVEL' => 1,
             ],
         ])->fetchAll();
-    }
 
-    private function getActiveLink ($arItems)
-    {
-        $obRequest = Application::getInstance()->getContext()->getRequest();
-        $uri = new Uri($obRequest->getRequestUri());
-
-        $newArItems = [];
-
-        $newArItems[0]['NAME'] = 'Все';
-        $newArItems[0]['CODE'] = '';
-        $allLinkActive = 'Y';
-
-        foreach ($arItems as $arItem)
+        foreach ($arFirstLevelItems as $key => $arItem)
         {
-            if (stripos($uri, $arItem['CODE']))
-            {
-                $allLinkActive = 'N';
-                $arItem['LINK_ACTIVE'] = 'Y';
-            }
+            $arFirstLevelItems[$key]['LINK'] = '/customer/materials/' . $arItem['CODE'] . '/';
 
-            $newArItems[] = $arItem;
+            if ($arFirstLevelItems[$key]['LINK'] == $APPLICATION->GetCurPage() || strpos($APPLICATION->GetCurPage(), $arFirstLevelItems[$key]['LINK']) !== false)
+            {
+                $arFirstLevelItems[$key]['ACTIVE'] = 'Y';
+            }
         }
 
-        $newArItems[0]['LINK_ACTIVE'] = $allLinkActive;
+        return $arFirstLevelItems;
+    }
 
-        return $newArItems;
+    private function getSecondLevelItems ($arFirstLevelItems) : array
+    {
+        global $APPLICATION;
+        $iParentID = null;
+        $sParentLink = '';
+
+        foreach ($arFirstLevelItems as $arItem)
+        {
+            if ($arItem['ACTIVE'] == 'Y') {
+                $iParentID = $arItem['ID'];
+                $sParentLink = $arItem['LINK'];
+            }
+        }
+
+        $arSecondLevelItems = SectionTable::getList([
+            'select' => [
+                'ID',
+                'NAME',
+                'CODE',
+                'IBLOCK_SECTION_ID'
+            ],
+            'filter' => [
+                'IBLOCK_ID' => $this->iBlockID,
+                'DEPTH_LEVEL' => 2,
+                'IBLOCK_SECTION_ID' => $iParentID,
+            ],
+        ])->fetchAll();
+
+        foreach ($arSecondLevelItems as $key => $arItem)
+        {
+            $arSecondLevelItems[$key]['LINK'] = $sParentLink . $arItem['CODE'] . '/';
+
+            if ($arSecondLevelItems[$key]['LINK'] == $APPLICATION->GetCurPage() || strpos($APPLICATION->GetCurPage(), $arSecondLevelItems[$key]['LINK']) !== false)
+            {
+                $arSecondLevelItems[$key]['ACTIVE'] = 'Y';
+            }
+        }
+
+        return $arSecondLevelItems;
     }
 }

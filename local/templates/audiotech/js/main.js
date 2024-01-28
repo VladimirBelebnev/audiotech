@@ -87,23 +87,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     const modals = document.querySelectorAll('.modal-wrap');
-    modals.forEach(modal => {
-        document.addEventListener('click', e => {
-            if (!e.target.closest('.modal') && !e.target.closest('.air-datepicker') && !e.target.classList.contains('air-datepicker-cell')) {
+
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.modal') && !e.target.closest('.air-datepicker') && !e.target.classList.contains('air-datepicker-cell') && !e.target.closest('.register') && !e.target.closest('.entry') && !e.target.closest('.forgot')) {
+            modals.forEach(modal => {
                 modal.classList.remove('active');
-                overlay.classList.remove('active');
-                scrollLock.enablePageScroll();
-                document.querySelector("body").style.overflow = "";
-            }
-        })
-        document.addEventListener('keydown', function (e) {
-            if (e.keyCode == 27) {
+            });
+            overlay.classList.remove('active');
+            scrollLock.enablePageScroll();
+            document.querySelector("body").style.overflow = "";
+            window.location.hash = '';
+        }
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.keyCode == 27) {
+            modals.forEach(modal => {
                 modal.classList.remove('active');
-                overlay.classList.remove('active');
-                document.querySelector('body').style.overflow = "";
-            }
-        });
-    })
+            })
+            overlay.classList.remove('active');
+            document.querySelector('body').style.overflow = "";
+            window.location.hash = '';
+        }
+    });
+
 
     const burgerBtn = document.querySelector(".burger");
     const mainNav = document.querySelector(".main-nav");
@@ -173,6 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const close = modal.querySelector('.close-window');
         if (close) {
             close.addEventListener('click', function () {
+                window.location.hash = '';
                 if (window.innerWidth < 701) {
                     close.closest('.modal-wrap').scrollTo(100, 0);
                 }
@@ -198,6 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
             btn.addEventListener('click', function () {
                 if (btn.classList.contains('active')) {
                     btn.querySelector('span').innerHTML = "Добавить в избранное";
+                    btn.addEventListener('click', deleteFavorite(btn.dataset.id));
                 } else {
                     btn.querySelector('span').innerHTML = "Добавлено в избранное";
                 }
@@ -485,7 +494,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const addToBasket = () => {
-        const basketItemsCountSelectors = document.querySelectorAll('.header-basket__count');
+        const basketItemsCountSelectors = document.querySelectorAll('.header-basket__count.cart');
 
         try {
             const btns = document.querySelectorAll('.card .btn');
@@ -625,7 +634,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('DOMContentLoaded', () => {
     const form = () => {
-        const modalForm = document.querySelectorAll('form.modal');
+        const modalForm = document.querySelectorAll('form.form');
         const emailForm = document.querySelectorAll('.email_form');
         const questionsForm = document.querySelectorAll('.questions-form');
         const modalAccept = document.querySelector('#modalAccept');
@@ -684,3 +693,163 @@ function updateSearchParameterURL(id) {
     window.history.pushState(null, null, url);
     window.location.reload();
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+    const materialsSelect = () => {
+        const selectValues = document.querySelectorAll('.materials .custom-select-option');
+
+        selectValues.forEach(item => {
+            item.addEventListener('click', () => {
+                window.location.href = item.dataset.value;
+            });
+        });
+    };
+
+    try {
+        materialsSelect();
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    const menuLinks = () => {
+        const links = document.querySelectorAll('.main-nav__link--arrow');
+
+        links.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+            });
+        });
+    };
+
+    try {
+       if (window.innerWidth < 1240) {
+           menuLinks();
+       }
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+const addToFavorite = (iProductID) => {
+    const FavoriteItemsCountSelectors = document.querySelectorAll('.header-basket__count.favorite');
+
+    $.ajax({
+        type: 'POST',
+        headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
+        url: '/bitrix/services/main/ajax.php?action=coderoom:main.favorite.add',
+        data: {
+            iProductID: iProductID,
+        },
+        success: function (response) {
+            FavoriteItemsCountSelectors.forEach(favoriteItemsCount => {
+                favoriteItemsCount.style.display = 'flex';
+                favoriteItemsCount.innerHTML = +favoriteItemsCount.innerHTML + 1;
+            });
+        }
+    });
+};
+
+const deleteFavorite = (iProductID) => {
+    $.ajax({
+        type: 'POST',
+        headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
+        url: '/bitrix/services/main/ajax.php?action=coderoom:main.favorite.delete',
+        data: {
+            iProductID: iProductID,
+        },
+        success: function (response) {
+            window.location.reload();
+        }
+    });
+};
+
+const authAndREgForm = () => {
+    const overlay = document.querySelector('#overlay');
+    const modals = document.querySelectorAll('.modal-wrap');
+
+    const regForm = document.querySelector('#modalRegister');
+    const regFormBtn = document.querySelectorAll('.register');
+
+    regFormBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modals.forEach(modal => {
+               modal.classList.remove('active');
+            });
+
+            regForm.classList.add('active');
+            overlay.classList.add('active');
+
+            window.location.hash = '#modalRegister';
+        });
+    });
+
+    const entryForm = document.querySelector('#modalEntry');
+    const entryFormBtn = document.querySelectorAll('.entry');
+
+    entryFormBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modals.forEach(modal => {
+                modal.classList.remove('active');
+            });
+
+            entryForm.classList.add('active');
+            overlay.classList.add('active');
+
+            window.location.hash = '#modalEntry';
+        });
+    });
+
+    const forgotForm = document.querySelector('#modalForgot');
+    const forgotFormBtn = document.querySelectorAll('.forgot');
+
+    forgotFormBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modals.forEach(modal => {
+                modal.classList.remove('active');
+            });
+
+            forgotForm.classList.add('active');
+            overlay.classList.add('active');
+
+            window.location.hash = '#modalForgot';
+        });
+    });
+
+    if (window.location.hash) {
+        document.querySelector(window.location.hash).classList.add('active');
+        overlay.classList.add('active');
+    }
+};
+
+try {
+    authAndREgForm();
+} catch (error) {
+    console.log(error);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+   const personalArea = () => {
+       const form = document.querySelector('.profile');
+
+       form.addEventListener('submit', (event) => {
+           event.preventDefault();
+
+           const formData = new FormData(form);
+           let formValue = {};
+
+           for (let [name, value] of formData) {
+               formValue[name] = value;
+           }
+
+           console.log(formValue);
+       });
+   };
+
+   try {
+       personalArea();
+   } catch (error) {
+       console.log(error);
+   }
+});

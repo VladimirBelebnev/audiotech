@@ -349,10 +349,12 @@ $APPLICATION->IncludeComponent(
     'coderoom:news.slider',
     '.default',
     [
+        'IS_BLOG' => 'Y',
         'TITLE' => 'Блог',
         'SHOW_LINK' => 'Y',
         'ELEMENT_ID' => null
     ]
-); ?>
+);
+?>
 
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

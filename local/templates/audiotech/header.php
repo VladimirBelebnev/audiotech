@@ -4,6 +4,9 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Application;
+use Coderoom\Main\Favorite\listfavorite;
+
+global $USER;
 
 @define("ERROR_404","N");
 
@@ -12,10 +15,14 @@ $countBasketItems = CSaleBasket::GetList(
     [
         'FUSER_ID' => CSaleBasket::GetBasketUserID(),
         'LID' => SITE_ID,
-        'ORDER_ID' => 'NULL'
+        'ORDER_ID' => 'NULL',
+        '!DELAY' => 'Y'
     ],
     []
 );
+
+$obFavoriteList = new ListFavorite;
+$iFavoriteItem = $obFavoriteList->getCount();
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -26,7 +33,7 @@ $countBasketItems = CSaleBasket::GetList(
     Asset::getInstance()->addString("<meta content='ie=edge' http-equiv='x-ua-compatible'>");
     Asset::getInstance()->addString("<meta name='viewport' content='width=device-width,initial-scale=1,min-width=360'>");
     Asset::getInstance()->addString("<link rel='icon' href='/favicon.svg'>");
-    Asset::getInstance()->addString("<script src='https://api-maps.yandex.ru/2.1.79/?lang=ru_RU&amp;amp;apikey=&lt;abd2781c-74db-4a4d-b303-85221a575fd8&gt;'></script>");
+    Asset::getInstance()->addString("<script src='https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=abd2781c-74db-4a4d-b303-85221a575fd8' type='text/javascript'></script>");
 
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/style.min.css");
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/stylesheet.css");
@@ -43,7 +50,6 @@ $countBasketItems = CSaleBasket::GetList(
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/popper.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/viewport-extra.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/tippy-bundle.umd.js");
-    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-map.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/balloon_html-delivery.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery-3.7.1.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/tabs.js");
@@ -148,26 +154,38 @@ $countBasketItems = CSaleBasket::GetList(
                                 RU
                             </div>
                             <a class="main-nav-actions__item header-basket" href="/personal/cart/">
-                                <span class="header-basket__count" <?php echo $countBasketItems == 0 ? 'style="display: none;"' : ''; ?>><?php echo $countBasketItems; ?></span>
+                                <span class="header-basket__count cart" <?php echo $countBasketItems == 0 ? 'style="display: none;"' : ''; ?>><?php echo $countBasketItems; ?></span>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
                                           fill="#131313"/>
                                 </svg>
-                            </a><a class="main-nav-actions__item" href="">
+                            </a><a class="main-nav-actions__item" href="/personal/favorites/">
+                                <span class="header-basket__count favorite" <?php echo $iFavoriteItem == 0 ? 'style="display: none;"' : ''; ?>><?php echo $iFavoriteItem; ?></span>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                           d="M5.39834 4.39558C6.06535 4.12585 6.77943 3.9873 7.50003 3.9873C8.22062 3.9873 8.9347 4.12585 9.60171 4.39558C10.2687 4.66534 10.8764 5.06134 11.3893 5.56214L12 6.15836L12.6107 5.56214C13.6463 4.55111 15.0457 3.98732 16.5 3.98732C17.9543 3.98732 19.3538 4.55111 20.3893 5.56214C21.4257 6.57397 22.0126 7.95154 22.0126 9.39322C22.0126 10.8349 21.4257 12.2125 20.3893 13.2243L12.7073 20.7243C12.314 21.1083 11.6861 21.1083 11.2927 20.7243L3.61072 13.2243C3.09772 12.7235 2.68945 12.1276 2.41046 11.47C2.13143 10.8123 1.98749 10.1066 1.98749 9.39322C1.98749 8.67989 2.13143 7.97414 2.41046 7.31648C2.68945 6.65888 3.09772 6.06297 3.61072 5.56213C4.12366 5.06134 4.7313 4.66534 5.39834 4.39558ZM12 18.5848L5.02534 11.7753C4.7026 11.4603 4.44791 11.0875 4.27461 10.6791C4.10134 10.2706 4.01249 9.83379 4.01249 9.39322C4.01249 8.95265 4.10134 8.5158 4.27461 8.10739C4.44791 7.69892 4.7026 7.32618 5.02533 7.0111C5.34812 6.69596 5.73264 6.44471 6.15753 6.27289C6.58246 6.10104 7.03871 6.0123 7.50003 6.0123C7.96134 6.0123 8.41759 6.10104 8.84252 6.27289C9.26741 6.44471 9.65193 6.69595 9.97471 7.01109L11.2927 8.29786C11.6861 8.68189 12.314 8.68189 12.7073 8.29786L14.0253 7.01109C14.6776 6.37427 15.5673 6.01232 16.5 6.01232C17.4327 6.01232 18.3224 6.37427 18.9747 7.01109C19.6262 7.64711 19.9876 8.50449 19.9876 9.39322C19.9876 10.2819 19.6262 11.1393 18.9747 11.7753L12 18.5848Z"
                                           fill="#131313"/>
                                 </svg>
-                            </a><a class="main-nav-actions__item" href="/personal/">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M18.1 18.6H18.6V18.1V17C18.6 16.7295 18.4457 16.5182 18.3307 16.3909C18.2013 16.2475 18.0306 16.1118 17.8421 15.986C17.4624 15.7325 16.9426 15.4745 16.3437 15.2435C15.1456 14.7814 13.5591 14.4 12 14.4C10.4409 14.4 8.8544 14.7814 7.65632 15.2435C7.05741 15.4745 6.53759 15.7325 6.15785 15.986C5.96945 16.1118 5.79872 16.2475 5.66925 16.3909C5.55427 16.5182 5.4 16.7295 5.4 17V18.1V18.6H5.9H18.1ZM12.995 5.59791C12.6795 5.46725 12.3414 5.4 12 5.4C11.3104 5.4 10.6491 5.67393 10.1615 6.16152C9.67393 6.64912 9.4 7.31044 9.4 8C9.4 8.68956 9.67393 9.35088 10.1615 9.83848C10.6491 10.3261 11.3104 10.6 12 10.6C12.3414 10.6 12.6795 10.5327 12.995 10.4021C13.3104 10.2714 13.597 10.0799 13.8385 9.83848C14.0799 9.59705 14.2714 9.31042 14.4021 8.99498C14.5327 8.67953 14.6 8.34144 14.6 8C14.6 7.65856 14.5327 7.32047 14.4021 7.00502C14.2714 6.68958 14.0799 6.40295 13.8385 6.16152C13.597 5.92009 13.3104 5.72858 12.995 5.59791ZM8.5 8C8.5 6.06614 10.0661 4.5 12 4.5C13.9339 4.5 15.5 6.06614 15.5 8C15.5 9.93386 13.9339 11.5 12 11.5C10.0661 11.5 8.5 9.93386 8.5 8ZM4.5 17C4.5 16.5186 4.73716 16.06 5.21364 15.6202C5.69352 15.1773 6.38208 14.7882 7.18469 14.4666C8.79071 13.8233 10.7275 13.5 12 13.5C13.2725 13.5 15.2093 13.8233 16.8153 14.4666C17.6179 14.7882 18.3065 15.1773 18.7864 15.6202C19.2628 16.06 19.5 16.5186 19.5 17V19C19.5 19.2761 19.2761 19.5 19 19.5H5C4.72386 19.5 4.5 19.2761 4.5 19V17Z"
-                                          fill="#131313" stroke="#131313"/>
-                                </svg>
                             </a>
+                            <?php if ($USER->IsAuthorized()) { ?>
+                                <a class="main-nav-actions__item" href="/personal/">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18.1 18.6H18.6V18.1V17C18.6 16.7295 18.4457 16.5182 18.3307 16.3909C18.2013 16.2475 18.0306 16.1118 17.8421 15.986C17.4624 15.7325 16.9426 15.4745 16.3437 15.2435C15.1456 14.7814 13.5591 14.4 12 14.4C10.4409 14.4 8.8544 14.7814 7.65632 15.2435C7.05741 15.4745 6.53759 15.7325 6.15785 15.986C5.96945 16.1118 5.79872 16.2475 5.66925 16.3909C5.55427 16.5182 5.4 16.7295 5.4 17V18.1V18.6H5.9H18.1ZM12.995 5.59791C12.6795 5.46725 12.3414 5.4 12 5.4C11.3104 5.4 10.6491 5.67393 10.1615 6.16152C9.67393 6.64912 9.4 7.31044 9.4 8C9.4 8.68956 9.67393 9.35088 10.1615 9.83848C10.6491 10.3261 11.3104 10.6 12 10.6C12.3414 10.6 12.6795 10.5327 12.995 10.4021C13.3104 10.2714 13.597 10.0799 13.8385 9.83848C14.0799 9.59705 14.2714 9.31042 14.4021 8.99498C14.5327 8.67953 14.6 8.34144 14.6 8C14.6 7.65856 14.5327 7.32047 14.4021 7.00502C14.2714 6.68958 14.0799 6.40295 13.8385 6.16152C13.597 5.92009 13.3104 5.72858 12.995 5.59791ZM8.5 8C8.5 6.06614 10.0661 4.5 12 4.5C13.9339 4.5 15.5 6.06614 15.5 8C15.5 9.93386 13.9339 11.5 12 11.5C10.0661 11.5 8.5 9.93386 8.5 8ZM4.5 17C4.5 16.5186 4.73716 16.06 5.21364 15.6202C5.69352 15.1773 6.38208 14.7882 7.18469 14.4666C8.79071 13.8233 10.7275 13.5 12 13.5C13.2725 13.5 15.2093 13.8233 16.8153 14.4666C17.6179 14.7882 18.3065 15.1773 18.7864 15.6202C19.2628 16.06 19.5 16.5186 19.5 17V19C19.5 19.2761 19.2761 19.5 19 19.5H5C4.72386 19.5 4.5 19.2761 4.5 19V17Z"
+                                              fill="#131313" stroke="#131313"/>
+                                    </svg>
+                                </a>
+                            <?php } else { ?>
+                                <div class="main-nav-actions__item entry">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18.1 18.6H18.6V18.1V17C18.6 16.7295 18.4457 16.5182 18.3307 16.3909C18.2013 16.2475 18.0306 16.1118 17.8421 15.986C17.4624 15.7325 16.9426 15.4745 16.3437 15.2435C15.1456 14.7814 13.5591 14.4 12 14.4C10.4409 14.4 8.8544 14.7814 7.65632 15.2435C7.05741 15.4745 6.53759 15.7325 6.15785 15.986C5.96945 16.1118 5.79872 16.2475 5.66925 16.3909C5.55427 16.5182 5.4 16.7295 5.4 17V18.1V18.6H5.9H18.1ZM12.995 5.59791C12.6795 5.46725 12.3414 5.4 12 5.4C11.3104 5.4 10.6491 5.67393 10.1615 6.16152C9.67393 6.64912 9.4 7.31044 9.4 8C9.4 8.68956 9.67393 9.35088 10.1615 9.83848C10.6491 10.3261 11.3104 10.6 12 10.6C12.3414 10.6 12.6795 10.5327 12.995 10.4021C13.3104 10.2714 13.597 10.0799 13.8385 9.83848C14.0799 9.59705 14.2714 9.31042 14.4021 8.99498C14.5327 8.67953 14.6 8.34144 14.6 8C14.6 7.65856 14.5327 7.32047 14.4021 7.00502C14.2714 6.68958 14.0799 6.40295 13.8385 6.16152C13.597 5.92009 13.3104 5.72858 12.995 5.59791ZM8.5 8C8.5 6.06614 10.0661 4.5 12 4.5C13.9339 4.5 15.5 6.06614 15.5 8C15.5 9.93386 13.9339 11.5 12 11.5C10.0661 11.5 8.5 9.93386 8.5 8ZM4.5 17C4.5 16.5186 4.73716 16.06 5.21364 15.6202C5.69352 15.1773 6.38208 14.7882 7.18469 14.4666C8.79071 13.8233 10.7275 13.5 12 13.5C13.2725 13.5 15.2093 13.8233 16.8153 14.4666C17.6179 14.7882 18.3065 15.1773 18.7864 15.6202C19.2628 16.06 19.5 16.5186 19.5 17V19C19.5 19.2761 19.2761 19.5 19 19.5H5C4.72386 19.5 4.5 19.2761 4.5 19V17Z"
+                                              fill="#131313" stroke="#131313"/>
+                                    </svg>
+                                </div>
+                            <?php } ?>
                         </div>
                         <div class="main-nav__search main-nav-search">
                             <input type="search" placeholder="Поиск">
@@ -229,7 +247,7 @@ $countBasketItems = CSaleBasket::GetList(
                     <div class="header-bottom__actions">
                         <div class="header-bottom__btn header-basket">
                             <a class="header-basket__wrap" href="/personal/cart/">
-                                <span class="header-basket__count" <?php echo $countBasketItems == 0 ? 'style="display: none;"' : ''; ?>><?php echo $countBasketItems; ?></span>
+                                <span class="header-basket__count cart" <?php echo $countBasketItems == 0 ? 'style="display: none;"' : ''; ?>><?php echo $countBasketItems; ?></span>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
@@ -237,6 +255,7 @@ $countBasketItems = CSaleBasket::GetList(
                                 </svg>
                             </a></div>
                         <a href="/personal/favorites/" class="header-bottom__btn">
+                            <span class="header-basket__count favorite" <?php echo $iFavoriteItem == 0 ? 'style="display: none;"' : ''; ?>><?php echo $iFavoriteItem; ?></span>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -244,9 +263,7 @@ $countBasketItems = CSaleBasket::GetList(
                                       fill="#131313"/>
                             </svg>
                         </a>
-                        <?php
-                            global $USER;
-                            if ($USER->IsAuthorized()) { ?>
+                        <?php if ($USER->IsAuthorized()) { ?>
                                 <div class="header-bottom__btn header-lc">
                                     <div class="header-lc__wrap">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -260,7 +277,7 @@ $countBasketItems = CSaleBasket::GetList(
                                             <ul class="main-nav__submenu-box">
                                                 <li class="main-nav__item"><a class="main-nav__link" href="/personal/offers/">Мои заказы</a>
                                                 </li>
-                                                <li class="main-nav__item"><a class="main-nav__link" href="/personal/">Профиль</a></li>
+                                                <li class="main-nav__item"><a class="main-nav__link <?php if(!$USER->IsAuthorized()) echo 'popup-entry'; ?>" href="/personal/">Профиль</a></li>
                                                 <li class="main-nav__item main-nav__exit"><a class="main-nav__link" href="/?logout=yes&<?php echo bitrix_sessid_get(); ?>">Выйти</a>
                                                 </li>
                                             </ul>
@@ -268,7 +285,7 @@ $countBasketItems = CSaleBasket::GetList(
                                     </div>
                                 </div>
                             <?php } else { ?>
-                                <a href="/personal/" class="header-bottom__btn header-lc">
+                                <div class="header-bottom__btn entry">
                                     <div class="header-lc__wrap">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -276,9 +293,8 @@ $countBasketItems = CSaleBasket::GetList(
                                                   fill="#131313" stroke="#131313"/>
                                         </svg>
                                     </div>
-                                </a>
+                                </div>
                             <?php } ?>
-
                     </div>
                     <div class="header-bottom__mobile"><a href="#" data-target="modal-reg">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"

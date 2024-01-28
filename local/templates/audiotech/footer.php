@@ -27,13 +27,13 @@
                 <div class="footer__col-form footer-form">
                     <form class="footer-form__box email_form">
                         <input type="hidden" name="formName" value="Подписаться на рассылку">
-                        <input name="email" type="email" placeholder="Электронная почта">
+                        <input name="email" type="email" required placeholder="Электронная почта">
                         <div class="footer-form__btn">
                             <button class="btn btn--m btn--red" type="submit">Подписаться</button>
                         </div>
                     </form>
                 </div>
-                <div class="footer__text">Подписываясь, вы даете согласие на обработку персональных данных</div>
+                <div class="footer__text">Подписываясь, вы даете согласие на обработку <a href="/">персональных данных</a></div>
             </div>
         </div>
         <div class="footer__bottom footer__box">
@@ -48,7 +48,7 @@
 
 <div id="overlay"></div>
 <div class="modal-wrap" id="modalReg">
-    <form class="modal modal__reg formValidate">
+    <form class="modal modal__reg formValidate form">
         <input type="hidden" name="formName" value="Запись на приём">
         <button class="close-window close-window--modal" data-close="modal">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -172,7 +172,7 @@
 </div>
 
 <div class="modal-wrap" id="modalCall">
-    <form class="modal modal__call">
+    <form class="modal modal__call form">
         <input type="hidden" name="formName" value="Заказать звонок">
         <button class="close-window close-window--modal" data-close="modal">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -205,6 +205,57 @@
             Отправить заявку
         </button>
     </form>
+</div>
+
+<div class="modal-wrap" id="modalEntry">
+    <?php
+    $APPLICATION->IncludeComponent("bitrix:main.auth.form", "auth", Array(
+        "REGISTER_URL" => "",
+        "FORGOT_PASSWORD_URL" => "",
+        "PROFILE_URL" => "/personal/",
+        "SHOW_ERRORS" => "Y",
+        "COMPONENT_TEMPLATE" => ".default",
+        "AUTH_FORGOT_PASSWORD_URL" => "",	// Страница для восстановления пароля
+        "AUTH_REGISTER_URL" => "",	// Страница для регистрации
+        "AUTH_SUCCESS_URL" => "/personal/",	// Страница после успешной авторизации
+    ),
+        false
+    );
+    ?>
+</div>
+
+<div class="modal-wrap" id="modalForgot">
+    <?php $APPLICATION->IncludeComponent("bitrix:main.auth.forgotpasswd", ".default", Array(), false); ?>
+</div>
+
+<div class="modal-wrap" id="modalRegister">
+    <?php $APPLICATION->IncludeComponent(
+        "bitrix:main.register",
+        ".default",
+        array(
+            "COMPONENT_TEMPLATE" => ".default",
+            "SHOW_FIELDS" => array(
+                0 => "EMAIL",
+                1 => "NAME",
+                2 => "LAST_NAME",
+                3 => "PERSONAL_PHONE",
+            ),
+            "REQUIRED_FIELDS" => array(
+                0 => "EMAIL",
+                1 => "NAME",
+                2 => "LAST_NAME",
+                3 => "PERSONAL_PHONE",
+            ),
+            "AUTH" => "Y",
+            "USE_BACKURL" => "N",
+            "SUCCESS_PAGE" => "/personal/",
+            "SET_TITLE" => "N",
+            "USER_PROPERTY" => array(
+            ),
+            "USER_PROPERTY_NAME" => ""
+        ),
+        false
+    ); ?>
 </div>
 
 <div class="modal-wrap" id="modalAccept">
