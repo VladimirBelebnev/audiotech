@@ -843,7 +843,30 @@ window.addEventListener('DOMContentLoaded', () => {
                formValue[name] = value;
            }
 
-           console.log(formValue);
+           if (formValue['UF_MAIL'] === 'on') {
+               formValue['UF_MAIL'] = 'Y'
+           } else {
+               formValue['UF_MAIL'] = 'N'
+           }
+
+           $.ajax({
+               type: 'POST',
+               url: '/bitrix/services/main/ajax.php?mode=class&c=coderoom:personal&action=send',
+               data: {
+                   CONFIRM_PASSWORD: formValue['CONFIRM_PASSWORD'],
+                   EMAIL: formValue['EMAIL'],
+                   LAST_NAME: formValue['LAST_NAME'],
+                   NAME: formValue['NAME'],
+                   OLD_PASSWORD: formValue['OLD_PASSWORD'],
+                   PASSWORD: formValue['PASSWORD'],
+                   PERSONAL_PHONE: formValue['PERSONAL_PHONE'],
+                   SECOND_NAME: formValue['SECOND_NAME'],
+                   UF_MAIL: formValue['UF_MAIL'],
+               },
+               success: function (response) {
+                   window.location.reload();
+               }
+           });
        });
    };
 

@@ -24,7 +24,7 @@ if (!$USER->IsAuthorized()) LocalRedirect('/');
             <div class="tabs__content">
                 <div class="tabs__pane show">
                     <?php $APPLICATION->IncludeComponent(
-                        'coderoom:personal.area',
+                        'coderoom:personal',
                         '.default',
                         []
                     ); ?>
