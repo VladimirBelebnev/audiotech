@@ -74,22 +74,25 @@ class PersonalComponent extends CBitrixComponent implements Controllerable
             'UF_MAIL' => $UF_MAIL,
         ];
 
-        $isAuthResult = $USER->Login($USER->GetLogin(), $OLD_PASSWORD, 'Y');
-
-        if ($isAuthResult && $PASSWORD == $CONFIRM_PASSWORD)
+        if ($OLD_PASSWORD && $PASSWORD && $CONFIRM_PASSWORD)
         {
-            $arFields['PASSWORD'] = $PASSWORD;
-            $arFields['CONFIRM_PASSWORD'] = $CONFIRM_PASSWORD;
-        } else {
-            return [
-                "result" => "Произошла ошибка. Проверьте правильность введенных данных.",
-            ];
+            $isAuthResult = $USER->Login($USER->GetLogin(), $OLD_PASSWORD, 'Y');
+
+            if ($isAuthResult && $PASSWORD == $CONFIRM_PASSWORD)
+            {
+                $arFields['PASSWORD'] = $PASSWORD;
+                $arFields['CONFIRM_PASSWORD'] = $CONFIRM_PASSWORD;
+            } else {
+                return [
+                    'result' => 'false',
+                ];
+            }
         }
 
         $user->Update($USER->GetId(), $arFields);
 
         return [
-            "result" => "Ваше сообщение принято",
+            'result' => 'true',
         ];
     }
 }

@@ -73,6 +73,7 @@ foreach ($arResult as $iFirstLevelKey => $arFirstLevelLink)
                         </div>
                     </div>
                 <?php } ?>
+                <span class="link__arrow"></span>
             <?php } ?>
         </li>
     <?php } ?>

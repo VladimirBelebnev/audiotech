@@ -108,8 +108,8 @@ $this->setFrameMode(true);
                                     </svg>
                                     Бесплатная диагностика, подбор и настройка
                                 </div>
-                                <button class="btn btn--grey btn--m btn--icn product__btn-favorite product__btn-favorite--mob"
-                                        onclick="addToFavorite(<?php echo $arResult['ID']; ?>)">
+                                <button class="btn btn--grey btn--m btn--icn product__btn-favorite product__btn-favorite--mob <?php if ($arResult['IS_FAVORITE_ITEM'] == 'Y') echo 'active'; ?>"
+                                        onclick="<?php echo $arResult['IS_FAVORITE_ITEM'] == 'Y' ? 'deleteFavorite' : 'addToFavorite'; ?>(<?php echo $arResult['ID']; ?>)">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -249,26 +249,40 @@ $this->setFrameMode(true);
                             </a>
                         </div>
                     <?php } else { ?>
-                        <button class="btn btn--red btn--icn btn--l addInBasket"
-                                data-id="<?php echo $arResult['ID']; ?>" data-quantity="1">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
-                                      fill="white"/>
-                            </svg>
-                            Добавить в корзину
-                        </button>
-                        <div class="counter" data-counter>
-                            <div class="counter__btn counter__btn--minus">
-                                <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-minus.svg"
-                                     alt="увеличить количество товара"></div>
-                            <div class="counter__input counter__input--product">
-                                <input data-id="<?php echo $arResult['ID']; ?>" type="text" disabled value="1">
+                        <?php if ($arResult['IS_CART_ITEM'] !== 'Y') {?>
+                            <button class="btn btn--red btn--icn btn--l addInBasket"
+                                    data-id="<?php echo $arResult['ID']; ?>" data-quantity="1">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
+                                          fill="white"/>
+                                </svg>
+                                Добавить в корзину
+                            </button>
+                            <div class="counter" data-counter>
+                                <div class="counter__btn counter__btn--minus">
+                                    <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-minus.svg"
+                                         alt="увеличить количество товара"></div>
+                                <div class="counter__input counter__input--product">
+                                    <input data-id="<?php echo $arResult['ID']; ?>" type="text" disabled value="1">
+                                </div>
+                                <div class="counter__btn counter__btn--plus"><img
+                                            src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-plus.svg"
+                                            alt="уменьшить количество товара"></div>
                             </div>
-                            <div class="counter__btn counter__btn--plus"><img
-                                        src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-plus.svg"
-                                        alt="уменьшить количество товара"></div>
-                        </div>
+                        <?php } else { ?>
+                            <div class="counter" data-counter style="display: flex;">
+                                <div class="counter__btn counter__btn--minus">
+                                    <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-minus.svg"
+                                         alt="увеличить количество товара"></div>
+                                <div class="counter__input counter__input--product">
+                                    <input data-id="<?php echo $arResult['ID']; ?>" type="text" disabled value="<?php echo $arResult['CART_QUANTITY']; ?>">
+                                </div>
+                                <div class="counter__btn counter__btn--plus"><img
+                                            src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-plus.svg"
+                                            alt="уменьшить количество товара"></div>
+                            </div>
+                        <?php } ?>
                     <?php } ?>
 
                     <div class="product-descr__text">

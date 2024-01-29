@@ -22,8 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
             renderBullet: function (index, className) {
                 return ('<span class="' + className + ' swiper-pagination-bullet--svg-animation"><svg width="20" height="20" viewBox="0 0 28 28"><circle class="svg__circle" cx="14" cy="14" r="12" fill="transparent" stroke-width="2"></circle><circle class="svg__circle-second" cx="14" cy="14" r="7" fill="red" stroke-width=""></circle></svg></span>');
             }
-        }
+        },
     });
+
+    try {
+        document.querySelector('.parallax-bg').style.backgroundImage = document.querySelectorAll('.main-slider .swiper-slide')[mainSlider.activeIndex].style.backgroundImage;
+
+        mainSlider.on('slideChange', function () {
+            document.querySelector('.parallax-bg').style.backgroundImage = document.querySelectorAll('.main-slider .swiper-slide')[mainSlider.activeIndex].style.backgroundImage;
+        });
+    } catch (error) {
+        console.log(error);
+    }
 
     const swiperProductsActual = new Swiper(".actual-slider", {
         slidesPerView: 4,

@@ -271,11 +271,15 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
-    const btnsLink = document.querySelectorAll('.main-nav__link');
-    btnsLink.forEach(item => {
-        item.addEventListener('click', function () {
+    const btnsItem = document.querySelectorAll('.main-nav__item ');
+
+    btnsItem.forEach(item => {
+        const arrow = item.querySelector('.link__arrow');
+        const link = item.querySelector('.main-nav__link');
+
+        arrow?.addEventListener('click', function (event) {
             item.classList.toggle('active');
-            item.nextElementSibling.classList.toggle('active');
+            link.nextElementSibling.classList.toggle('active');
         })
     })
 
@@ -505,23 +509,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     let quantity = btn.dataset.quantity;
 
                     $.ajax({
-                        url: '/ajax/addToBasket.php',
+                        type: 'POST',
+                        headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
+                        url: '/bitrix/services/main/ajax.php?action=coderoom:main.cart.add',
                         data: {
-                            id: id,
-                            quantity: quantity
+                            iProductID: id,
+                            iQuantity: quantity
                         },
-                        method: 'POST',
-                        dataType: 'HTML',
-                        success: function (result) {
-                            if (result === 'ok') {
-                                alert('Товар добавлен в корзину');
-
-                                basketItemsCountSelectors.forEach(basketItemsCount => {
-                                    basketItemsCount.style.display = 'flex';
-                                    basketItemsCount.innerHTML = +basketItemsCount.innerHTML + 1;
-                                });
-                            }
-                        },
+                        success: function (response) {
+                            basketItemsCountSelectors.forEach(basketItemsCount => {
+                                basketItemsCount.style.display = 'flex';
+                                basketItemsCount.innerHTML = +basketItemsCount.innerHTML + 1;
+                            });
+                        }
                     });
                 });
             });
@@ -537,22 +537,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 let quantity = btn.dataset.quantity;
 
                 $.ajax({
-                    url: '/ajax/addToBasket.php',
+                    type: 'POST',
+                    headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
+                    url: '/bitrix/services/main/ajax.php?action=coderoom:main.cart.add',
                     data: {
-                        id: id,
-                        quantity: quantity
+                        iProductID: id,
+                        iQuantity: quantity
                     },
-                    method: 'POST',
-                    dataType: 'HTML',
-                    success: function (result) {
-                        if (result === 'ok') {
-                            alert('Товар добавлен в корзину');
-
-                            basketItemsCountSelectors.forEach(basketItemsCount => {
-                                basketItemsCount.style.display = 'flex';
-                                basketItemsCount.innerHTML = +basketItemsCount.innerHTML + 1;
-                            });
-                        }
+                    success: function (response) {
+                        basketItemsCountSelectors.forEach(basketItemsCount => {
+                            basketItemsCount.style.display = 'flex';
+                            basketItemsCount.innerHTML = +basketItemsCount.innerHTML + 1;
+                        });
                     },
                 });
             });
@@ -572,27 +568,75 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             const btns = document.querySelectorAll('.counter__btn')
-            const counter = document.querySelector('.counter__input--product input');
+            const counter = document.querySelector('.counter__input input');
 
             btns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     let id = counter.dataset.id;
-                    let quantity = counter.value;
-                    let event = btn.classList.contains('counter__btn--plus') ? 1 : -1;
+                    let quantity = +counter.value + (btn.classList.contains('counter__btn--plus') ? 1 : -1);
 
                     $.ajax({
-                        url: '/ajax/addToBasket.php',
+                        type: 'POST',
+                        headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
+                        url: '/bitrix/services/main/ajax.php?action=coderoom:main.cart.add',
                         data: {
-                            id: id,
-                            quantity: quantity,
-                            event: event
+                            iProductID: id,
+                            iQuantity: +quantity,
                         },
-                        method: 'POST',
-                        dataType: 'HTML',
-                        success: function (result) {
-                            if (result === 'ok') {
-                            }
+                        success: function (response) {
+                            basketItemsCountSelectors.forEach(basketItemsCount => {
+                                basketItemsCount.style.display = 'flex';
+                                basketItemsCount.innerHTML = +basketItemsCount.innerHTML + 1;
+                            });
                         },
+                    });
+                });
+            });
+        } catch (error) {
+            console.log(error);
+        }
+
+        try {
+            document.querySelectorAll('.basket__item').forEach(item => {
+                const btns = item.querySelectorAll('.counter__btn')
+                const counter = item.querySelector('.counter__input input');
+
+                btns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        let id = counter.dataset.id;
+                        let quantity = +counter.value + (btn.classList.contains('counter__btn--plus') ? 1 : -1);
+
+                        $.ajax({
+                            type: 'POST',
+                            headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
+                            url: '/bitrix/services/main/ajax.php?action=coderoom:main.cart.add',
+                            data: {
+                                iProductID: id,
+                                iQuantity: +quantity,
+                            },
+                            success: function (response) {
+                                if (document.querySelector('.total-price')) {
+                                    $.ajax({
+                                        type: 'POST',
+                                        headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
+                                        url: '/bitrix/services/main/ajax.php?action=coderoom:main.cart.get',
+                                        data: {},
+                                        success: function (response) {
+                                            document.querySelector('.total-price').innerHTML = response.data + ' ₸';
+                                        },
+                                    });
+
+                                    document.querySelectorAll('.basket__item').forEach(item => {
+                                        item.querySelector('.item-total').innerHTML = (+item.dataset.price * +item.querySelector('.counter__input input').value).toDivide() + ' ₸';
+                                    });
+                                }
+
+                                basketItemsCountSelectors.forEach(basketItemsCount => {
+                                    basketItemsCount.style.display = 'flex';
+                                    basketItemsCount.innerHTML = +basketItemsCount.innerHTML + 1;
+                                });
+                            },
+                        });
                     });
                 });
             });
@@ -707,26 +751,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     try {
         materialsSelect();
-    } catch (error) {
-        console.log(error);
-    }
-});
-
-window.addEventListener('DOMContentLoaded', () => {
-    const menuLinks = () => {
-        const links = document.querySelectorAll('.main-nav__link--arrow');
-
-        links.forEach(link => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-            });
-        });
-    };
-
-    try {
-       if (window.innerWidth < 1240) {
-           menuLinks();
-       }
     } catch (error) {
         console.log(error);
     }
@@ -864,7 +888,12 @@ window.addEventListener('DOMContentLoaded', () => {
                    UF_MAIL: formValue['UF_MAIL'],
                },
                success: function (response) {
-                   window.location.reload();
+                   if (response.data.result === 'false') {
+                       alert('Проверьте правильность введенных данных.');
+                       window.location.reload();
+                   } else {
+                       window.location.reload();
+                   }
                }
            });
        });
@@ -876,3 +905,35 @@ window.addEventListener('DOMContentLoaded', () => {
        console.log(error);
    }
 });
+
+const deleteFromCart = (iProductID) => {
+    $.ajax({
+        type: 'POST',
+        headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
+        url: '/bitrix/services/main/ajax.php?action=coderoom:main.cart.delete',
+        data: {
+            iProductID: iProductID,
+        },
+        success: function (response) {
+            window.location.reload();
+        }
+    });
+};
+
+Number.prototype.toDivide = function() {
+    let int = String(Math.trunc(this));
+    if(int.length <= 3) return int;
+    let space = 0;
+    let number = '';
+
+    for(var i = int.length - 1; i >= 0; i--) {
+        if(space == 3) {
+            number = ' ' + number;
+            space = 0;
+        }
+        number = int.charAt(i) + number;
+        space++;
+    }
+
+    return number;
+}

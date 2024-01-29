@@ -188,7 +188,32 @@ $iFavoriteItem = $obFavoriteList->getCount();
                             <?php } ?>
                         </div>
                         <div class="main-nav__search main-nav-search">
-                            <input type="search" placeholder="Поиск">
+                            <?php
+                            $APPLICATION->IncludeComponent(
+                                "bitrix:search.title",
+                                "search",
+                                array(
+                                    "NUM_CATEGORIES" => "",
+                                    "TOP_COUNT" => "",
+                                    "ORDER" => "date",
+                                    "USE_LANGUAGE_GUESS" => "Y",
+                                    "CHECK_DATES" => "N",
+                                    "SHOW_OTHERS" => "N",
+                                    "PAGE" => "#SITE_DIR#search/",
+                                    "CATEGORY_0_TITLE" => "",
+                                    "CATEGORY_0" => array(
+                                        0 => "iblock_1c_catalog",
+                                    ),
+                                    "COMPONENT_TEMPLATE" => "search",
+                                    "SHOW_INPUT" => "Y",
+                                    "INPUT_ID" => "title-search-input",
+                                    "CONTAINER_ID" => "title-search",
+                                    "CATEGORY_0_iblock_1c_catalog" => array(
+                                        0 => "1",
+                                    )
+                                ),
+                                false
+                            ); ?>
                         </div>
 
                         <?php $APPLICATION->IncludeComponent(
@@ -212,10 +237,6 @@ $iFavoriteItem = $obFavoriteList->getCount();
                         ); ?>
 
                         <div class="header-top__items-btns">
-                            <button class="btn btn--icn btn--red btn--l"><img
-                                        src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/sm-volume-up.svg" alt="">Проверить
-                                слух онлайн
-                            </button>
                             <a href="/centers/" class="btn btn--icn btn--red btn--l">
                                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">

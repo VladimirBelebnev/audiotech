@@ -16,53 +16,52 @@ use Bitrix\Catalog\ProductTable;
 
 $this->setFrameMode(true);
 ?>
-<section class="slider-block">
-    <div class="_container">
-        <h2 class="section-title"><span>Популярные слуховые аппараты</span>
-            <a href="/catalog/" class="btn btn--grey btn--m">Смотреть все</a>
-        </h2>
-        <div class="slider-block__wrap swiper popular-slider pr30">
-            <div class="swiper-wrapper">
+<?php if ($arResult['ITEMS']) { ?>
+    <section class="slider-block">
+        <div class="_container">
+            <h2 class="section-title"><span><?php echo $arParams['TITLE'] ? $arParams['TITLE'] : 'Популярные слуховые аппараты'; ?></span>
+                <?php if ($arParams['HIDE_BTN'] !== 'Y') { ?>
+                    <a href="/catalog/" class="btn btn--grey btn--m">Смотреть все</a>
+                <?php } ?>
+            </h2>
+            <div class="slider-block__wrap swiper popular-slider pr30">
+                <div class="swiper-wrapper">
 
-                <?php foreach ($arResult['ITEMS'] as $arItem) { ?>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <a class="card__pic" href="<?php echo $arItem['DETAIL_PAGE_URL']; ?>">
-                                <img src="<?php echo $arItem['PREVIEW_PICTURE'] ? $arItem['PREVIEW_PICTURE']['SRC'] : SITE_TEMPLATE_PATH . '/images/no-photo.png'; ?>" alt="<?php echo $arItem['NAME']; ?>">
-                            </a>
-                            <span class="card__category">
-                                <?php foreach ($arResult['SECTIONS_NAME'] as $itemID => $sectionName) { ?>
-                                    <?php if ($itemID == $arItem['ID']) { ?>
-                                        <?php echo $sectionName; ?>
+                    <?php foreach ($arResult['ITEMS'] as $arItem) { ?>
+                        <div class="swiper-slide">
+                            <div class="card">
+                                <a class="card__pic" href="<?php echo $arItem['DETAIL_PAGE_URL']; ?>">
+                                    <img src="<?php echo $arItem['PREVIEW_PICTURE'] ? $arItem['PREVIEW_PICTURE']['SRC'] : SITE_TEMPLATE_PATH . '/images/no-photo.png'; ?>" alt="<?php echo $arItem['NAME']; ?>">
+                                </a>
+                                <span class="card__category">
+                                    <?php foreach ($arResult['SECTIONS_NAME'] as $itemID => $sectionName) { ?>
+                                        <?php if ($itemID == $arItem['ID']) { ?>
+                                            <?php echo $sectionName; ?>
+                                        <?php } ?>
                                     <?php } ?>
-                                <?php } ?>
-                            </span><a class="card__name" href="<?php echo $arItem['DETAIL_PAGE_URL']; ?>"><?php echo $arItem['NAME']; ?></a>
-                            <div class="card__footer">
-                                <div class="card__price card__price--actual"><?php echo $arItem['ITEM_PRICES'][0]['PRINT_BASE_PRICE']; ?></div>
-                                <?php if ($arItem['PROPERTIES']['OLD_PRICE']['VALUE'] && $arItem['PROPERTIES']['OLD_PRICE']['VALUE'] > $arItem['ITEM_PRICES'][0]['PRICE']) { ?>
-                                    <div class="product-descr__old-price"><?php echo number_format($arItem['PROPERTIES']['OLD_PRICE']['VALUE'], 0, '', ' '); ?> ₸</div>
+                                </span><a class="card__name" href="<?php echo $arItem['DETAIL_PAGE_URL']; ?>"><?php echo $arItem['NAME']; ?></a>
+                                <div class="card__footer">
+                                    <div class="card__price card__price--actual"><?php echo $arItem['ITEM_PRICES'][0]['PRINT_BASE_PRICE']; ?></div>
+                                    <?php if ($arItem['PROPERTIES']['OLD_PRICE']['VALUE'] && $arItem['PROPERTIES']['OLD_PRICE']['VALUE'] > $arItem['ITEM_PRICES'][0]['PRICE']) { ?>
+                                        <div class="product-descr__old-price"><?php echo number_format($arItem['PROPERTIES']['OLD_PRICE']['VALUE'], 0, '', ' '); ?> ₸</div>
+                                    <?php } ?>
+                                </div>
+                                <?php if ($arParams['SHOW_BUY_BTN'] == 'Y') { ?>
+                                    <button class="btn btn--red btn--icn btn--m" onclick="window.location.reload()"
+                                            data-id="<?php echo $arItem['ID']; ?>" data-quantity="1">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M17 9V8C17 5.2385 14.7615 3 12 3C9.2385 3 7 5.2385 7 8V9H4C3.44772 9 3 9.44772 3 10V18C3 19.6575 4.3425 21 6 21H18C19.6575 21 21 19.6575 21 18V10C21 9.44772 20.5523 9 20 9H17ZM9 8C9 6.34325 10.3433 5 12 5C13.6567 5 15 6.34325 15 8V9H9V8ZM19 18C19 18.5525 18.5525 19 18 19H6C5.4475 19 5 18.5525 5 18V11H19V18Z"
+                                                  fill="white"/>
+                                        </svg>
+                                        В корзину
+                                    </button>
                                 <?php } ?>
                             </div>
                         </div>
-                    </div>
-                <?php } ?>
-
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-navigation">
-                <div class="swiper-button-prev">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11 5L4 12M4 12L11 19M4 12H20" stroke="#131313" stroke-width="2"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <div class="swiper-button-next">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13 5L20 12M20 12L13 19M20 12H4" stroke="#131313" stroke-width="2"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <?php } ?>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+<?php } ?>

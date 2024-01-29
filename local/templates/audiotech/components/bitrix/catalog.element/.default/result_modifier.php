@@ -6,6 +6,7 @@
  */
 
 use Coderoom\Main\Favorite\listfavorite;
+use Coderoom\Main\Cart\ListCart;
 use \Bitrix\Iblock\Elements\ElementCatalogTable;
 
 $component = $this->getComponent();
@@ -139,5 +140,25 @@ foreach ($arFavoriteItemsIDs as $id)
     if ($id == $arResult['ID'])
     {
         $arResult['IS_FAVORITE_ITEM'] = 'Y';
+    }
+}
+
+$obCartList = new ListCart;
+$obCartListItemIDs = $obCartList->getListIDS();
+$arCartItems = $obCartList->getListItems();
+
+foreach ($obCartListItemIDs as $id)
+{
+    if ($id == $arResult['ID'])
+    {
+        $arResult['IS_CART_ITEM'] = 'Y';
+    }
+}
+
+foreach ($arCartItems as $arItem)
+{
+    if ($arItem['PRODUCT_ID'] == $arResult['ID'])
+    {
+        $arResult['CART_QUANTITY'] = number_format($arItem['QUANTITY'], 0,);
     }
 }
