@@ -7,13 +7,13 @@ $aMenuLinks = Array(
         Array(),
         ""
     ),
-    Array(
-        "Специалисты",
-        "/about/specialists/",
-        Array(),
-        Array(),
-        ""
-    ),
+//    Array(
+//        "Специалисты",
+//        "/about/specialists/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
     Array(
         "Новости",
         "/about/news/",
@@ -21,12 +21,12 @@ $aMenuLinks = Array(
         Array(),
         ""
     ),
-    Array(
-        "Лицензии",
-        "/about/license/",
-        Array(),
-        Array(),
-        ""
-    ),
+//    Array(
+//        "Лицензии",
+//        "/about/license/",
+//        Array(),
+//        Array(),
+//        ""
+//    ),
 );
 ?>

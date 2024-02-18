@@ -8,6 +8,7 @@ $this->setFrameMode(true);
  * @global $arResult
  */
 ?>
+
 <div class="map">
     <h2 class="section-title map__title"> <span>Представительства компании</span>
         <!--                                    <div class="select-place">-->
@@ -25,8 +26,8 @@ $this->setFrameMode(true);
                 ymaps.ready(function () {
                     // Создание экземпляра карты и его привязка к созданному контейнеру.
                     var myMap = new ymaps.Map('map-about', {
-                            center: [55.751574, 37.573856],
-                            zoom: 9,
+                            center: [43.261026, 76.945600],
+                            zoom: 15,
                             behaviors: ['default', 'scrollZoom'],
                             controls: [],
                         }),
@@ -155,7 +156,7 @@ $this->setFrameMode(true);
                         ),
 
                         <?php foreach ($arResult['ITEMS'] as $key => $arItem) { ?>
-                        myPlacemark<?php echo $key; ?> = window.myPlacemark = new ymaps.Placemark(<?php echo $arItem['COORDINATES_VALUE']; ?>, {
+                        myPlacemark<?php echo $key; ?> = window.myPlacemark = new ymaps.Placemark(<?php echo $arItem['COORDINATES_VALUE'] ?>, {
                             balloonHeader: '<?php echo $arItem['NAME']; ?>',
                             balloonContent: '<ul><li><span>Адрес</span><span><?php echo $arItem['ADDRESS_VALUE']; ?></span></li><li><span>Время работы</span><span><?php echo $arItem['TIME_VALUE']; ?></span></li><li><span>Телефон</span><span><?php echo $arItem['PHONE_VALUE']; ?></span></li><li><span>Электронная почта</span><span><?php echo $arItem['EMAIL_VALUE']; ?></span></li></ul>'
                         }, {
@@ -180,8 +181,9 @@ $this->setFrameMode(true);
                         });
                         <?php } ?>
 
-                    myMap.geoObjects.add(myPlacemark),
-                        myMap.geoObjects.add(myPlacemark2);
+                    <?php foreach ($arResult['ITEMS'] as $key => $arItem) { ?>
+                        myMap.geoObjects.add(myPlacemark<?php echo $key; ?>);
+                    <?php } ?>
                 });
             });
         } catch (e) {

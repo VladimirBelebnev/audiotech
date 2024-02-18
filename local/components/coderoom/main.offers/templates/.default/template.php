@@ -18,7 +18,11 @@ $this->setFrameMode(true);
                 <p class="offers__text"><?php echo $arItem['PREVIEW_TEXT']; ?></p>
                 <!-- Если ссылка на каталог -->
                 <?php if ($arItem['BTN_ACTION_VALUE'] == 2) { ?>
-                    <a class="btn btn--red btn--m" href="/catalog/"><?php echo $arItem['BTN_TEXT_VALUE']; ?></a>
+                    <a class="btn btn--red btn--m" href="/catalog/aksessuary/"><?php echo $arItem['BTN_TEXT_VALUE']; ?></a>
+                <?php } else if ($arItem['BTN_ACTION_VALUE'] == 27) { ?>
+                    <a class="btn btn--red btn--m" href="/customer/services/"><?php echo $arItem['BTN_TEXT_VALUE']; ?></a>
+                <?php } else if ($arItem['BTN_ACTION_VALUE'] == 28) { ?>
+                    <a class="btn btn--red btn--m" href="https://api.whatsapp.com/send?phone="><?php echo $arItem['BTN_TEXT_VALUE']; ?></a>
                 <?php } else { ?>
                     <!-- Выбор модального окна (3 – запись, 4 – звонок) -->
                     <button class="btn btn--red btn--m" <?php echo $arItem['BTN_ACTION_VALUE'] == 3 ? 'data-target="modal-reg"' : 'data-target="modal-call"';  ?>><?php echo $arItem['BTN_TEXT_VALUE']; ?></button>

@@ -87,7 +87,7 @@ class ListCart
             {
                 if ($arItem['PRODUCT_ID'] == $arItemPicture['ID'])
                 {
-                    $arItems[$key]['PREVIEW_PICTURE'] = $arItemPicture['PREVIEW_PICTURE'] ? CFile::GetPath($arItemPicture['PREVIEW_PICTURE']) : '/local/templates/audiotech/images/no-photo.png';
+                    $arItems[$key]['PREVIEW_PICTURE'] = $arItemPicture['PREVIEW_PICTURE'] ? \CFile::GetPath($arItemPicture['PREVIEW_PICTURE']) : '/local/templates/audiotech/images/no-photo.png';
                 }
             }
 
@@ -120,6 +120,15 @@ class ListCart
     public function deleteByIdProduct(int $iProductID): void
     {
         $arItems = array_column(BasketTable::getList(['filter' => ['PRODUCT_ID' => $iProductID] + $this->arFilter])->fetchAll(), null, 'ID');
+
+        foreach (array_keys($arItems) as $iID) {
+            BasketTable::delete($iID);
+        }
+    }
+
+    public function deleteAllProducts(): void
+    {
+        $arItems = array_column(BasketTable::getList(['filter' => $this->arFilter])->fetchAll(), null, 'ID');
 
         foreach (array_keys($arItems) as $iID) {
             BasketTable::delete($iID);

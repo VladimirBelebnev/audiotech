@@ -37,7 +37,8 @@ class MainSlider extends \CBitrixComponent
                 'PREVIEW_PICTURE',
                 'LINK_' => 'LINK',
                 'SUBTITLE_' => 'SUBTITLE',
-                'BTN_TEXT_' => 'BTN_TEXT'
+                'BTN_TEXT_' => 'BTN_TEXT',
+                'BANNER_MOBILE_' => 'BANNER_MOBILE'
             ],
         ])->fetchAll();
     }

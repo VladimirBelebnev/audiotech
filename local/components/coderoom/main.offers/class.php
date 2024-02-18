@@ -31,6 +31,9 @@ class MainOffers extends \CBitrixComponent
     private function getItems ()
     {
         return ElementOffersTable::getList([
+            'order' => [
+                'SORT' => 'ASC'
+            ],
             'select' => [
                 'ID',
                 'NAME',

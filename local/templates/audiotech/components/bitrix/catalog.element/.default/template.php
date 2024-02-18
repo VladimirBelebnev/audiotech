@@ -24,7 +24,8 @@ $this->setFrameMode(true);
                     <?php echo $arResult['NAME']; ?>
                 </h1>
                 <button class="btn btn--grey btn--m btn--icn btn-favorite product__btn-favorite <?php if ($arResult['IS_FAVORITE_ITEM'] == 'Y') echo 'active'; ?>"
-                        onclick="<?php echo $arResult['IS_FAVORITE_ITEM'] == 'Y' ? 'deleteFavorite' : 'addToFavorite'; ?>(<?php echo $arResult['ID']; ?>)" data-id="<?php echo $arResult['ID']; ?>">
+                        onclick="<?php echo $arResult['IS_FAVORITE_ITEM'] == 'Y' ? 'deleteFavorite' : 'addToFavorite'; ?>(<?php echo $arResult['ID']; ?>)"
+                        data-id="<?php echo $arResult['ID']; ?>">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                               d="M3.80625 6.2064C4.70639 5.30653 5.92707 4.80102 7.19985 4.80102C8.47264 4.80102 9.69332 5.30653 10.5935 6.2064L11.9999 7.6116L13.4063 6.2064C13.849 5.74795 14.3787 5.38227 14.9643 5.13071C15.5499 4.87915 16.1798 4.74673 16.8171 4.74119C17.4545 4.73566 18.0865 4.8571 18.6764 5.09845C19.2663 5.3398 19.8023 5.69621 20.253 6.1469C20.7036 6.59758 21.0601 7.13351 21.3014 7.72342C21.5427 8.31332 21.6642 8.94538 21.6587 9.58272C21.6531 10.2201 21.5207 10.8499 21.2691 11.4355C21.0176 12.0212 20.6519 12.5508 20.1935 12.9936L11.9999 21.1884L3.80625 12.9936C2.90639 12.0935 2.40088 10.8728 2.40088 9.6C2.40088 8.32721 2.90639 7.10653 3.80625 6.2064Z"
@@ -108,15 +109,16 @@ $this->setFrameMode(true);
                                     </svg>
                                     Бесплатная диагностика, подбор и настройка
                                 </div>
-                                <button class="btn btn--grey btn--m btn--icn product__btn-favorite product__btn-favorite--mob <?php if ($arResult['IS_FAVORITE_ITEM'] == 'Y') echo 'active'; ?>"
-                                        onclick="<?php echo $arResult['IS_FAVORITE_ITEM'] == 'Y' ? 'deleteFavorite' : 'addToFavorite'; ?>(<?php echo $arResult['ID']; ?>)">
+                                <button class="btn btn--grey btn--m btn--icn btn-favorite product__btn-favorite product__btn-favorite--mob <?php if ($arResult['IS_FAVORITE_ITEM'] == 'Y') echo 'active'; ?>"
+                                        onclick="<?php echo $arResult['IS_FAVORITE_ITEM'] == 'Y' ? 'deleteFavorite' : 'addToFavorite'; ?>(<?php echo $arResult['ID']; ?>)"
+                                        data-id="<?php echo $arResult['ID']; ?>">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                               d="M5.39816 4.39574C6.06517 4.126 6.77925 3.98746 7.49984 3.98746C8.22044 3.98746 8.93452 4.126 9.60152 4.39574C10.2686 4.66549 10.8762 5.06149 11.3892 5.56229L11.9998 6.15851L12.6105 5.56229C13.6461 4.55126 15.0456 3.98747 16.4998 3.98747C17.9541 3.98747 19.3536 4.55126 20.3892 5.56229C21.4255 6.57412 22.0124 7.9517 22.0124 9.39337C22.0124 10.835 21.4255 12.2126 20.3892 13.2245L12.7072 20.7244C12.3138 21.1085 11.6859 21.1085 11.2925 20.7244L3.61054 13.2245C3.09754 12.7236 2.68927 12.1277 2.41027 11.4701C2.13125 10.8125 1.9873 10.1067 1.9873 9.39337C1.9873 8.68004 2.13125 7.97429 2.41027 7.31663C2.68927 6.65903 3.09753 6.06313 3.61054 5.56228C4.12348 5.06149 4.73112 4.66549 5.39816 4.39574ZM11.9998 18.5849L5.02515 11.7755C4.70242 11.4604 4.44773 11.0877 4.27443 10.6792C4.10116 10.2708 4.0123 9.83394 4.0123 9.39337C4.0123 8.9528 4.10116 8.51595 4.27443 8.10754C4.44773 7.69908 4.70241 7.32633 5.02515 7.01125C5.34793 6.69611 5.73246 6.44487 6.15735 6.27304C6.58228 6.1012 7.03853 6.01246 7.49984 6.01246C7.96116 6.01246 8.41741 6.1012 8.84234 6.27304C9.26723 6.44487 9.65174 6.6961 9.97453 7.01124L11.2925 8.29802C11.6859 8.68205 12.3138 8.68205 12.7072 8.29802L14.0252 7.01124C14.6774 6.37442 15.5672 6.01247 16.4998 6.01247C17.4325 6.01247 18.3223 6.37442 18.9745 7.01124C19.626 7.64726 19.9874 8.50464 19.9874 9.39337C19.9874 10.2821 19.626 11.1395 18.9745 11.7755L11.9998 18.5849Z"
                                               fill="#131313"/>
                                     </svg>
-                                    <span>Добавить в избранное</span></button>
+                                    <span><?php echo $arResult['IS_FAVORITE_ITEM'] == 'Y' ? 'Добавлено в избранное' : 'Добавить в избранное'; ?></span></button>
                             </div>
                         </div>
                     </div>
@@ -249,7 +251,7 @@ $this->setFrameMode(true);
                             </a>
                         </div>
                     <?php } else { ?>
-                        <?php if ($arResult['IS_CART_ITEM'] !== 'Y') {?>
+                        <?php if ($arResult['IS_CART_ITEM'] !== 'Y') { ?>
                             <button class="btn btn--red btn--icn btn--l addInBasket"
                                     data-id="<?php echo $arResult['ID']; ?>" data-quantity="1">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -276,7 +278,8 @@ $this->setFrameMode(true);
                                     <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-minus.svg"
                                          alt="увеличить количество товара"></div>
                                 <div class="counter__input counter__input--product">
-                                    <input data-id="<?php echo $arResult['ID']; ?>" type="text" disabled value="<?php echo $arResult['CART_QUANTITY']; ?>">
+                                    <input data-id="<?php echo $arResult['ID']; ?>" type="text" disabled
+                                           value="<?php echo $arResult['CART_QUANTITY']; ?>">
                                 </div>
                                 <div class="counter__btn counter__btn--plus"><img
                                             src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-plus.svg"
@@ -287,21 +290,7 @@ $this->setFrameMode(true);
 
                     <div class="product-descr__text">
                         <?php echo $arResult['PREVIEW_TEXT']; ?>
-                        <ul class="product-descr__list">
-                            <?php if ($arResult['PROPERTIES']['BREND']['VALUE_ENUM']) { ?>
-                                <li class="product-descr__item">
-                                    Производитель <?php echo $arResult['PROPERTIES']['BREND']['VALUE_ENUM']; ?></li>
-                            <?php } ?>
-                            <?php if ($arResult['PROPERTIES']['TIP_KORPUSA']['VALUE_ENUM']) { ?>
-                                <li class="product-descr__item"><?php echo $arResult['PROPERTIES']['TIP_KORPUSA']['VALUE_ENUM']; ?></li>
-                            <?php } ?>
-                            <?php if ($arResult['PROPERTIES']['STEPEN_POTERI_SLUKHA']['VALUE_ENUM']) { ?>
-                                <li class="product-descr__item"><?php echo $arResult['PROPERTIES']['STEPEN_POTERI_SLUKHA']['VALUE_ENUM']; ?></li>
-                            <?php } ?>
-                            <?php if ($arResult['PROPERTIES']['MOSHCHNOST']['VALUE_ENUM']) { ?>
-                                <li class="product-descr__item"><?php echo $arResult['PROPERTIES']['MOSHCHNOST']['VALUE_ENUM']; ?></li>
-                            <?php } ?>
-                        </ul>
+                        <?php echo !empty($arResult['PROPERTIES']['SHORT_DESCR']['VALUE']['TEXT']) ? html_entity_decode($arResult['PROPERTIES']['SHORT_DESCR']['VALUE']['TEXT']) : ''; ?>
                     </div>
                 </div>
             </div>
@@ -369,10 +358,10 @@ $this->setFrameMode(true);
                             <div class="tabs__pane-box">
                                 <h2 class="section-title">Описание </h2>
                                 <div class="tabs__par">
-                                    <p class="hidden-text"><?php echo $arResult['DETAIL_TEXT'] ? $arResult['DETAIL_TEXT'] : 'Описание не добавлено.'; ?></p>
-                                    <?php if ($arResult['DETAIL_TEXT']) { ?>
-                                        <a class="tabs__par-show show-text">Показать все</a>
-                                    <?php } ?>
+                                    <p><?php echo $arResult['DETAIL_TEXT'] ? $arResult['DETAIL_TEXT'] : 'Описание не добавлено.'; ?></p>
+                                    <!--                                    --><?php //if ($arResult['DETAIL_TEXT']) { ?>
+                                    <!--                                        <a class="tabs__par-show show-text">Показать все</a>-->
+                                    <!--                                    --><?php //} ?>
                                 </div>
                             </div>
 
@@ -380,27 +369,45 @@ $this->setFrameMode(true);
                                 <div class="tabs__pane-box">
                                     <h2 class="section-title">Ситуации</h2>
                                     <ul class="tabs__pane-list">
-                                        <li class="tabs__pane-item">
-                                            <div class="tabs__pane-item__pic">
-                                                <?php if ($arResult['PROPERTIES']['AKUSTICHESKIE_SITUATSII']['VALUE'] == 'просмотр ТВ') { ?>
-                                                    <div class="tabs__pane-item__pic"><img
-                                                                src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-tv.svg"
-                                                                alt="просмотр ТВ"></div>
-                                                <?php } else if ($arResult['PROPERTIES']['AKUSTICHESKIE_SITUATSII']['VALUE'] == 'транспорт') { ?>
-                                                    <div class="tabs__pane-item__pic"><img
-                                                                src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-transport.svg"
-                                                                alt="транспорт"></div>
-                                                <?php } else if ($arResult['PROPERTIES']['AKUSTICHESKIE_SITUATSII']['VALUE'] == 'музыка') { ?>
-                                                    <div class="tabs__pane-item__pic"><img
-                                                                src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-transport.svg"
-                                                                alt="музыка"></div>
-                                                <?php } else { ?>
-                                                    <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/work.svg"
-                                                         alt="Работа">
-                                                <?php } ?>
-                                            </div>
-                                            <?php echo $arResult['PROPERTIES']['AKUSTICHESKIE_SITUATSII']['VALUE']; ?>
-                                        </li>
+                                        <?php foreach ($arResult['PROPERTIES']['AKUSTICHESKIE_SITUATSII']['VALUE'] as $value) { ?>
+                                            <li class="tabs__pane-item">
+                                                <div class="tabs__pane-item__pic">
+                                                    <?php if ($value == 'просмотр ТВ') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-tv.svg"
+                                                                    alt="просмотр ТВ"></div>
+                                                    <?php } else if ($value == 'транспорт') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-transport.svg"
+                                                                    alt="транспорт"></div>
+                                                    <?php } else if ($value == 'музыка') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/md-transport.svg"
+                                                                    alt="музыка"></div>
+                                                    <?php } else if ($value == 'разговоры дома') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/разговоры дома.svg"
+                                                                    alt="транспорт"></div>
+                                                    <?php } else if ($value == 'телефонный или видеозвонок') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/телефонный или видеозвонок.svg"
+                                                                    alt="музыка"></div>
+                                                    <?php } else if ($value == 'прием у врача') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/прием у врача.svg"
+                                                                    alt="транспорт"></div>
+                                                    <?php } else if ($value == 'посещение ресторана') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/посещение ресторана.svg"
+                                                                    alt="музыка"></div>
+                                                    <?php } else { ?>
+                                                        <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/work.svg"
+                                                             alt="Работа">
+                                                    <?php } ?>
+                                                </div>
+                                                <?php echo $value?>
+                                            </li>
+                                        <?php } ?>
                                     </ul>
                                 </div>
                             <?php } ?>
@@ -416,9 +423,7 @@ $this->setFrameMode(true);
                                             <?php foreach ($arResult['PROPERTIES']['CML2_ATTRIBUTES']['VALUE'] as $iValueKey => $sValue) { ?>
                                                 <?php foreach ($arResult['PROPERTIES']['CML2_ATTRIBUTES']['DESCRIPTION'] as $iDescriptionKey => $sDescription) { ?>
                                                     <?php if ($iValueKey == $iDescriptionKey) { ?>
-                                                        <li><?php echo $sValue; ?><?php echo $sDescription ? " – $sDescription" : ''; ?>
-                                                            ;
-                                                        </li>
+                                                        <li><?php echo $sValue; ?><?php echo $sDescription ? "– $sDescription" : ''; ?>;</li>
                                                     <?php } ?>
                                                 <?php } ?>
                                             <?php } ?>
@@ -426,8 +431,10 @@ $this->setFrameMode(true);
                                     <?php } ?>
                                     <?php if ($arResult['PROPERTIES']['AUDIOGRAM']['VALUE']) { ?>
                                         <h2 class="section-title">Аудиограмма</h2>
-                                        <img src="<?php echo CFile::GetPath($arResult['PROPERTIES']['AUDIOGRAM']['VALUE']); ?>"
-                                             alt="Аудиограмма">
+                                        <?php foreach ($arResult['PROPERTIES']['AUDIOGRAM']['VALUE'] as $iID) { ?>
+                                            <img src="<?php echo \CFile::GetPath($iID); ?>"
+                                                 alt="Аудиограмма">
+                                        <?php } ?>
                                     <?php } ?>
                                 </div>
 
@@ -435,7 +442,6 @@ $this->setFrameMode(true);
                                     <div class="tabs__pane-box">
                                         <h2 class="section-title">Спецификации</h2>
                                         <ul class="tabs__pane-list">
-
                                             <?php foreach ($arResult['FILES'] as $arFile) { ?>
                                                 <?php $format = substr($arFile['SRC'], strripos($arFile['SRC'], '.') + 1); ?>
                                                 <li class="tabs__pane-item">
@@ -445,12 +451,11 @@ $this->setFrameMode(true);
                                                             <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/pdf.svg"
                                                                  alt=""></div>
                                                         <div>
-                                                            <span class="tabs__pane-link-name"><?php echo $arFile['ORIGINAL_NAME']; ?></span><span>(<?php echo strtoupper($format); ?>, <?php echo CFile::FormatSize($arFile['ID']); ?>)</span>
+                                                            <span class="tabs__pane-link-name"><?php echo $arFile['ORIGINAL_NAME']; ?></span><span>(<?php echo strtoupper($format); ?>, <?php echo \CFile::FormatSize($arFile['FILE_SIZE']); ?>)</span>
                                                         </div>
                                                     </a>
                                                 </li>
                                             <?php } ?>
-
                                         </ul>
                                     </div>
                                 <?php } ?>
@@ -466,7 +471,7 @@ $this->setFrameMode(true);
                                 <?php foreach ($arResult['ADD_ELEMENTS'] as $arItem) { ?>
                                     <div class="card">
                                         <a class="card__pic" href="<?php echo $arItem['DETAIL_PAGE_URL']; ?>">
-                                            <img src="<?php echo $arItem['PREVIEW_PICTURE'] ? $arItem['PREVIEW_PICTURE']['SRC'] : SITE_TEMPLATE_PATH . '/images/no-photo.png'; ?>"
+                                            <img src="<?php echo $arItem['PREVIEW_PICTURE'] ? \CFile::GetPath($arItem['PREVIEW_PICTURE']) : SITE_TEMPLATE_PATH . '/images/no-photo.png'; ?>"
                                                  alt="<?php echo $arItem['NAME']; ?>">
                                         </a>
                                         <span class="card__category"><?php echo $arItem['SECTION']; ?></span>

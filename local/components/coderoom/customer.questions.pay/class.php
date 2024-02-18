@@ -6,6 +6,7 @@ use \Bitrix\Iblock\Elements\ElementQuestionsTable;
 class CustomerQuestionsPay extends \CBitrixComponent
 {
     private $iPaySectionID = 22;
+    private array $arElement = [248, 249, 250, 251];
     private $iCacheTime = 3600000;
     private $sCacheId = 'CustomerQuestionsPay';
     private $sCachePath = 'CustomerQuestionsPay/';
@@ -38,6 +39,7 @@ class CustomerQuestionsPay extends \CBitrixComponent
                 'PREVIEW_TEXT',
             ],
             'filter' => [
+                '=ID' => $this->arElement,
                 '=IBLOCK_SECTION_ID' => $this->iPaySectionID,
             ]
         ])->fetchAll();

@@ -25,6 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
+    if (window.innerWidth < 700)
+    {
+        document.querySelectorAll('.main-slider .swiper-slide').forEach(item => {
+            item.style.backgroundImage = `url(${item.dataset.mobile})`;
+        });
+    }
+
     try {
         document.querySelector('.parallax-bg').style.backgroundImage = document.querySelectorAll('.main-slider .swiper-slide')[mainSlider.activeIndex].style.backgroundImage;
 

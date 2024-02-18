@@ -5,8 +5,8 @@
  * @var CatalogElementComponent $component
  */
 
-use Coderoom\Main\Favorite\listfavorite;
-use Coderoom\Main\Cart\ListCart;
+use \Coderoom\Main\Favorite\listfavorite;
+use \Coderoom\Main\Cart\ListCart;
 use \Bitrix\Iblock\Elements\ElementCatalogTable;
 
 $component = $this->getComponent();

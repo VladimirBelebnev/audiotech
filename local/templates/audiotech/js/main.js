@@ -41,6 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    new AirDatepicker('#airpicker4', {
+        onSelect: function (dateText, inst) {
+            showTimes();
+        }
+    });
+
     new AirDatepicker('#airpicker3', {
         onSelect: function (dateText, inst) {
             showTimes();
@@ -230,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         --value;
                     }
                     if (value <= 0) {
-                        value = 1;
+                        value = 0;
                         target.closest('.counter').querySelector('.counter__btn--minus').classList.add('disabled');
                     } else {
                         target.closest('.counter').querySelector('.counter__btn--minus').classList.remove('disabled');
@@ -497,6 +503,9 @@ document.addEventListener("DOMContentLoaded", function () {
         myFancy();
     }
 
+    let isAdd = false;
+    let prevValue = 0;
+
     const addToBasket = () => {
         const basketItemsCountSelectors = document.querySelectorAll('.header-basket__count.cart');
 
@@ -521,6 +530,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 basketItemsCount.style.display = 'flex';
                                 basketItemsCount.innerHTML = +basketItemsCount.innerHTML + 1;
                             });
+
+                            if (btn?.dataset.reload === 'true') window.location.reload();
                         }
                     });
                 });
@@ -585,8 +596,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         },
                         success: function (response) {
                             basketItemsCountSelectors.forEach(basketItemsCount => {
+                                if (!btn.classList.contains('counter__btn--plus') && +counter.value == 0) deleteFromCart(id);
                                 basketItemsCount.style.display = 'flex';
-                                basketItemsCount.innerHTML = +basketItemsCount.innerHTML + 1;
+                                if (!isAdd) {
+                                    basketItemsCount.innerHTML = +basketItemsCount.innerHTML + (btn.classList.contains('counter__btn--plus') ? 1 : -1);
+                                }
+                                isAdd = true;
+                                prevValue = counter.value;
                             });
                         },
                     });
@@ -799,7 +815,7 @@ const authAndREgForm = () => {
     regFormBtn.forEach(btn => {
         btn.addEventListener('click', () => {
             modals.forEach(modal => {
-               modal.classList.remove('active');
+                modal.classList.remove('active');
             });
 
             regForm.classList.add('active');
@@ -854,56 +870,56 @@ try {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-   const personalArea = () => {
-       const form = document.querySelector('.profile');
+    const personalArea = () => {
+        const form = document.querySelector('.profile');
 
-       form.addEventListener('submit', (event) => {
-           event.preventDefault();
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
 
-           const formData = new FormData(form);
-           let formValue = {};
+            const formData = new FormData(form);
+            let formValue = {};
 
-           for (let [name, value] of formData) {
-               formValue[name] = value;
-           }
+            for (let [name, value] of formData) {
+                formValue[name] = value;
+            }
 
-           if (formValue['UF_MAIL'] === 'on') {
-               formValue['UF_MAIL'] = 'Y'
-           } else {
-               formValue['UF_MAIL'] = 'N'
-           }
+            if (formValue['UF_MAIL'] === 'on') {
+                formValue['UF_MAIL'] = 'Y'
+            } else {
+                formValue['UF_MAIL'] = 'N'
+            }
 
-           $.ajax({
-               type: 'POST',
-               url: '/bitrix/services/main/ajax.php?mode=class&c=coderoom:personal&action=send',
-               data: {
-                   CONFIRM_PASSWORD: formValue['CONFIRM_PASSWORD'],
-                   EMAIL: formValue['EMAIL'],
-                   LAST_NAME: formValue['LAST_NAME'],
-                   NAME: formValue['NAME'],
-                   OLD_PASSWORD: formValue['OLD_PASSWORD'],
-                   PASSWORD: formValue['PASSWORD'],
-                   PERSONAL_PHONE: formValue['PERSONAL_PHONE'],
-                   SECOND_NAME: formValue['SECOND_NAME'],
-                   UF_MAIL: formValue['UF_MAIL'],
-               },
-               success: function (response) {
-                   if (response.data.result === 'false') {
-                       alert('Проверьте правильность введенных данных.');
-                       window.location.reload();
-                   } else {
-                       window.location.reload();
-                   }
-               }
-           });
-       });
-   };
+            $.ajax({
+                type: 'POST',
+                url: '/bitrix/services/main/ajax.php?mode=class&c=coderoom:personal&action=send',
+                data: {
+                    CONFIRM_PASSWORD: formValue['CONFIRM_PASSWORD'],
+                    EMAIL: formValue['EMAIL'],
+                    LAST_NAME: formValue['LAST_NAME'],
+                    NAME: formValue['NAME'],
+                    OLD_PASSWORD: formValue['OLD_PASSWORD'],
+                    PASSWORD: formValue['PASSWORD'],
+                    PERSONAL_PHONE: formValue['PERSONAL_PHONE'],
+                    SECOND_NAME: formValue['SECOND_NAME'],
+                    UF_MAIL: formValue['UF_MAIL'],
+                },
+                success: function (response) {
+                    if (response.data.result === 'false') {
+                        alert('Проверьте правильность введенных данных.');
+                        window.location.reload();
+                    } else {
+                        window.location.reload();
+                    }
+                }
+            });
+        });
+    };
 
-   try {
-       personalArea();
-   } catch (error) {
-       console.log(error);
-   }
+    try {
+        personalArea();
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 const deleteFromCart = (iProductID) => {
@@ -920,14 +936,14 @@ const deleteFromCart = (iProductID) => {
     });
 };
 
-Number.prototype.toDivide = function() {
+Number.prototype.toDivide = function () {
     let int = String(Math.trunc(this));
-    if(int.length <= 3) return int;
+    if (int.length <= 3) return int;
     let space = 0;
     let number = '';
 
-    for(var i = int.length - 1; i >= 0; i--) {
-        if(space == 3) {
+    for (var i = int.length - 1; i >= 0; i--) {
+        if (space == 3) {
             number = ' ' + number;
             space = 0;
         }
@@ -937,3 +953,172 @@ Number.prototype.toDivide = function() {
 
     return number;
 }
+
+try {
+    document.querySelectorAll('.order__methods').forEach(method => {
+        method.querySelectorAll('.radio').forEach(item => {
+            item.addEventListener('change', () => {
+                method.querySelectorAll('.radio').forEach(x => {
+                    x.parentNode.classList.remove('active');
+                });
+
+                if (item.checked) {
+                    item.parentNode.classList.add('active');
+                }
+            });
+        });
+    });
+} catch (error) {
+    console.log(error);
+}
+
+const orderFunc = () => {
+    const orderBtn = document.querySelector('.order-btn');
+
+    orderBtn.addEventListener('click', () => {
+        const orderLastName = document.querySelector('[name="LAST_NAME"]');
+        const orderFirstName = document.querySelector('[name="NAME"]');
+        const orderSecondName = document.querySelector('[name="SECOND_NAME"]');
+        const orderPhone = document.querySelector('[name="PERSONAL_PHONE"]');
+        const orderMail = document.querySelector('[name="EMAIL"]');
+        const orderPrivacy = document.querySelector('#order-privacy');
+        const orderConditions = document.querySelector('#order-conditions');
+        const orderCity = document.querySelector('.bx-ui-sls-fake');
+        const orderStreet = document.querySelector('[name="STREET"]');
+        const orderHouse = document.querySelector('[name="HOUSE"]');
+        const orderFlat = document.querySelector('[name="FLAT"]');
+        const orderDate = document.querySelector('#airpicker4');
+        const orderPay = document.querySelectorAll('[name="PAY"]');
+        const orderDelivery = document.querySelectorAll('[name="DELIVERY"]');
+        const orderWarning = document.querySelector('.order__red');
+        const orderMessage = document.querySelector('[name="MESSAGE"]');
+
+        let courier = 2;
+        let courierFlag = false;
+        let delivery;
+        let pay;
+
+        let street;
+        let house;
+        let flat;
+        let date;
+
+        orderWarning.style.display = 'none';
+
+        if (orderLastName.value != '' && orderFirstName != '' && orderPhone != '' && orderMail != '' && orderPrivacy.checked && orderConditions.checked && orderCity != '') {
+
+            orderDelivery.forEach(deliveryItem => {
+                let goNext = true;
+
+                if (deliveryItem.checked) {
+                    delivery = deliveryItem.id
+
+                    if (`delivery_${courier}` == delivery) {
+                        street = orderStreet.value;
+                        house = orderHouse.value;
+                        flat = orderFlat.value;
+                        date = orderDate.value;
+
+                        courierFlag = true;
+                    }
+
+                    if (courierFlag) {
+                        if (!street && !house && !date) {
+                            orderWarning.style.display = 'block';
+
+                            setTimeout(() => {
+                                orderWarning.style.display = 'none';
+                            }, 7000);
+
+                            goNext = false;
+                        }
+                    }
+
+                    if (goNext) {
+                        orderPay.forEach(payItem => {
+                            if (payItem.checked) {
+                                pay = payItem.id
+
+                                let object = {
+                                    'NAME': `${orderLastName.value} ${orderFirstName.value}${orderSecondName.value ? ' ' + orderSecondName.value : ''}`,
+                                    'PHONE': orderPhone.value,
+                                    'EMAIL': orderMail.value,
+                                    'CITY': orderCity.value,
+                                    'DELIVERY': delivery.replace('delivery_', ''),
+                                    'PAY': pay.replace('pay_', ''),
+                                    'LOCATION': street && house ? (`г. ${orderCity.value}, ул. ${street}, д. ${house}${flat ? ', кв. ' + flat : ''}`) : '',
+                                    'DATE': date,
+                                    'MESSAGE': orderMessage.value,
+                                };
+
+                                $.ajax({
+                                    type: 'POST',
+                                    headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
+                                    url: '/bitrix/services/main/ajax.php?action=coderoom:main.order.create',
+                                    data: {
+                                        array: object,
+                                    },
+                                    success: function (res) {
+                                        console.log(res)
+                                        if (res.data == 'ok') {
+                                            window.location = '/';
+                                        }
+                                    }
+                                });
+                            }
+                        })
+                    } else {
+                        orderWarning.style.display = 'block';
+
+                        setTimeout(() => {
+                            orderWarning.style.display = 'none';
+                        }, 7000);
+                    }
+                }
+            });
+        } else {
+            orderWarning.style.display = 'block';
+
+            setTimeout(() => {
+                orderWarning.style.display = 'none';
+            }, 7000);
+        }
+    });
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+    orderFunc();
+});
+
+const onChangeDelivery = () => {
+    const btns = document.querySelectorAll('.order__methods.delivery .radio');
+    const courierTitle = document.querySelector('.order__title-delivery.courier');
+    const courierStreet = document.querySelector('.order__street.courier');
+    const courierList = document.querySelector('.profile__list.courier');
+    const popover = document.querySelector('.order__popover');
+    const map = document.querySelector('.map');
+
+    let courier = 2;
+    let pickup = 3;
+    let derivation = 4;
+
+    btns.forEach(btn => {
+        btn.addEventListener('change', () => {
+            courierTitle.classList.add('hidden');
+            courierStreet.classList.add('hidden');
+            courierList.classList.add('hidden');
+            popover.classList.add('hidden');
+            map.classList.add('hidden');
+
+            if (`delivery_${courier}` == btn.id) {
+                courierTitle.classList.remove('hidden');
+                courierStreet.classList.remove('hidden');
+                courierList.classList.remove('hidden');
+            } else if (`delivery_${pickup}` == btn.id) {
+                popover.classList.remove('hidden');
+            } else if (`delivery_${derivation}` == btn.id) {
+                map.classList.remove('hidden');
+            }
+        });
+    });
+};

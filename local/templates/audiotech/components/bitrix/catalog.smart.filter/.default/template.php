@@ -1,6 +1,6 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-$clearFilterPath = preg_replace('/(filter.+)/', '', $APPLICATION->GetCurPageParam());
+$clearFilterPath = preg_replace('/(filter.+)/', '', $arResult['SEF_DEL_FILTER_URL']);
 
 /** @var $arResult array */
 

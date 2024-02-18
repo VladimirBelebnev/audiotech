@@ -255,3 +255,9 @@ $dateCreate = CIBlockFormatProperties::DateFormat(
         </svg>
         <span>Подписаться</span></button>
 </form>
+
+<?php $APPLICATION->IncludeComponent(
+    'coderoom:main.offers',
+    '.default',
+    []
+); ?>

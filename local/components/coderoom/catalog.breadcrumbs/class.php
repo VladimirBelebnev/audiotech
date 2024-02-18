@@ -5,12 +5,12 @@ use \Bitrix\Iblock\SectionTable;
 
 class CatalogBreadcrumbs extends \CBitrixComponent
 {
+    private int $iCatalogIBlockID = 1;
     public function executeComponent()
     {
         $arSectionsCode = $this->getSectionsCode();
-        $iCodeCount = count($arSectionsCode);
         $arSectionsWithInfo = $this->getSectionsInfo($arSectionsCode);
-        $this->setCatalogBreadcrumbs($arSectionsWithInfo, $iCodeCount);
+        $this->setCatalogBreadcrumbs($arSectionsWithInfo);
         $this->includeComponentTemplate();
     }
 
@@ -28,6 +28,7 @@ class CatalogBreadcrumbs extends \CBitrixComponent
                 'CODE'
             ],
             'filter' => [
+                'IBLOCK_ID' => $this->iCatalogIBlockID,
                 '=CODE' => $arSectionsCode,
             ],
         ])->fetchAll();
