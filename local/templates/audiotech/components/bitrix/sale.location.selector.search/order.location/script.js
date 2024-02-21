@@ -50,6 +50,20 @@ if (typeof BX.Sale.component.location.selector.search == 'undefined' && typeof B
                             success: function (result) {
                                 document.querySelector('.delivery__wrap').innerHTML = result;
                                 onChangeDelivery();
+
+                                document.querySelectorAll('.order__methods').forEach(method => {
+                                    method.querySelectorAll('.radio').forEach(item => {
+                                        item.addEventListener('change', () => {
+                                            method.querySelectorAll('.radio').forEach(x => {
+                                                x.parentNode.classList.remove('active');
+                                            });
+
+                                            if (item.checked) {
+                                                item.parentNode.classList.add('active');
+                                            }
+                                        });
+                                    });
+                                });
                             },
                         });
                     },

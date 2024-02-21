@@ -297,7 +297,7 @@ $iFavoriteItem = $obFavoriteList->getCount();
                                 <div class="main-nav__submenu-wrap main-nav__submenu-wrap--mode">
                                     <div class="main-nav__submenu">
                                         <ul class="main-nav__submenu-box">
-                                            <li class="main-nav__item"><a class="main-nav__link" href="/personal/offers/">Мои заказы</a>
+                                            <li class="main-nav__item"><a class="main-nav__link" href="/personal/orders/">Мои заказы</a>
                                             </li>
                                             <li class="main-nav__item"><a class="main-nav__link <?php if(!$USER->IsAuthorized()) echo 'popup-entry'; ?>" href="/personal/">Профиль</a></li>
                                             <li class="main-nav__item main-nav__exit"><a class="main-nav__link" href="/?logout=yes&<?php echo bitrix_sessid_get(); ?>">Выйти</a>
@@ -548,7 +548,7 @@ $iFavoriteItem = $obFavoriteList->getCount();
                                 <div class="main-nav__submenu">
                                     <ul class="main-nav__submenu-box">
                                         <li class="main-nav__item"><a class="main-nav__link"
-                                                                      href="/personal/offers/">Мои заказы</a>
+                                                                      href="/personal/orders/">Мои заказы</a>
                                         </li>
                                         <li class="main-nav__item"><a
                                                     class="main-nav__link <?php if (!$USER->IsAuthorized()) echo 'popup-entry'; ?>"

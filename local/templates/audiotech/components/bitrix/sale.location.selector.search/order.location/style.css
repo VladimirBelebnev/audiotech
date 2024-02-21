@@ -24,22 +24,19 @@
 }
 
 .bx-sls .bx-ui-sls-pane {
-    border: 1px solid #bdbdbd;
-    border-radius: 2px;
-    -webkit-box-shadow: 0 2px 3px #c7c7c7;
-    box-shadow: 0 2px 3px #c7c7c7;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     display: none;
+    border: 1px solid #E8EBED;
+    border-radius: 4px;
     max-height: 200px;
     overflow-y: auto;
     left: 0;
     bottom: auto !important;
     top: 60px !important;
-    padding: 5px 5px 3px 5px;
+    padding: 20px;
     position: absolute;
     width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(19, 19, 19, 0.1);
 }
 
 .bx-sls .dropdown-active .bx-ui-sls-pane {
@@ -54,13 +51,12 @@
 
 .bx-sls .dropdown-item {
     border-radius: 2px;
-    padding: 7px 4px 7px 10px;
     margin-bottom: 2px;
+    cursor: pointer;
 }
 
-.bx-sls .dropdown-item:hover {
-    background-color: #f1f3f5;
-    cursor: pointer;
+.bx-sls .dropdown-item:hover .dropdown-item-text, .bx-sls .dropdown-item:hover span {
+    color: #DB1F26;
 }
 
 .bx-sls .dropdown-img {
@@ -73,15 +69,17 @@
 }
 
 .bx-sls .dropdown-item-text {
-    /*makeup:color: #212121;*/
-    color: #aba8ac;
     display: inline-block;
-    /*max-width: 220px;*/ /*silly limitation*/
     vertical-align: top;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #131313;
 }
 
 .bx-sls .dropdown-item-text span{
-    color: #25282c;
+    color: #131313;
 }
 
 .bx-sls .dropdown-list-title {
@@ -211,20 +209,21 @@
 
 
 .bx-sls .bx-ui-sls-route{
-    color: #aba8ac !important;
+    color: transparent;
     z-index:5;
 }
 
 .bx-sls .bx-ui-sls-pane{
     background-color: #fff;
     z-index: 999;
-    border: 1px solid #87919c;
 }
 
-.bx-sls .bx-ui-sls-variants .bx-ui-sls-variant,
-.bx-sls .bx-ui-sls-error{
-    padding: 10px 10px;
+.bx-ui-sls-variants {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
+
 .bx-sls .bx-ui-sls-error{
     color: #ff2222;
     padding-left: 30px;
@@ -232,15 +231,11 @@
 }
 .bx-sls .bx-ui-sls-error div{
     position: absolute;
-    top: 0px;
+    top: -40%;
     left: 0px;
     width: 25px;
     height: 25px;
     background: url(/bitrix/panel/main/images/bx-admin-sprite-small.png) 6px -2895px no-repeat scroll;
-}
-.bx-sls .bx-ui-sls-variants .bx-ui-sls-variant:hover,
-.bx-sls .bx-ui-sls-variant-active{
-    background-color: #E0E8EA;
 }
 
 .adm-sls-edit-link{

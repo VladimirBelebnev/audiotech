@@ -43,17 +43,15 @@ foreach ($arResult as $iFirstLevelKey => $arFirstLevelLink)
                             <div class="_container">
                                 <div class="main-submenu__box">
                                     <?php foreach ($arFirstLevel['CHILD'] as $arSecondLevel) { ?>
-                                        <?php if ($arSecondLevel['CHILD']) { ?>
+                                        <?php if ($arSecondLevel['CHILD'] && count($arSecondLevel['CHILD']) > 1) { ?>
                                             <ul class="main-submenu__list">
-                                                <?php if (count($arSecondLevel['CHILD']) > 1) { ?>
-                                                    <div class="main-submenu__title"><?php echo $arSecondLevel['TEXT']; ?></div>
-                                                    <?php if($arSecondLevel['CHILD']) { ?>
-                                                        <ul class="main-nav__submenu">
-                                                            <?php foreach ($arSecondLevel['CHILD'] as $arThirdLevel) { ?>
-                                                                <li class="main-submenu__item"><a class="main-submenu__link" href="<?php echo $arThirdLevel['ADDITIONAL_LINKS'][0]; ?>"><?php echo $arThirdLevel['TEXT']; ?></a></li>
-                                                            <?php } ?>
-                                                        </ul>
-                                                    <?php } ?>
+                                                <div class="main-submenu__title"><?php echo $arSecondLevel['TEXT']; ?></div>
+                                                <?php if($arSecondLevel['CHILD']) { ?>
+                                                    <ul class="main-nav__submenu">
+                                                        <?php foreach ($arSecondLevel['CHILD'] as $arThirdLevel) { ?>
+                                                            <li class="main-submenu__item"><a class="main-submenu__link" href="<?php echo $arThirdLevel['ADDITIONAL_LINKS'][0]; ?>"><?php echo $arThirdLevel['TEXT']; ?></a></li>
+                                                        <?php } ?>
+                                                    </ul>
                                                 <?php } ?>
                                             </ul>
                                         <?php } ?>

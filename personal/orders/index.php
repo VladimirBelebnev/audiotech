@@ -1,42 +1,85 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+
+global $APPLICATION;
+global $USER;
+
 $APPLICATION->SetTitle('Мои заказы');
 ?>
-<?php
-$APPLICATION->IncludeComponent(
-    "bitrix:sale.personal.order",
-    ".default",                     // [.default, list]
-    array(
-        // region Основные параметры
-        "PROP_1" => array(''),                   // Не показывать свойства для типа плательщика 'Физическое лицо' (s1) : array ( '' => '(показывать все)', 1 => 'Ф.И.О.', 2 => 'E-Mail', 3 => 'Телефон', 4 => 'Индекс', 6 => 'Местоположение', 5 => 'Город', 7 => 'Адрес доставки', )
-        "PROP_2" => array(''),                   // Не показывать свойства для типа плательщика 'Юридическое лицо' (s1) : array ( '' => '(показывать все)', 8 => 'Название компании', 9 => 'Юридический адрес', 10 => 'ИНН', 11 => 'КПП', 12 => 'Контактное лицо', 13 => 'E-Mail', 14 => 'Телефон', 15 => 'Факс', 16 => 'Индекс', 17 => 'Город', 18 => 'Местоположение', 19 => 'Адрес доставки', )
-        // endregion
-        // region Внешний вид
-        "ACTIVE_DATE_FORMAT" => "d.m.Y",                     // Формат показа даты : array ( 'd-m-Y' => '22-02-2007', 'm-d-Y' => '02-22-2007', 'Y-m-d' => '2007-02-22', 'd.m.Y' => '22.02.2007', 'd.M.Y' => '22.Фев.2007', 'm.d.Y' => '02.22.2007', 'j M Y' => '22 Фев 2007', 'M j, Y' => 'Фев 22, 2007', 'j F Y' => '22 Февраля 2007', 'f j, Y' => 'Февраль 22, 2007', 'd.m.y g:i A' => '22.02.07 7:30 AM', 'd.M.y g:i A' => '22.Фев.07 7:30 AM', 'd.M.Y g:i A' => '22.Фев.2007 7:30 AM', 'd.m.y G:i' => '22.02.07 7:30', 'd.m.Y H:i' => '22.02.2007 07:30', 'SHORT' => 'Формат сайта', 'FULL' => 'Формат сайта (включая время)', )
-        // endregion
-        // region Управление адресами страниц
-        "SEF_MODE" => "N",                         // Включить поддержку ЧПУ
-        "SEF_FOLDER" => "",                          // Каталог ЧПУ (относительно корня сайта)
-        "SEF_URL_TEMPLATES_list" => "index.php",                 // Список заказов
-        "SEF_URL_TEMPLATES_detail" => "order_detail.php?ID=#ID#",  // Заказ подробно
-        "SEF_URL_TEMPLATES_cancel" => "order_cancel.php?ID=#ID#",  // Отмена заказа
-        // endregion
-        // region Настройки кеширования
-        "CACHE_TYPE" => "A",                         // Тип кеширования : array ( 'A' => 'Авто + Управляемое', 'Y' => 'Кешировать', 'N' => 'Не кешировать', )
-        "CACHE_TIME" => "3600",                      // Время кеширования (сек.)
-        "CACHE_NOTES" => "",                          //
-        "CACHE_GROUPS" => "Y",                         // Учитывать права доступа
-        // endregion
-        // region Дополнительные настройки
-        "ORDERS_PER_PAGE" => "20",                        // Количество заказов на одной странице
-        "PATH_TO_PAYMENT" => "payment.php",               // Страница подключения платежной системы
-        "PATH_TO_BASKET" => "basket.php",                // Страница с корзиной
-        "SET_TITLE" => "Y",                         // Устанавливать заголовок страницы
-        "SAVE_IN_SESSION" => "Y",                         // Сохранять установки фильтра в сессии пользователя
-        "NAV_TEMPLATE" => "",                          // Имя шаблона для постраничной навигации
-        "CUSTOM_SELECT_PROPS" => "",                          // Дополнительные свойства инфоблока
-        "HISTORIC_STATUSES" => array('F'),                  // Исторические статусы : array ( 'N' => 'Принят, ожидается оплата', 'P' => 'Оплачен, формируется к отправке', 'F' => 'Выполнен', )
-        // endregion
-    )
-); ?>
+<section class="personal">
+    <div class="_container">
+        <h1 class="title-page">Личный кабинет</h1>
+    </div>
+    <div class="_container _container--mode">
+        <div class="tabs">
+            <div class="tabs-wrap">
+                <div class="tabs__nav tabs__nav--personal">
+                    <a href="/personal/orders/" class="tabs__btn active">Мои заказы</a>
+                    <a href="/personal/favorites/" class="tabs__btn">Избранное</a>
+                    <a href="/personal/" class="tabs__btn">Профиль</a>
+                    <a class="personal__exit" href="/?logout=yes&<?php echo bitrix_sessid_get(); ?>">Выйти </a>
+                </div>
+            </div>
+            <div class="tabs__content">
+                <div class="tabs__pane show">
+                    <div class="tabs__pane-wrap">
+
+                    </div>
+                    <?php $APPLICATION->IncludeComponent(
+	"bitrix:sale.personal.order", 
+	".default", 
+	array(
+		"STATUS_COLOR_N" => "green",
+		"STATUS_COLOR_P" => "yellow",
+		"STATUS_COLOR_F" => "green",
+		"STATUS_COLOR_PSEUDO_CANCELLED" => "red",
+		"SEF_MODE" => "Y",
+		"ORDERS_PER_PAGE" => "80",
+		"PATH_TO_PAYMENT" => "",
+		"PATH_TO_BASKET" => "/personal/cart/",
+		"SET_TITLE" => "Y",
+		"SAVE_IN_SESSION" => "N",
+		"NAV_TEMPLATE" => "",
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"PROP_1" => array(
+		),
+		"PROP_2" => "",
+		"CACHE_TYPE" => "A",
+		"CACHE_TIME" => "3600",
+		"CACHE_GROUPS" => "Y",
+		"CUSTOM_SELECT_PROPS" => array(
+		),
+		"HISTORIC_STATUSES" => array(
+			0 => "F",
+		),
+		"SEF_FOLDER" => "/personal/orders/",
+		"COMPONENT_TEMPLATE" => ".default",
+		"DETAIL_HIDE_USER_INFO" => array(
+			0 => "0",
+		),
+		"PATH_TO_CATALOG" => "/catalog/",
+		"DISALLOW_CANCEL" => "Y",
+		"RESTRICT_CHANGE_PAYSYSTEM" => array(
+			0 => "0",
+		),
+		"REFRESH_PRICES" => "N",
+		"ORDER_DEFAULT_SORT" => "DATE_INSERT",
+		"SEF_URL_TEMPLATES" => array(
+			"list" => "/",
+			"detail" => "order_detail.php?ID=#ID#",
+			"cancel" => "",
+		),
+		"VARIABLE_ALIASES" => array(
+			"detail" => array(
+				"ID" => "ID",
+			),
+		)
+	),
+	false
+);?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

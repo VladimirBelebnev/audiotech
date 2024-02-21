@@ -15,9 +15,9 @@ if (!$USER->IsAuthorized()) LocalRedirect('/');
         <div class="tabs">
             <div class="tabs-wrap">
                 <div class="tabs__nav tabs__nav--personal">
-                    <div class="tabs__btn">Мои заказы</div>
-                    <div class="tabs__btn">Избранное</div>
-                    <div class="tabs__btn active">Профиль</div>
+                    <a href="/personal/orders/" class="tabs__btn">Мои заказы</a>
+                    <a href="/personal/favorites/" class="tabs__btn">Избранное</a>
+                    <a href="/personal/" class="tabs__btn active">Профиль</a>
                     <a class="personal__exit" href="/?logout=yes&<?php echo bitrix_sessid_get(); ?>">Выйти </a>
                 </div>
             </div>

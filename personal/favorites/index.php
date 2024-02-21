@@ -18,9 +18,9 @@ $arFilter['ID'] = $obFavoriteList->getListIDS();
         <div class="tabs">
             <div class="tabs-wrap">
                 <div class="tabs__nav tabs__nav--personal">
-                    <div class="tabs__btn">Мои заказы</div>
-                    <div class="tabs__btn active">Избранное</div>
-                    <div class="tabs__btn">Профиль</div>
+                    <a href="/personal/orders/" class="tabs__btn">Мои заказы</a>
+                    <a href="/personal/favorites/" class="tabs__btn active">Избранное</a>
+                    <a href="/personal/" class="tabs__btn">Профиль</a>
                     <a class="personal__exit" href="/?logout=yes&<?php echo bitrix_sessid_get(); ?>">Выйти </a>
                 </div>
             </div>

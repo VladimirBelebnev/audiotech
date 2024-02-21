@@ -15,6 +15,8 @@ class ListFavorite
 
     public function __construct()
     {
+        global $USER;
+
         \CModule::IncludeModule('sale');
         \CModule::IncludeModule('currency');
         $this->iFUser = Fuser::getId();
@@ -22,7 +24,8 @@ class ListFavorite
             'DELAY' => 'Y',
             'FUSER_ID' => $this->iFUser,
             'LID' => 's1',
-            'MODULE' => 'catalog'
+            'MODULE' => 'catalog',
+            'ORDER_ID' => 'NULL'
         ];
     }
 

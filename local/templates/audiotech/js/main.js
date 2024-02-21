@@ -980,7 +980,7 @@ const orderFunc = () => {
         const orderFirstName = document.querySelector('[name="NAME"]');
         const orderSecondName = document.querySelector('[name="SECOND_NAME"]');
         const orderPhone = document.querySelector('[name="PERSONAL_PHONE"]');
-        const orderMail = document.querySelector('[name="EMAIL"]');
+        const orderMail = document.querySelector('[name="PERSONAL_EMAIL"]');
         const orderPrivacy = document.querySelector('#order-privacy');
         const orderConditions = document.querySelector('#order-conditions');
         const orderCity = document.querySelector('.bx-ui-sls-fake');
@@ -993,6 +993,8 @@ const orderFunc = () => {
         const orderWarning = document.querySelector('.order__red');
         const orderMessage = document.querySelector('[name="MESSAGE"]');
 
+        const error = document.querySelector('.input__error');
+
         let courier = 2;
         let courierFlag = false;
         let delivery;
@@ -1004,6 +1006,8 @@ const orderFunc = () => {
         let date;
 
         orderWarning.style.display = 'none';
+        error.style.display = 'none';
+        orderMail.parentNode.classList.remove('error');
 
         if (orderLastName.value != '' && orderFirstName != '' && orderPhone != '' && orderMail != '' && orderPrivacy.checked && orderConditions.checked && orderCity != '') {
 
@@ -1039,32 +1043,45 @@ const orderFunc = () => {
                             if (payItem.checked) {
                                 pay = payItem.id
 
-                                let object = {
-                                    'NAME': `${orderLastName.value} ${orderFirstName.value}${orderSecondName.value ? ' ' + orderSecondName.value : ''}`,
-                                    'PHONE': orderPhone.value,
-                                    'EMAIL': orderMail.value,
-                                    'CITY': orderCity.value,
-                                    'DELIVERY': delivery.replace('delivery_', ''),
-                                    'PAY': pay.replace('pay_', ''),
-                                    'LOCATION': street && house ? (`г. ${orderCity.value}, ул. ${street}, д. ${house}${flat ? ', кв. ' + flat : ''}`) : '',
-                                    'DATE': date,
-                                    'MESSAGE': orderMessage.value,
-                                };
+                                const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
-                                $.ajax({
-                                    type: 'POST',
-                                    headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
-                                    url: '/bitrix/services/main/ajax.php?action=coderoom:main.order.create',
-                                    data: {
-                                        array: object,
-                                    },
-                                    success: function (res) {
-                                        console.log(res)
-                                        if (res.data == 'ok') {
-                                            window.location = '/';
+                                if (EMAIL_REGEXP.test(orderMail.value)) {
+                                    let object = {
+                                        'FIRST_NAME': orderFirstName.value,
+                                        'LAST_NAME': orderLastName.value,
+                                        'FIO': `${orderLastName.value} ${orderFirstName.value}${orderSecondName.value ? ' ' + orderSecondName.value : ''}`,
+                                        'PHONE': orderPhone.value,
+                                        'EMAIL': orderMail.value,
+                                        'CITY': orderCity.value,
+                                        'DELIVERY': delivery.replace('delivery_', ''),
+                                        'PAY': pay.replace('pay_', ''),
+                                        'LOCATION': street && house ? (`г. ${orderCity.value}, ул. ${street}, д. ${house}${flat ? ', кв. ' + flat : ''}`) : '',
+                                        'DATE': date,
+                                        'MESSAGE': orderMessage.value,
+                                    };
+
+                                    $.ajax({
+                                        type: 'POST',
+                                        headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
+                                        url: '/bitrix/services/main/ajax.php?action=coderoom:main.order.create',
+                                        data: {
+                                            array: object,
+                                        },
+                                        success: function (res) {
+                                            if (res.data == 'ok') {
+                                                window.location = '/';
+                                            }
                                         }
-                                    }
-                                });
+                                    });
+                                } else {
+                                    error.style.display = 'block';
+                                    orderMail.parentNode.classList.add('error');
+                                    orderWarning.style.display = 'block';
+
+                                    setTimeout(() => {
+                                        orderWarning.style.display = 'none';
+                                    }, 7000);
+                                }
                             }
                         })
                     } else {

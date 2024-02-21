@@ -22,7 +22,8 @@ class ListCart
         $this->arFilter = [
             'FUSER_ID' => $this->iFUser,
             'LID' => 's1',
-            'MODULE' => 'catalog'
+            'MODULE' => 'catalog',
+            'ORDER_ID' => 'NULL'
         ];
     }
 
@@ -47,12 +48,13 @@ class ListCart
 
     public function getListIDS(): array
     {
-        return array_column(BasketTable::getList(['filter' => $this->arFilter])->fetchAll(), 'PRODUCT_ID', 'PRODUCT_ID');
+        $arFilter['!DELAY'] = 'Y';
+        return array_column(BasketTable::getList(['filter' => $this->arFilter + $arFilter])->fetchAll(), 'PRODUCT_ID', 'PRODUCT_ID');
     }
 
     public function getListItems(): array
     {
-        $arItems = BasketTable::getList(['filter' => $this->arFilter, 'select' => ['ID', 'PRODUCT_ID', 'NAME', 'PRICE', 'QUANTITY', 'DETAIL_PAGE_URL', 'DELAY']])->fetchAll();
+        $arItems = BasketTable::getList(['filter' => $this->arFilter,  'select' => ['ID', 'PRODUCT_ID', 'NAME', 'PRICE', 'QUANTITY', 'DETAIL_PAGE_URL', 'DELAY']])->fetchAll();
 
         foreach ($arItems as $key => $arItem)
         {
@@ -68,6 +70,17 @@ class ListCart
 
                     unset($arItems[$secondKey]);
                 }
+            }
+
+            if (!$arItem['NAME'] && $arItem['DELAY'] == 'Y') {
+                $show = true;
+
+                foreach ($arItems as $arItemSecond)
+                {
+                    if ($arItem['PRODUCT_ID'] == $arItemSecond['PRODUCT_ID']) $show = false;
+                }
+
+                if (!$show)  unset($arItems[$key]);
             }
         }
 
@@ -109,6 +122,7 @@ class ListCart
 
             $basketItem->setFields([
                 'QUANTITY' => $iQuantity,
+                'DELAY' => 'N',
                 'CURRENCY' => CurrencyManager::getBaseCurrency(),
                 'PRODUCT_PROVIDER_CLASS' => 'CCatalogProductProvider',
             ]);

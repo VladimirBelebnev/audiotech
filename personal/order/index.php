@@ -42,6 +42,7 @@ $arDerivations = ElementDerivationTable::getList([
     ],
 ])->fetchAll();
 ?>
+<?php if (!empty($arCartItems)) { ?>
     <section class="basket order">
         <div class="_container">
             <a class="order__back" href="/personal/cart/">Вернуться в корзину</a>
@@ -101,8 +102,10 @@ $arDerivations = ElementDerivationTable::getList([
                             </li>
                             <li class="profile__item">
                                 <label class="label" for="">Электронная почта</label>
-                                <input name="EMAIL" class="input" type="email " placeholder="Электронная почта" required
+                                <input name="PERSONAL_EMAIL" class="input" type="email " placeholder="Электронная почта"
+                                       required
                                        value="">
+                                <span class="input__error">Введите корректный адрес</span>
                             </li>
                         </ul>
 
@@ -208,7 +211,8 @@ $arDerivations = ElementDerivationTable::getList([
                         <div class="order__methods">
                             <?php foreach ($arPaySystems as $arSystem) { ?>
                                 <label for="pay_<?php echo $arSystem['ID']; ?>" class="order__method method">
-                                    <input type="radio" name="PAY" class="radio" value="<?php echo $arSystem['PSA_NAME']; ?>"
+                                    <input type="radio" name="PAY" class="radio"
+                                           value="<?php echo $arSystem['PSA_NAME']; ?>"
                                            id="pay_<?php echo $arSystem['ID']; ?>">
                                     <span class="method__name"><?php echo $arSystem['PSA_NAME']; ?></span>
                                     <span class="method__radio"></span>
@@ -240,7 +244,8 @@ $arDerivations = ElementDerivationTable::getList([
                             <path d="M17.5 9V8C17.5 5.2385 15.2615 3 12.5 3C9.7385 3 7.5 5.2385 7.5 8V9H4.5C3.94772 9 3.5 9.44772 3.5 10V18C3.5 19.6575 4.8425 21 6.5 21H18.5C20.1575 21 21.5 19.6575 21.5 18V10C21.5 9.44772 21.0523 9 20.5 9H17.5ZM9.5 8C9.5 6.34325 10.8433 5 12.5 5C14.1567 5 15.5 6.34325 15.5 8V9H9.5V8ZM19.5 18C19.5 18.5525 19.0525 19 18.5 19H6.5C5.9475 19 5.5 18.5525 5.5 18V11H19.5V18Z"
                                   fill="white"/>
                         </svg>
-                        Оформить заказ</button>
+                        Оформить заказ
+                    </button>
                     <p class="order__red">Проверьте правильность заполнения всех полей.</p>
                 </div>
             </div>
@@ -387,7 +392,7 @@ $arDerivations = ElementDerivationTable::getList([
                     <?php } ?>
 
                     <?php foreach ($arDerivations as $arItem) { ?>
-                        myMap.geoObjects.add(myPlacemark<?php echo $arItem['ID']; ?>);
+                    myMap.geoObjects.add(myPlacemark<?php echo $arItem['ID']; ?>);
                     <?php } ?>
                 });
             });
@@ -395,5 +400,18 @@ $arDerivations = ElementDerivationTable::getList([
             console.log(e);
         }
     </script>
+<?php } else { ?>
+    <section class="basket order">
+        <div class="_container">
+            <a class="order__back" href="/personal/cart/">Вернуться в корзину</a>
+            <h1 class="title-page">Оформление заказа</h1>
+            <div class="__inner">
+                <div class="order__content">
+                    <div class="order__block">Чтобы оформить заказ сначала нужно добавить товары в корзину.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php } ?>
 
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

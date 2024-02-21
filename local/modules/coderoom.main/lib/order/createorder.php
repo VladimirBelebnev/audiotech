@@ -9,18 +9,18 @@ use Bitrix\Main\Context,
     Bitrix\Sale\Delivery,
     Bitrix\Sale\PaySystem,
     Bitrix\Sale\Fuser,
-    Coderoom\Main\Cart\ListCart;
+    Bitrix\Sale\PersonType,
+    Bitrix\Main\Security\Random;
 
 class CreateOrder
 {
-    public function createOrder (array $array) : string
+    public function createOrder (array $array)
     {
         global $USER;
 
-        $obCartList = new ListCart;
-        $request = Context::getCurrent()->getRequest();
-
-        $sName = $array['NAME'];
+        $sFirstName = $array['FIRST_NAME'];
+        $sLastName = $array['LAST_NAME'];
+        $sFioName = $array['FIO'];
         $sPhone = $array['PHONE'];
         $sEmail = $array['EMAIL'];
         $sCity = $array['CITY'];
@@ -31,73 +31,100 @@ class CreateOrder
         $iPay = $array['PAY'];
 
         $siteId = Context::getCurrent()->getSite();
+        $personType = PersonType::load($siteId);
 
-        $order = Order::create($siteId, $USER->isAuthorized() ? $USER->GetID() : Fuser::getId());
-        $order->setPersonTypeId(1);
+        if (!$USER->isAuthorized()) {
+            $obUser = new \CUser;
 
-        $basket = Basket::loadItemsForFUser($USER->isAuthorized() ? $USER->GetID() : Fuser::getId(), Context::getCurrent()->getSite())->getOrderableItems();
+            $sPassword = Random::getString(10);
+
+            $arUserFields = [
+                'NAME'              => $sFirstName,
+                'LAST_NAME'         => $sLastName,
+                'EMAIL'             => $sEmail,
+                'LOGIN'             => $sEmail,
+                'ACTIVE'            => 'Y',
+                'PASSWORD'          => $sPassword,
+                'CONFIRM_PASSWORD'  => $sPassword,
+            ];
+
+            $userID = $obUser->Add($arUserFields);
+            $USER->Authorize($userID);
+        } else {
+            $userID = $USER->GetID();
+        }
+
+        $order = Order::create($siteId, $userID);
+        $order->setPersonTypeId($personType);
+
+        $basket = Basket::loadItemsForFUser(Fuser::getId(), $siteId)->getOrderableItems();
         $order->setBasket($basket);
 
         $shipmentCollection = $order->getShipmentCollection();
         $shipment = $shipmentCollection->createItem();
+        $shipmentItemCollection = $shipment->getShipmentItemCollection();
+
+        foreach($order->getBasket() as $item) {
+            $shipmentItem = $shipmentItemCollection->createItem($item);
+            $shipmentItem->setQuantity($item->getQuantity());
+        }
+
         $service = Delivery\Services\Manager::getById($iDelivery);
-        $shipment->setFields(array(
+        $shipment->setFields([
             'DELIVERY_ID' => $service['ID'],
             'DELIVERY_NAME' => $service['NAME'],
-        ));
+            'CURRENCY' => $order->getCurrency(),
+        ]);
+
+        $shipmentItemCollection = $shipment->getShipmentItemCollection();
+
+        foreach ($order->getBasket() as $item) {
+            $shipmentItem = $shipmentItemCollection->createItem($item);
+            $shipmentItem->setQuantity($item->getQuantity());
+        }
 
         $paymentCollection = $order->getPaymentCollection();
         $payment = $paymentCollection->createItem();
         $paySystemService = PaySystem\Manager::getObjectById($iPay);
         $payment->setFields(array(
-            'PAY_SYSTEM_ID' => $paySystemService->getField("PAY_SYSTEM_ID"),
-            'PAY_SYSTEM_NAME' => $paySystemService->getField("NAME"),
+            'PAY_SYSTEM_ID' => $paySystemService->getField('PAY_SYSTEM_ID'),
+            'PAY_SYSTEM_NAME' => $paySystemService->getField('NAME'),
         ));
+
+        $order->doFinalAction(true);
 
         function getPropertyByCode($propertyCollection, $code) {
             foreach($propertyCollection as $property) {
-                if($property->getField("CODE") == $code)
+                if ($property->getField("CODE") == $code)
                     return $property;
             }
         }
 
         $propertyCollection = $order->getPropertyCollection();
-//
-//        $nameProp = $propertyCollection->getPayerName();
-//        $nameProp->setValue($sName);
-//
-//        $phoneProp = $propertyCollection->getPhone();
-//        $phoneProp->setValue($sPhone);
-//
-//        $emailProp = $propertyCollection->getEmail();
-//        $emailProp->setValue($sEmail);
-//
+
         $nameProperty = getPropertyByCode($propertyCollection, 'NAME');
-        $nameProperty->setValue($sName);
+        $nameProperty->setValue($sFioName);
 
         $phoneProperty = getPropertyByCode($propertyCollection, 'PHONE');
         $phoneProperty->setValue($sPhone);
 
-//        $emailProperty = getPropertyByCode($propertyCollection, 'EMAIL');
-//        $emailProperty->setValue($sEmail);
+        $emailProperty = getPropertyByCode($propertyCollection, 'MAIL');
+        $emailProperty->setValue($sEmail);
 
-//        $cityProperty = getPropertyByCode($propertyCollection, 'CITY');
-//        $cityProperty->setValue($sCity);
-//
-//        $locationProperty = getPropertyByCode($propertyCollection, 'LOCATION');
-//        $locationProperty->setValue($sLocation);
-//
-//        $dateProperty = getPropertyByCode($propertyCollection, 'DATE');
-//        $dateProperty->setValue($sDate);
-//
-//        $messageProperty = getPropertyByCode($propertyCollection, 'MESSAGE');
-//        $messageProperty->setValue($sMessage);
+        $cityProperty = getPropertyByCode($propertyCollection, 'CITY');
+        $cityProperty->setValue($sCity);
 
-        $order->doFinalAction(true);
+        $locationProperty = getPropertyByCode($propertyCollection, 'LOCATION');
+        $locationProperty->setValue($sLocation);
+
+        $dateProperty = getPropertyByCode($propertyCollection, 'DATE');
+        $dateProperty->setValue($sDate);
+
+        $payment->setField('CURRENCY', $order->getCurrency());
+        $order->setField('USER_DESCRIPTION', $sMessage);
+
         $result = $order->save();
         $orderId = $order->getId();
-
-        $obCartList->deleteAllProducts();
 
         return 'ok';
     }

@@ -1,6 +1,9 @@
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 
 use Bitrix\Main\Context;
+use Bitrix\Sale\Fuser;
+use Bitrix\Sale\Order;
+use \Bitrix\Sale\Basket;
 use Bitrix\Sale\Delivery\Services\Table;
 
 global $APPLICATION;
@@ -13,9 +16,10 @@ $FUSER_TYPE_ID = 1;
 if (!empty($locationID)) {
     $arIDs = [];
 
-    $basket = \Bitrix\Sale\Basket::loadItemsForFUser(\Bitrix\Sale\Fuser::getId(), SITE_ID);
+    $siteId = Context::getCurrent()->getSite();
+    $basket = Basket::loadItemsForFUser(Fuser::getId(), $siteId);
 
-    $order = \Bitrix\Sale\Order::create(SITE_ID, ($USER->GetID() ? $USER->GetID() : \CSaleUser::GetAnonymousUserID()));
+    $order = Order::create($siteId, $USER->isAuthorized() ? $USER->GetID() : Fuser::getId());
     $order->setPersonTypeId($FUSER_TYPE_ID);
     $order->setBasket($basket);
 
@@ -29,6 +33,7 @@ if (!empty($locationID)) {
     $shipment->setField('CURRENCY', $order->getCurrency());
 
     $deliveryIds = [];
+
     foreach ($order->getBasket() as $item) {
         $shipmentItem = $shipmentItemCollection->createItem($item);
         $shipmentItem->setQuantity($item->getQuantity());
