@@ -38,6 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
     new AirDatepicker('#airpicker2', {
         onSelect: function (dateText, inst) {
             showTimes();
+            const url = new URL(window.location.href);
+            url.searchParams.delete('from');
+            url.searchParams.append('from', dateText.formattedDate);
+            window.history.pushState(null, null, url);
+            window.location.reload();
         }
     });
 
@@ -50,6 +55,12 @@ document.addEventListener("DOMContentLoaded", function () {
     new AirDatepicker('#airpicker3', {
         onSelect: function (dateText, inst) {
             showTimes();
+
+            const url = new URL(window.location.href);
+            url.searchParams.delete('to');
+            url.searchParams.append('to', dateText.formattedDate);
+            window.history.pushState(null, null, url);
+            window.location.reload();
         }
     });
 
@@ -1139,3 +1150,18 @@ const onChangeDelivery = () => {
         });
     });
 };
+
+function addProductsToCart (arProductIDs, arQuantities) {
+    $.ajax({
+        type: 'POST',
+        headers: {'x-bitrix-csrf-token': BX.bitrix_sessid()},
+        url: '/bitrix/services/main/ajax.php?action=coderoom:main.cart.repeat',
+        data: {
+            arProductIDs: arProductIDs,
+            arQuantities: arQuantities,
+        },
+        success: function (response) {
+            window.location = '/personal/cart/';
+        },
+    });
+}

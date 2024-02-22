@@ -131,6 +131,14 @@ class ListCart
         $basket->save();
     }
 
+    public function addProductsByIDs(array $arProductIDs, array $arQuantities) : string
+    {
+        foreach ($arProductIDs as $key => $iProductID)
+        {
+           $this->addByProductID($iProductID, $arQuantities[$key]);
+        }
+    }
+
     public function deleteByIdProduct(int $iProductID): void
     {
         $arItems = array_column(BasketTable::getList(['filter' => ['PRODUCT_ID' => $iProductID] + $this->arFilter])->fetchAll(), null, 'ID');

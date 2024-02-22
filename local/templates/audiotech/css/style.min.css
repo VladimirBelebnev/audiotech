@@ -9312,7 +9312,7 @@ input.input-action[type=radio]:checked + label::before {
   gap: 10px;
 }
 .orders-status__tracking:last-child span {
-  color: #737373;
+  /*color: #737373;*/
 }
 @media (max-width: 700px) {
   .orders-status__tracking:not(:last-child) {
@@ -9400,6 +9400,7 @@ input.input-action[type=radio]:checked + label::before {
   font-size: 15px;
   font-weight: 500;
   line-height: 160%;
+  max-width: 175px;
 }
 .orders-status__block span:nth-child(2) {
   font-size: 13px;
@@ -9514,7 +9515,6 @@ input.input-action[type=radio]:checked + label::before {
   width: 100%;
   resize: none;
   color: #131313;
-  font-family: Suisse Intl;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -10299,6 +10299,11 @@ ymaps[class$=gotoymaps__container] {
   fill-rule: nonzero;
 }
 
+.orders .aside-box .btn:active svg path {
+  fill: none;
+  stroke: #fff;
+}
+
 .order .modal__check label {
   flex-wrap: nowrap;
 }
@@ -10340,4 +10345,8 @@ ymaps[class$=gotoymaps__container] {
     position: absolute;
     top: 45px;
     right: 20px;
+}
+
+.orders-tab tr {
+  cursor: pointer;
 }

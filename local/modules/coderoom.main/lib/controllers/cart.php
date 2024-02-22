@@ -15,6 +15,7 @@ class Cart extends Controller
     {
         return [
             'add' => ['prefilters' => [new Csrf()]],
+            'repeat' => ['prefilters' => [new Csrf()]],
             'delete' => ['prefilters' => [new Csrf()]],
             'get' => ['prefilters' => [new Csrf()]],
         ];
@@ -24,6 +25,12 @@ class Cart extends Controller
     {
         $obCartList = new ListCart;
         $obCartList->addByProductID($iProductID, $iQuantity);
+    }
+
+    public function repeatAction(array $arProductIDs, array $arQuantities)
+    {
+        $obCartList = new ListCart;
+        $obCartList->addProductsByIDs($arProductIDs, $arQuantities);
     }
 
     public function deleteAction(int $iProductID)
