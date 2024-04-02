@@ -11,7 +11,7 @@ $this->setFrameMode(true);
 
 <section class="questions">
     <div class="_container">
-        <h2 class="section-title"> <span>Вопросы по гарантии и оплате</span>
+        <h2 class="section-title"> <span>Вопросы по гарантии и возврату</span>
             <a href="/customer/questions/" class="btn btn--grey btn--m">Вопросы и ответы</a>
         </h2>
         <div class="accordion accordion--mode" id="accordion">

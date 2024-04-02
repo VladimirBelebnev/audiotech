@@ -11,7 +11,7 @@ $this->setFrameMode(true);
 ?>
 
 <section class="slider-block">
-    <div class="_container">
+    <div class="_container p0">
         <h2 class="section-title">
             <span><?php echo $arParams['TITLE']; ?></span>
             <?php if ($arParams['SHOW_LINK'] == 'Y') { ?>

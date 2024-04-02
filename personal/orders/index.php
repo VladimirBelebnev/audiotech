@@ -5,6 +5,8 @@ global $APPLICATION;
 global $USER;
 
 $APPLICATION->SetTitle('Мои заказы');
+
+if (!$USER->IsAuthorized()) LocalRedirect('/');
 ?>
 <?php $APPLICATION->IncludeComponent(
     "bitrix:sale.personal.order",

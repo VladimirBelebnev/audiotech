@@ -56,9 +56,11 @@ $this->setFrameMode(true);
         <?php } ?>
     </div>
 
-    <?php if ($arParams["DISPLAY_BOTTOM_PAGER"]) { ?>
+    <?php if ($arParams["DISPLAY_BOTTOM_PAGER"] && count($arResult['ITEMS']) > 11) { ?>
         <div class="pagination">
             <?= $arResult["NAV_STRING"]; ?>
         </div>
+    <?php } else { ?>
+        <div class="news-bottom"></div>
     <?php } ?>
 </div>

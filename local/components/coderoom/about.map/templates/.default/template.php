@@ -10,7 +10,7 @@ $this->setFrameMode(true);
 ?>
 
 <div class="map">
-    <h2 class="section-title map__title"> <span>Представительства компании</span>
+    <h2 class="section-title map__title"> <span>Центры слуха Audiotech</span>
         <!--                                    <div class="select-place">-->
         <!--                                        <select class="mySelect">-->
         <!--                                            <option value="Алма-Ата">Алма-Ата</option>-->
@@ -156,7 +156,7 @@ $this->setFrameMode(true);
                         ),
 
                         <?php foreach ($arResult['ITEMS'] as $key => $arItem) { ?>
-                        myPlacemark<?php echo $key; ?> = window.myPlacemark = new ymaps.Placemark(<?php echo $arItem['COORDINATES_VALUE'] ?>, {
+                        myPlacemark<?php echo $key; ?> = window.myPlacemark = new ymaps.Placemark([<?php echo $arItem['COORDINATES_VALUE'] ?>], {
                             balloonHeader: '<?php echo $arItem['NAME']; ?>',
                             balloonContent: '<ul><li><span>Адрес</span><span><?php echo $arItem['ADDRESS_VALUE']; ?></span></li><li><span>Время работы</span><span><?php echo $arItem['TIME_VALUE']; ?></span></li><li><span>Телефон</span><span><?php echo $arItem['PHONE_VALUE']; ?></span></li><li><span>Электронная почта</span><span><?php echo $arItem['EMAIL_VALUE']; ?></span></li></ul>'
                         }, {

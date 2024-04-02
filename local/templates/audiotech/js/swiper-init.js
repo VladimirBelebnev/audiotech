@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     });
 
-    if (window.innerWidth < 700)
+    if (window.innerWidth < 900)
     {
         document.querySelectorAll('.main-slider .swiper-slide').forEach(item => {
             item.style.backgroundImage = `url(${item.dataset.mobile})`;
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         slidesPerView: 4,
         slidesPerGroup: 4,
         spaceBetween: 20,
-        loop: true,
+        // loop: true,
         speed: 750,
         navigation: {
             nextEl: ".actual-slider .swiper-button-next",
@@ -85,6 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
             941: {
                 slidesPerView: 4
             },
+            700: {
+                slidesPerView: 3,
+            },
             300: {
                 slidesPerView: "auto",
                 slidesPerGroup: 1,
@@ -121,12 +124,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const swiperBlog = new Swiper(".blog-slider", {
             slidesPerView: "auto",
             slidesPerGroup: 1,
-            loop: true,
             speed: 750,
+            spaceBetween: 20,
+            loop: true,
             breakpoints: {
+                941: {
+                    slidesPerView: 4
+                },
+                700: {
+                    slidesPerView: 3,
+                },
                 0: {
                     slidesPerView: "auto",
-                    loop: true,
                 }
             },
             navigation: {

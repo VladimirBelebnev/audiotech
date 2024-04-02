@@ -7,12 +7,14 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $this->setFrameMode(true);
 ?>
 
-<div class="tabs__nav">
-    <? foreach ($arResult as $arItem) { ?>
-        <a href="<?= $arItem['LINK'] ?>" class="tabs__btn <? if ($arItem['SELECTED'] == 1) {
-            echo 'active';
-        } ?>">
-            <?= $arItem['TEXT'] ?>
-        </a>
-    <? } ?>
-</div>
+<?php if ($arResult) { ?>
+    <div class="tabs__nav">
+        <? foreach ($arResult as $arItem) { ?>
+            <a href="<?= $arItem['LINK'] ?>" class="tabs__btn <? if ($arItem['SELECTED'] == 1) {
+                echo 'active';
+            } ?>">
+                <?= $arItem['TEXT'] ?>
+            </a>
+        <? } ?>
+    </div>
+<?php } ?>

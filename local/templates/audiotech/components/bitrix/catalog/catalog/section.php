@@ -14,6 +14,7 @@
 
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
+use Bitrix\Main\Context;
 
 $this->setFrameMode(true);
 
@@ -148,6 +149,16 @@ if ($isFilter) {
                         $sort = $arParams["ELEMENT_SORT_FIELD"];
                         $order = $arParams["ELEMENT_SORT_ORDER"];
                     }
+
+                    global $arFilter;
+                    $obRequest = Context::getCurrent()->getRequest();
+                    $arIDs = [];
+
+                    if ($obRequest->get('ID')) {
+                        $arIDs = explode(',', $obRequest->get('ID'));
+                        $arFilter['ID'] = $arIDs;
+                    }
+
 
                     $APPLICATION->IncludeComponent(
                         "bitrix:catalog.section",

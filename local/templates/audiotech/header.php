@@ -33,6 +33,8 @@ $iFavoriteItem = $obFavoriteList->getCount();
     Asset::getInstance()->addString("<meta content='ie=edge' http-equiv='x-ua-compatible'>");
     Asset::getInstance()->addString("<meta name='viewport' content='width=device-width,initial-scale=1,min-width=360'>");
     Asset::getInstance()->addString("<link rel='icon' href='/favicon.svg'>");
+    Asset::getInstance()->addString("<link rel='icon' href='/favicon.svg'>");
+    Asset::getInstance()->addString("<link rel='apple-touch-icon' href='/apple-touch-icon.png'>");
     Asset::getInstance()->addString("<script src='https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=abd2781c-74db-4a4d-b303-85221a575fd8' type='text/javascript'></script>");
 
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/style.min.css");
@@ -74,7 +76,7 @@ $iFavoriteItem = $obFavoriteList->getCount();
                                       d="M2.04 2.24C3.09026 1.18974 4.51471 0.599714 6 0.599714C7.48529 0.599714 8.90974 1.18974 9.96 2.24C11.0103 3.29026 11.6003 4.71471 11.6003 6.2C11.6003 7.68529 11.0103 9.10974 9.96 10.16L6 14.12L2.04 10.16C1.51993 9.63998 1.10739 9.02262 0.825926 8.34316C0.544464 7.6637 0.399597 6.93545 0.399597 6.2C0.399597 5.46455 0.544464 4.7363 0.825926 4.05684C1.10739 3.37738 1.51993 2.76002 2.04 2.24ZM6 7.8C6.42435 7.8 6.83131 7.63143 7.13137 7.33137C7.43143 7.03131 7.6 6.62435 7.6 6.2C7.6 5.77565 7.43143 5.36869 7.13137 5.06863C6.83131 4.76857 6.42435 4.6 6 4.6C5.57565 4.6 5.16869 4.76857 4.86863 5.06863C4.56857 5.36869 4.4 5.77565 4.4 6.2C4.4 6.62435 4.56857 7.03131 4.86863 7.33137C5.16869 7.63143 5.57565 7.8 6 7.8Z"
                                       fill="white"/>
                             </svg>
-                            <span>Алма-Ата</span></div>
+                            <span>Алматы</span></div>
                         <div class="header-top__item">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -119,9 +121,9 @@ $iFavoriteItem = $obFavoriteList->getCount();
                             </svg>
                             Найти центр слуха
                         </a>
-                        <a class="header-top__item" href="tel:8 (800) 123 44 00"><img
+                        <a class="header-top__item" href="tel:87273122703"><img
                                     src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/sm-phone.svg" width="16"
-                                    height="16" alt="">8 (800) 123 44 00</a>
+                                    height="16" alt="">+7 (727) 312-27-03</a>
                     </div>
                 </div>
             </div>
@@ -143,7 +145,7 @@ $iFavoriteItem = $obFavoriteList->getCount();
                                           d="M12 9C11.4696 9 10.9609 9.21071 10.5858 9.58579C10.2107 9.96086 10 10.4696 10 11C10 11.5304 10.2107 12.0391 10.5858 12.4142C10.9609 12.7893 11.4696 13 12 13C12.5304 13 13.0391 12.7893 13.4142 12.4142C13.7893 12.0391 14 11.5304 14 11C14 10.4696 13.7893 9.96086 13.4142 9.58579C13.0391 9.21071 12.5304 9 12 9ZM9.17157 8.17157C9.92172 7.42143 10.9391 7 12 7C13.0609 7 14.0783 7.42143 14.8284 8.17157C15.5786 8.92172 16 9.93913 16 11C16 12.0609 15.5786 13.0783 14.8284 13.8284C14.0783 14.5786 13.0609 15 12 15C10.9391 15 9.92172 14.5786 9.17157 13.8284C8.42143 13.0783 8 12.0609 8 11C8 9.93913 8.42143 8.92172 9.17157 8.17157Z"
                                           fill="#131313"/>
                                 </svg>
-                                Алма-Ата
+                                Алматы
                             </div>
                             <div class="main-nav-actions__item">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -335,7 +337,7 @@ $iFavoriteItem = $obFavoriteList->getCount();
                                 <path d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
                                       fill="#131313"/>
                             </svg>
-                        </a><a href="tel:8 (800) 123 44 00">
+                        </a><a href="tel:87273122703">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -367,7 +369,7 @@ $iFavoriteItem = $obFavoriteList->getCount();
                                           d="M12 9C11.4696 9 10.9609 9.21071 10.5858 9.58579C10.2107 9.96086 10 10.4696 10 11C10 11.5304 10.2107 12.0391 10.5858 12.4142C10.9609 12.7893 11.4696 13 12 13C12.5304 13 13.0391 12.7893 13.4142 12.4142C13.7893 12.0391 14 11.5304 14 11C14 10.4696 13.7893 9.96086 13.4142 9.58579C13.0391 9.21071 12.5304 9 12 9ZM9.17157 8.17157C9.92172 7.42143 10.9391 7 12 7C13.0609 7 14.0783 7.42143 14.8284 8.17157C15.5786 8.92172 16 9.93913 16 11C16 12.0609 15.5786 13.0783 14.8284 13.8284C14.0783 14.5786 13.0609 15 12 15C10.9391 15 9.92172 14.5786 9.17157 13.8284C8.42143 13.0783 8 12.0609 8 11C8 9.93913 8.42143 8.92172 9.17157 8.17157Z"
                                           fill="#131313"/>
                                 </svg>
-                                Алма-Ата
+                                Алматы
                             </div>
                             <div class="main-nav-actions__item">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -526,7 +528,7 @@ $iFavoriteItem = $obFavoriteList->getCount();
                                 <path d="M17 11C17 11.5523 16.5523 12 16 12C15.4477 12 15 11.5523 15 11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11Z"
                                       fill="#131313"/>
                             </svg>
-                        </a><a href="tel:8 (800) 123 44 00" class="order__phone">
+                        </a><a href="tel:87273122703" class="order__phone">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"

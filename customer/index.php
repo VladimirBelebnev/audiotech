@@ -6,7 +6,7 @@ $APPLICATION->SetTitle('Покупателям');
 <section class="buyers">
     <div class="_container">
         <h1 class="title-page"><?php $APPLICATION->ShowTitle(false); ?></h1>
-        <div class="buyers__wrap">
+        <div class="buyers__wrap remove">
             <a class="item" href="/customer/payments/">
                 <div class="item__pic">
                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">

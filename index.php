@@ -176,11 +176,11 @@ $APPLICATION->IncludeComponent(
 	false
 ); ?>
 
-<?php $APPLICATION->IncludeComponent(
-    'coderoom:main.brands',
-    '.default',
-    []
-); ?>
+<?php //$APPLICATION->IncludeComponent(
+//    'coderoom:main.brands',
+//    '.default',
+//    []
+//); ?>
 
 <?php
 $APPLICATION->IncludeComponent(

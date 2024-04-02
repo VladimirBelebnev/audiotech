@@ -17,6 +17,7 @@ use Bitrix\Catalog\ProductTable;
 
 $this->setFrameMode(true);
 ?>
+
     <section class="product">
         <div class="_container">
             <div class="product-title-wrap">
@@ -310,10 +311,8 @@ $this->setFrameMode(true);
                     </li>
                     <li class="advantages__item">
                         <div class="advantages__pic">
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 8.5V12.5L15 15.5M21 12.5C21 13.6819 20.7672 14.8522 20.3149 15.9442C19.8626 17.0361 19.1997 18.0282 18.364 18.864C17.5282 19.6997 16.5361 20.3626 15.4442 20.8149C14.3522 21.2672 13.1819 21.5 12 21.5C10.8181 21.5 9.64778 21.2672 8.55585 20.8149C7.46392 20.3626 6.47177 19.6997 5.63604 18.864C4.80031 18.0282 4.13738 17.0361 3.68508 15.9442C3.23279 14.8522 3 13.6819 3 12.5C3 10.1131 3.94821 7.82387 5.63604 6.13604C7.32387 4.44821 9.61305 3.5 12 3.5C14.3869 3.5 16.6761 4.44821 18.364 6.13604C20.0518 7.82387 21 10.1131 21 12.5Z"
-                                      stroke="#131313" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M21 6C21 6.55228 20.5523 7 20 7L10.8284 7C10.6807 7.4179 10.4407 7.80192 10.1213 8.12132C9.55871 8.68393 8.79565 9 8 9C7.20435 9 6.44129 8.68393 5.87868 8.12132C5.55928 7.80192 5.31933 7.4179 5.17157 7H4C3.44772 7 3 6.55228 3 6C3 5.44772 3.44772 5 4 5H5.17157C5.31933 4.5821 5.55928 4.19808 5.87868 3.87868C6.44129 3.31607 7.20435 3 8 3C8.79565 3 9.55871 3.31607 10.1213 3.87868C10.4407 4.19808 10.6807 4.5821 10.8284 5H20C20.5523 5 21 5.44772 21 6ZM21 12C21 12.5523 20.5523 13 20 13H18.8284C18.6807 13.4179 18.4407 13.8019 18.1213 14.1213C17.5587 14.6839 16.7957 15 16 15C15.2043 15 14.4413 14.6839 13.8787 14.1213C13.5593 13.8019 13.3193 13.4179 13.1716 13L4 13C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11L13.1716 11C13.3193 10.5821 13.5593 10.1981 13.8787 9.87868C14.4413 9.31607 15.2043 9 16 9C16.7957 9 17.5587 9.31607 18.1213 9.87868C18.4407 10.1981 18.6807 10.5821 18.8284 11H20C20.5523 11 21 11.4477 21 12ZM21 18C21 18.5523 20.5523 19 20 19H10.8284C10.6807 19.4179 10.4407 19.8019 10.1213 20.1213C9.55871 20.6839 8.79565 21 8 21C7.20435 21 6.44129 20.6839 5.87868 20.1213C5.55928 19.8019 5.31933 19.4179 5.17157 19H4C3.44772 19 3 18.5523 3 18C3 17.4477 3.44772 17 4 17H5.17157C5.31933 16.5821 5.55928 16.1981 5.87868 15.8787C6.44129 15.3161 7.20435 15 8 15C8.79565 15 9.55871 15.3161 10.1213 15.8787C10.4407 16.1981 10.6807 16.5821 10.8284 17H20C20.5523 17 21 17.4477 21 18ZM17 12C17 11.7348 16.8946 11.4804 16.7071 11.2929C16.5196 11.1054 16.2652 11 16 11C15.7348 11 15.4804 11.1054 15.2929 11.2929C15.1054 11.4804 15 11.7348 15 12C15 12.2652 15.1054 12.5196 15.2929 12.7071C15.4804 12.8946 15.7348 13 16 13C16.2652 13 16.5196 12.8946 16.7071 12.7071C16.8946 12.5196 17 12.2652 17 12ZM9 6C9 5.73478 8.89464 5.48043 8.70711 5.29289C8.51957 5.10536 8.26522 5 8 5C7.73478 5 7.48043 5.10536 7.29289 5.29289C7.10536 5.48043 7 5.73478 7 6C7 6.26522 7.10536 6.51957 7.29289 6.70711C7.48043 6.89464 7.73478 7 8 7C8.26522 7 8.51957 6.89464 8.70711 6.70711C8.89464 6.51957 9 6.26522 9 6ZM9 18C9 17.7348 8.89464 17.4804 8.70711 17.2929C8.51957 17.1054 8.26522 17 8 17C7.73478 17 7.48043 17.1054 7.29289 17.2929C7.10536 17.4804 7 17.7348 7 18C7 18.2652 7.10536 18.5196 7.29289 18.7071C7.48043 18.8946 7.73478 19 8 19C8.26522 19 8.51957 18.8946 8.70711 18.7071C8.89464 18.5196 9 18.2652 9 18Z" fill="#131313"/>
                             </svg>
                         </div><?php $APPLICATION->IncludeFile("/include/service-item-2.php", [], ["MODE" => "html"]); ?>
                     </li>
@@ -358,7 +357,7 @@ $this->setFrameMode(true);
                             <div class="tabs__pane-box">
                                 <h2 class="section-title">Описание </h2>
                                 <div class="tabs__par">
-                                    <p><?php echo $arResult['DETAIL_TEXT'] ? $arResult['DETAIL_TEXT'] : 'Описание не добавлено.'; ?></p>
+                                    <p><?php echo $arResult['DETAIL_TEXT'] ? html_entity_decode($arResult['DETAIL_TEXT']) : 'Описание не добавлено.'; ?></p>
                                     <!--                                    --><?php //if ($arResult['DETAIL_TEXT']) { ?>
                                     <!--                                        <a class="tabs__par-show show-text">Показать все</a>-->
                                     <!--                                    --><?php //} ?>
@@ -400,6 +399,26 @@ $this->setFrameMode(true);
                                                         <div class="tabs__pane-item__pic"><img
                                                                     src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/посещение ресторана.svg"
                                                                     alt="музыка"></div>
+                                                    <?php } else if ($value == 'в машине') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/в машине.svg"
+                                                                    alt="музыка"></div>
+                                                    <?php } else if ($value == 'концерт вечеринка') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/концерт вечеринка.svg"
+                                                                    alt="музыка"></div>
+                                                    <?php } else if ($value == 'на прогулке') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/на прогулке.svg"
+                                                                    alt="музыка"></div>
+                                                    <?php } else if ($value == 'поход в магазин') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/поход в магазин.svg"
+                                                                    alt="музыка"></div>
+                                                    <?php } else if ($value == 'театр, лекция, конференция') { ?>
+                                                        <div class="tabs__pane-item__pic"><img
+                                                                    src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/театр лекция конференция.svg"
+                                                                    alt="музыка"></div>
                                                     <?php } else { ?>
                                                         <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/work.svg"
                                                              alt="Работа">
@@ -423,7 +442,7 @@ $this->setFrameMode(true);
                                             <?php foreach ($arResult['PROPERTIES']['CML2_ATTRIBUTES']['VALUE'] as $iValueKey => $sValue) { ?>
                                                 <?php foreach ($arResult['PROPERTIES']['CML2_ATTRIBUTES']['DESCRIPTION'] as $iDescriptionKey => $sDescription) { ?>
                                                     <?php if ($iValueKey == $iDescriptionKey) { ?>
-                                                        <li><?php echo $sValue; ?><?php echo $sDescription ? "– $sDescription" : ''; ?>;</li>
+                                                        <li><?php echo $sValue; ?><?php echo $sDescription ? "– $sDescription" : ''; ?><?php echo count($arResult['PROPERTIES']['CML2_ATTRIBUTES']['VALUE']) == $iDescriptionKey + 1 ? '.' : ';'; ?></li>
                                                     <?php } ?>
                                                 <?php } ?>
                                             <?php } ?>

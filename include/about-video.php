@@ -1,6 +1,6 @@
 <div class="about-cifrus__video">
     <div class="play-video"><img src="<?php echo SITE_TEMPLATE_PATH ?>/images/video-back.jpg" alt="Видео">
-        <button class="btn-play"></button>
+<!--        <button class="btn-play"></button>-->
     </div>
 </div>
 <div class="video-wrap">

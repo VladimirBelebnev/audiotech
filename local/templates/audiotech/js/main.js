@@ -93,6 +93,9 @@ document.addEventListener("DOMContentLoaded", function () {
             menuFullScreen.style.top = header.clientHeight - 2 + 'px';
             document.querySelector('main').style.paddingTop = '0px';
         }
+        if (window.pageYOffset < 36) {
+            menuFullScreen.style.top = headerHeight + (36 - window.pageYOffset) - 1 + 'px';
+        }
     }
 
 
@@ -418,7 +421,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // tooltip
     tippy('#tip', {
-        content: '<div class="tooltip__title">В стоимость входит:</div><ul class="tooltip__list"><li>Корпус</li><li>Крышка</li><li>Держатель элемента питания</li><li>Переход</li><li>Регуляторы настройки</li><li>Стандартный ушной вкладыш</li></ul>',
+        content: '<div class="tooltip__title">В стоимость не входит:</div><ul class="tooltip__list"><li>Стандартный ушной вкладыш;</li><li>Индивидуальный ушной вкладыш</li><li>Ресивер;</li><li>Тонкая трубка;</li><li>Батарейки.</li></ul>',
         allowHTML: true,
         placement: 'bottom',
     });
@@ -468,10 +471,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (window.innerWidth > 940) {
             referenceElement = document.querySelector('.article-preview:nth-child(4)');
         } else if (window.innerWidth <= 940 && window.innerWidth > 700) {
-            referenceElement = document.querySelector('.article-preview:nth-child()');
+            referenceElement = document.querySelector('.article-preview:nth-child(3)');
         }
         parentElement.insertBefore(newElement, referenceElement);
     }
+
     if (document.querySelectorAll('.about .subscribe').length > 0) {
         moveEl();
     }
@@ -737,6 +741,9 @@ window.addEventListener('DOMContentLoaded', () => {
                     success: function (result) {
                         if (result === 'ok') {
                             form.reset();
+
+                            if (formValue['formName'] === 'Подписаться на рассылку') return;
+
                             form.parentNode?.classList.remove('active');
                             modalAccept.classList.add('active');
                             overlay.classList.add('active')
@@ -1115,7 +1122,11 @@ const orderFunc = () => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-    orderFunc();
+   try {
+       orderFunc();
+   } catch (error) {
+       console.log(error);
+   }
 });
 
 const onChangeDelivery = () => {

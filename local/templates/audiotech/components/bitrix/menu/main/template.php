@@ -49,7 +49,7 @@ foreach ($arResult as $iFirstLevelKey => $arFirstLevelLink)
                                                 <?php if($arSecondLevel['CHILD']) { ?>
                                                     <ul class="main-nav__submenu">
                                                         <?php foreach ($arSecondLevel['CHILD'] as $arThirdLevel) { ?>
-                                                            <li class="main-submenu__item"><a class="main-submenu__link" href="<?php echo $arThirdLevel['ADDITIONAL_LINKS'][0]; ?>"><?php echo $arThirdLevel['TEXT']; ?></a></li>
+                                                            <div class="main-submenu__item"><a class="main-submenu__link" href="<?php echo $arThirdLevel['ADDITIONAL_LINKS'][0]; ?>"><?php echo $arThirdLevel['TEXT']; ?></a></div>
                                                         <?php } ?>
                                                     </ul>
                                                 <?php } ?>

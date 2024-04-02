@@ -27,7 +27,7 @@
                 <div class="footer__col-form footer-form">
                     <form class="footer-form__box email_form">
                         <input type="hidden" name="formName" value="Подписаться на рассылку">
-                        <input name="email" type="email" required placeholder="Электронная почта">
+                        <input name="email" type="email" placeholder="Электронная почта">
                         <div class="footer-form__btn">
                             <button class="btn btn--m btn--red" type="submit">Подписаться</button>
                         </div>
