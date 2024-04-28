@@ -368,7 +368,7 @@ $this->setFrameMode(true);
                                 <div class="tabs__pane-box">
                                     <h2 class="section-title">Ситуации</h2>
                                     <ul class="tabs__pane-list">
-                                        <?php foreach ($arResult['PROPERTIES']['AKUSTICHESKIE_SITUATSII']['VALUE'] as $value) { ?>
+                                        <?php foreach ($arResult['PROPERTIES']['AKUSTICHESKIE_SITUATSII2']['VALUE'] as $value) { ?>
                                             <li class="tabs__pane-item">
                                                 <div class="tabs__pane-item__pic">
                                                     <?php if ($value == 'просмотр ТВ') { ?>
@@ -464,8 +464,7 @@ $this->setFrameMode(true);
                                             <?php foreach ($arResult['FILES'] as $arFile) { ?>
                                                 <?php $format = substr($arFile['SRC'], strripos($arFile['SRC'], '.') + 1); ?>
                                                 <li class="tabs__pane-item">
-                                                    <a class="tabs__pane-link" href="<?php echo $arFile['SRC']; ?>"
-                                                       download>
+                                                    <a class="tabs__pane-link" target="_blank" href="<?php echo $arFile['SRC']; ?>">
                                                         <div class="tabs__pane-item__pic tabs__pane-item__pic--mode">
                                                             <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/pdf.svg"
                                                                  alt=""></div>

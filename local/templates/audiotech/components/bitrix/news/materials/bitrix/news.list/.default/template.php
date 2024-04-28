@@ -26,7 +26,7 @@ $this->setFrameMode(true);
                     <?php if (array_key_exists(0, $arItem['DISPLAY_PROPERTIES']['FILES']['FILE_VALUE'])) { ?>
                         <?php foreach ($arItem['DISPLAY_PROPERTIES']['FILES']['FILE_VALUE'] as $arValue) { ?>
                             <?php $format = substr($arValue['SRC'], strripos($arValue['SRC'], '.') + 1); ?>
-                            <a class="materials__item" href="<?php echo $arValue['SRC']; ?>" download="">
+                            <a class="materials__item" target="_blank" href="<?php echo $arValue['SRC']; ?>">
                                 <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/pdf.svg"
                                      alt="">
                                 <span class="materials__col">
@@ -37,7 +37,7 @@ $this->setFrameMode(true);
                         <?php } ?>
                     <?php } else { ?>
                         <?php $format = substr($arItem['DISPLAY_PROPERTIES']['FILES']['FILE_VALUE']['SRC'], strripos($arItem['DISPLAY_PROPERTIES']['FILES']['FILE_VALUE']['SRC'], '.') + 1); ?>
-                        <a class="materials__item" href="<?php echo $arItem['DISPLAY_PROPERTIES']['FILES']['FILE_VALUE']['SRC']; ?>" download="">
+                        <a class="materials__item" target="_blank" href="<?php echo $arItem['DISPLAY_PROPERTIES']['FILES']['FILE_VALUE']['SRC']; ?>">
                             <img src="<?php echo SITE_TEMPLATE_PATH ?>/images/icns/pdf.svg"
                                  alt="">
                             <span class="materials__col">
